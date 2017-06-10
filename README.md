@@ -11,23 +11,21 @@ This repository contains all schemas which formalize the Kettle protocol. The sc
 ## Quickstart
 
 The schemas are organized in a way the Kettle IRI is laid out.
-Read [Kettle Home](https://github.com/HearthSim/kettle-design/wiki/1.-Kettle-Home) and [Kettle IRI](https://github.com/HearthSim/kettle-design/wiki/2.-Kettle-IRI) for an explanation about the philosophies for defining the protocol.
+Read [Kettle Home](https://github.com/HearthSim/kettle-design/wiki/1.-Kettle-Home) and [Kettle IRI](https://github.com/HearthSim/kettle-design/wiki/2.-Kettle-IRI) for an explanation about the philosophies for defining the protocol. Both pages contain elaborate explanations to properly identify any piece of data communicated through the protocol.
 
-Both pages contain elaborate explanations to properly identify any piece of data communicated through the protocol.
-
-### definitions folder
+### schemas/definitions folder
 
 Contains schemas to explicitly define higher-level constructs in context of HearthStone. These schemas are re-used multiple times accross different Kettle payloads.
 
-### enums folder
+### schemas/enums folder
 
 Contains schemas which explicitly define enumerations to force specific values for some properties. These schemas are re-used multiple times accross different Kettle payloads.
 
-### types folder
+### schemas/types folder
 
 Contains structural information of each Kettle payload. 
 
-The most important one is `kettle:types/payload`, which translates to `/types/payload.json` relative to the repository location. Every Kettle payload has the structure defined by that schema. This structure defines exactly two properties;
+The most important one is `kettle:types/payload`, which translates to `/schemas/types/payload.json` relative to the repository location. Every Kettle payload has the structure defined by that schema. This structure defines exactly two properties;
 
 - type
 
