@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:types/queue_status",
+    "type": "object",
+    "properties": {
+        "position": {
+            "id": "/properties/position",
+            "description": "",
+            "type": "integer",
+            "minimum": 1
+        },
+        "queue_time": {
+            "id": "/properties/queue_time",
+            "description": "Average time the player must wait in order to finish the queue",
+            "type": "integer",
+            "minimum": 0
+        }
+    },
+    "required":[
+        "position"
+    ]
+}

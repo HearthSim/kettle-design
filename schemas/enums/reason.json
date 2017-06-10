@@ -1,0 +1,13 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:enums/reason",
+    "type": "integer",
+    "enum": [
+        // TODO; https://github.com/HearthSim/kettle-design/wiki/8.-Generic-objects#reason
+        0
+    ],
+    "x-enum-names": [
+        // TODO
+        "Invalid"
+    ]
+}

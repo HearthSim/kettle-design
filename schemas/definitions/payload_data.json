@@ -1,0 +1,17 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:definitions/payload_data",
+    "type": "object",
+    "oneOf": [
+        // TODO; list here all Kettle Payload Type schemas.
+        {
+            "$ref": "kettle:types/queue_cancel"
+        },
+        {
+            "$ref": "kettle:types/queue_player"
+        },
+        {
+            "$ref": "kettle:types/queue_status"
+        }
+    ]
+}

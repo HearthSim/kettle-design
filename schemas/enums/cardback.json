@@ -1,0 +1,14 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:enums/cardback",
+    "type": "integer",
+    "enum": [
+        // TODO; https://raw.githubusercontent.com/HearthSim/hsdata/7ee343d4dead8fa8854116cd0973ba7a48682f30/DBF/CARD_BACK.xml
+        // Care! This xml file is outdated.
+        0
+    ],
+    "x-enum-names": [
+        // TODO
+        "Invalid"
+    ]
+}

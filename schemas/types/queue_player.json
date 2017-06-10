@@ -1,0 +1,85 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:types/queue_player",
+    "type": "object",
+    "properties": {
+        "scenario": {
+            "id": "/properties/scenario",
+            "description": "Instructs the server to use a specific set of rules",
+            "$ref": "kettle:enums/game_scenario"
+        },
+        "accountID": {
+            "id": "/properties/accountID",
+            "description": "Instructs the server to use a specific set of rules",
+            "$ref": "kettle:definitions/game_account"
+        },
+        "account_name": {
+            "id": "/properties/account_name",
+            "description": "The username of the player account",
+            "type": "string"
+        },
+        "heroID": {
+            "id": "/properties/heroID",
+            "description": "The identifier of the used hero portrait",
+            "$ref": "kettle:definitions/hero_id"
+        },
+        "cardback": {
+            "id": "/properties/cardback",
+            "description": "The identifier of the used cardback texture",
+            "$ref": "kettle:enums/cardback"
+        },
+        "cards": {
+            "id": "/properties/cards",
+            "description": "All card identifiers used in this player's deck",
+            "type": "array",
+            "items": {
+                "$ref": "kettle:definitions/card"
+            },
+            "maxItems": 120
+        },
+        "rules_override": {
+            "id": "/properties/rules_override",
+            "description": "Defines a specific start state for the player which is additive to the scenario preset",
+            "$ref": "#/definitions/rules_override"
+        }
+    },
+    "required": [
+        "scenario",
+        "accountID",
+        "heroID",
+        "card_back",
+        "cards"
+    ],
+    "definitions": {
+        "rules_override": {
+            "id": "/definitions/rules_override",
+            "type": "object",
+            "properties": {
+                "start_mana": {
+                    "id": "/properties/start_mana",
+                    "description": "Available mana for the player at the start of the game",
+                    "type": "integer",
+                    "maximum": 10,
+                    "minimum": 0
+                },
+                "start_hand_size": {
+                    "id": "/properties/start_hand_size",
+                    "description": "The amount of cards a player has in hand at the start of the game",
+                    "type": "integer",
+                    "maximum": 10,
+                    "minimum": 0
+                },
+                "start_entities": {
+                    "id": "/properties/start_entities",
+                    "description": "Entities starting on the player's side of the board",
+                    "type": "array",
+                    "items": {
+                        "$ref": "kettle:types/entity"
+                    },
+                    "maxItems": 7
+                }
+            }
+            // No required properties.
+        }
+    }
+}

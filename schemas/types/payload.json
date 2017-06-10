@@ -1,0 +1,20 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:types/payload",
+    "type": "object",
+    "properties": {
+        "type": {
+            "id": "/properties/type",
+            "description": "",
+            "$ref": "kettle:definitions/payload_type"
+        },
+        "data": {
+            "id": "/properties/data",
+            "description": "",
+            "$ref": "kettle:definitions/payload_data"
+        }
+    },
+    "required":[
+        "type", "data"
+    ]
+}
