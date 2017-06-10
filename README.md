@@ -1,6 +1,12 @@
-# Kettle design
+# Kettle design - WIP - Alpha
 
-This repository contains all schemas which formalize the Kettle protocol. The files kinda mirror the WIKI content. [Kettle page on HearthSim.net](https://hearthsim.info/kettle/)
+This repository contains all schemas which formalize the Kettle protocol. The schemas kinda mirror the [WIKI content](https://github.com/HearthSim/kettle-design/wiki). 
+
+> The formalization is still an early work in progress. Any help on creating schemas is welcome! 
+
+> Please file an issue if you notice any kind of problem with the protocol and/or possible implementation problems using the defined schemas.
+
+[Kettle page on HearthSim.net](https://hearthsim.info/kettle/)
 
 ## Quickstart
 
