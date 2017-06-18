@@ -1,13 +1,13 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "kettle:types/queue_cancel",
-    "type": "object",
-    "properties": {
-        "reason": {
-            "id": "/properties/reason",
-            "description": "",
-            "$ref": "kettle:enums/reason"
-        }
-    }
-    // No required properties.
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:types/queue_cancel",
+	"type": "object",
+	"properties": {
+		"reason": {
+			"id": "/properties/reason",
+			"description": "",
+			"$ref": "kettle:enums/reason"
+		}
+	}
+	// No required properties.
 }
