@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:definitions/tag",
+    "type": "object",
+    "properties": {
+        "name": {
+            "id": "/properties/name",
+            "description": "Numeric representation of tag identifier",
+            "type": "integer",
+            "minimum": 0
+        },
+        "value": {
+            "id": "/properties/value",
+            "description": "Numeric representation of tag value",
+            "type": "integer"
+        }
+    },
+    "required": [
+        "name",
+        "value"
+    ]
+}
