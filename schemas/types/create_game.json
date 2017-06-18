@@ -1,0 +1,34 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:types/create_game",
+    "type": "object",
+    "properties": {
+        "scenario": {
+            "id": "/properties/scenario",
+            "description": "Instructs the server to use a specific set of rules",
+            "$ref": "kettle:enums/game_scenario"
+        },
+        "password": {
+            "id": "/properties/password",
+            "description": "Password for securing game access",
+            "type": "string"
+        },
+        "players": {
+            "id": "/properties/players",
+            "description": "Initial player state information",
+            "type":"array",
+            "items": {
+                "$ref": "kettle:types/queue_player"
+            },
+            "minItems": 1
+        }
+    },
+    "required":[
+        "scenario",
+        "password",
+        "players"
+    ],
+    "definitions": {
+        
+    }
+}

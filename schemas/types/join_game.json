@@ -1,0 +1,27 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:types/join_game",
+    "type": "object",
+    "properties": {
+        "accountID": {
+            "id": "/properties/accountID",
+            "description": "",
+            "$ref": "kettle:definitions/game_account"
+        },
+        "gameID": {
+            "id": "/properties/gameID",
+            "description": "",
+            "$ref": "kettle:definitions/game"
+        },
+        "password": {
+            "id": "/properties/password",
+            "description": "Password for securing game access",
+            "type": "string"
+        }
+    },
+    "required": [
+        "accountID",
+        "gameID",
+        "password"
+    ]
+}

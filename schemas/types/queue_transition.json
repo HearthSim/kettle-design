@@ -1,0 +1,54 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:types/queue_transition",
+    "type": "object",
+    "properties": {
+        "gameID": {
+            "id": "/properties/gameID",
+            "description": "",
+            "$ref": "kettle:definitions/game"
+        },
+        "accountID": {
+            "id": "/properties/accountID",
+            "description": "Identification of the player",
+            "$ref": "kettle:definitions/game_account"
+        },
+        "connection_info": {
+            "id": "/properties/connection_info",
+            "description": "Game server connection specifics",
+            "$ref": "#/definitions/connection_info"
+        }
+    },
+    "required": [
+        "gameID",
+        "game_password",
+        "connection_info"
+    ],
+    "definitions": {
+        "connection_info": {
+            "type": "object",
+            "properties": {
+                "game_password": {
+                    "id": "/properties/game_password",
+                    "description": "",
+                    "type": "string"
+                },
+                "ip": {
+                    "id": "/properties/ip",
+                    "description": "IP address of gameserver",
+                    "type": "string"
+                },
+                "port": {
+                    "id": "/properties/port",
+                    "description": "Port of gameserver",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "accountID",
+                "ip",
+                "port"
+            ]
+        }
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:types/game_finished",
+    "type": "object",
+    "properties": {
+        "start_datetime": {
+            "id": "/properties/start_datetime",
+            "description": "",
+            "type": "string",
+            "format": "date-time"
+        },
+        "end_datetime": {
+            "id": "/properties/end_datetime",
+            "description": "",
+            "type": "string",
+            "format": "date-time"
+        },
+        "gameID": {
+            "id": "/properties/gameID",
+            "description": "",
+            "$ref": "kettle:definitions/game"
+        },
+        "winners": {
+            "id": "/properties/winners",
+            "description": "",
+            "type": "array",
+            "items": {
+                "$ref": "kettle:definitions/game_account"
+            }
+        },
+        "losers": {
+            "id": "/properties/losers",
+            "description": "",
+            "type": "array",
+            "items": {
+                "$ref": "kettle:definitions/game_account"
+            }
+        },
+        "result": {
+            "id": "/properties/result",
+            "description": "",
+            "$ref": "kettle:enums/game_result"
+        }
+    },
+    "required": [
+        "start_datetime",
+        "end_datetime",
+        "gameID",
+        "winners",
+        "losers",
+        "result"
+    ]
+}

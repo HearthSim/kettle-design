@@ -1,0 +1,60 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:types/game_created",
+    "type": "object",
+    "properties": {
+        "gameID": {
+            "id": "/properties/gameID",
+            "description": "",
+            "$ref": "kettle:definitions/game"
+        },
+        "password": {
+            "id": "/properties/password",
+            "description": "Password for securing game access",
+            "type": "string"
+        },
+        "connection_info": {
+            "id": "/properties/connection_info",
+            "description": "",
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/connection_info"
+            },
+            "minItems": 1
+        }
+    },
+    "required": [
+        "gameID",
+        "password",
+        "connection_info"
+    ],
+    "definitions": {
+        "connection_info": {
+            "type": "object",
+            "properties": {
+                "accountID": {
+                    "id": "/properties/accountID",
+                    "description": "",
+                    "$ref": "kettle:definitions/game_account"
+                },
+                "ip": {
+                    "id": "/properties/ip",
+                    "description": "",
+                    "type":"string",
+                    "format":"ipv4"
+                },
+                "port": {
+                    "id": "/properties/port",
+                    "description": "",
+                    "type":"integer",
+                    "minimum": 0
+                }
+            },
+            "required": [
+                "accountID",
+                "ip",
+                "port"
+            ]
+        }
+    }
+}
