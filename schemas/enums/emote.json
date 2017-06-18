@@ -1,0 +1,13 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:enums/emote",
+    "type": "integer",
+    "enum": [
+        // TODO; https://github.com/HearthSim/kettle-design/wiki/5.-Player-game-interaction#emote
+        0
+    ],
+    "x-enum-names": [
+        // TODO
+        "Invalid"
+    ]
+}

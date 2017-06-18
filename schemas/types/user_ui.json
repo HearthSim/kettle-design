@@ -1,0 +1,48 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:types/user_ui",
+	"type": "object",
+	"properties": {
+		"target": {
+			"id": "/properties/entityID",
+			"description": "The entity which is subject of UI update",
+			"$ref": "kettle:definitions/entityID"
+		},
+		"emote": {
+			"id": "/properties/emote",
+			"description": "Emote triggered on target",
+			"$ref": "kettle:enums/emote"
+		},
+		"mouse_info": {
+			"id": "/properties/mouse_info",
+			"description": "Additional information about the players cursor",
+			"$ref": "#/definitions/mouse_info"
+		}
+	},
+	"required": [
+		"target",
+		"mouse_info"
+	],
+	"definitions": {
+		"mouse_info": {
+			"type": "object",
+			"properties": {
+				"arrow_origin": {
+					"id": "/properties/arrow_origin",
+					"description": "Used as source entity to draw an arrow from towards target",
+					"$ref": "kettle:definitions/entityID"
+				},
+				"held_card": {
+					"id": "/properties/held_card",
+					"description": "Card currently selected",
+					"$ref": "kettle:definitions/entityID"
+				},
+				"hover_card": {
+					"id": "/properties/hover_card",
+					"description": "Card currently hovered",
+					"$ref": "kettle:definitions/entityID"
+				}
+			}
+		}
+	}
+}
