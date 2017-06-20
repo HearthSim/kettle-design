@@ -1,0 +1,56 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:types/history/create_game",
+	"description": "",
+	"type": "object",
+	"properties": {
+		"game_entity": {
+			"id": "/properties/game_entity",
+			"description": "The entityID of the game, always 1",
+			"$ref": "kettle:definitions/entity_id"
+		},
+		"player_entities": {
+			"id": "/properties/game_entity",
+			"description": "The entityID of the game, always 1",
+			"type": "array",
+			"items": {
+				"$ref": "#/definitions/player_entity"
+			},
+			"minItems": 2
+		},
+		"entities": {
+			"id": "/properties/entities",
+			"description": "",
+			"type": "array",
+			"items": {
+				"$ref": "kettle:definitions/entity"
+			}
+		}
+	},
+	"required": [
+		"game_entity",
+		"player_entities",
+		"entities"
+	],
+	"definitions": {
+		"player_entity": {
+			"type": "object",
+			"properties": {
+				"entityID": {
+					"id": "/properties/entityID",
+					"description": "",
+					"$ref": "kettle:definitions/entity_id"
+				},
+				"player": {
+					"id": "/properties/player",
+					"description": "",
+					"$ref": "kettle:definitions/player_game"
+				}
+			},
+			"required": [
+				"entityID",
+				"player"
+			]
+		}
+	}
+}

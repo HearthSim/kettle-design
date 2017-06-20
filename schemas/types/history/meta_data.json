@@ -1,0 +1,30 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:types/history/meta_data",
+	"type": "object",
+	"properties": {
+		"type": {
+			"id": "/properties/type",
+			"description": "",
+			"$ref": "kettle:enums/meta_type"
+		},
+		"data": {
+			"id": "/properties/data",
+			"description": "",
+			"type": "integer"
+		},
+		"related": {
+			"id": "/properties/related",
+			"description": "",
+			"type": "array",
+			"items": {
+				"$ref": "kettle:definitions/entity_id"
+			}
+		}
+	},
+	"required": [
+		"type",
+		"related"
+	],
+	"definitions": {}
+}

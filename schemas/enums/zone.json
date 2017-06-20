@@ -1,0 +1,13 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:enums/zone",
+    "type": "integer",
+    "enum": [
+        // TODO; Define zone names
+        0
+    ],
+    "x-enum-names": [
+        // TODO
+        "Invalid"
+    ]
+}

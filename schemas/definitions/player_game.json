@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:definitions/player_game",
+    "type": "object",
+    "properties": {
+        "accountID": {
+            "id": "/properties/accountID",
+            "description": "Instructs the server to use a specific set of rules",
+            "$ref": "kettle:definitions/game_account"
+        },
+        "account_name": {
+            "id": "/properties/account_name",
+            "description": "The username of the player account",
+            "type": "string"
+        },
+        "playerID": {
+            "id": "/properties/playerID",
+            "description": "",
+            "type":"number",
+			"minimum": 2
+        }
+    },
+    "required": [
+        "accountID",
+        "heroID",
+        "playerID"
+    ]
+}

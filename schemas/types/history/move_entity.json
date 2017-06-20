@@ -1,0 +1,23 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:types/history/move_entity",
+	"description": "Used to move one entity into another zone",
+	"type": "object",
+	"properties": {
+		"entityID": {
+			"id": "/properties/entityID",
+			"description": "",
+			"$ref": "kettle:definitions/entity_id"
+		},
+		"zone": {
+			"id": "/properties/zone",
+			"description": "",
+			"$ref": "kettle:enums/zone"
+		}
+	},
+	"required":[
+		"entityID",
+		"zone"
+	],
+	"definitions": {}
+}

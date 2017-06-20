@@ -1,0 +1,26 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:types/history/tag_change",
+	"description": "Used to override specific tag values",
+	"type": "object",
+	"properties": {
+		"entityID": {
+			"id": "/properties/entityID",
+			"description": "",
+			"$ref": "kettle:definitions/entity_id"
+		},
+		"tags": {
+			"id": "/properties/tags",
+			"description": "",
+			"type":"array",
+			"items": {
+				"$ref": "kettle:definitions/tag"
+			}
+		}
+	},
+	"required":[
+		"entityID",
+		"tags"
+	],
+	"definitions": {}
+}

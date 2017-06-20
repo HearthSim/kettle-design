@@ -1,0 +1,7 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:types/get_game_state",
+	"type": "object",
+	"properties": {},
+	"definitions": {}
+}

@@ -1,0 +1,39 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:types/history/power_block",
+	"description": "",
+	"type": "object",
+	"properties": {
+		"entityID": {
+			"id": "/properties/entityID",
+			"description": "",
+			"$ref": "kettle:definitions/entity_id"
+		},
+		"power_type": {
+			"id": "/properties/power_type",
+			"description": "",
+			"$ref": "kettle:/enums/power_type"
+		},
+		"effect_source": {
+			"id": "/properties/effect_source",
+			"description": "Card identification. The effect is indexed on this card",
+			"$ref": "kettle:definitions/card"
+		},
+		"effect_index": {
+			"id": "/properties/effect_index",
+			"description": "",
+			"type": "integer",
+			"minimum": -1
+		},
+		"effect_target": {
+			"id": "/properties/effect_target",
+			"description": "",
+			"$ref": "kettle:definitions/entity_id"
+		}
+	},
+	"required": [
+		"entityID",
+		"power_type"
+	],
+	"definitions": {}
+}
