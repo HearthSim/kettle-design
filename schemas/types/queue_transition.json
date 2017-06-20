@@ -1,54 +1,62 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "kettle:types/queue_transition",
-    "type": "object",
-    "properties": {
-        "gameID": {
-            "id": "/properties/gameID",
-            "description": "",
-            "$ref": "kettle:definitions/game"
-        },
-        "accountID": {
-            "id": "/properties/accountID",
-            "description": "Identification of the player",
-            "$ref": "kettle:definitions/game_account"
-        },
-        "connection_info": {
-            "id": "/properties/connection_info",
-            "description": "Game server connection specifics",
-            "$ref": "#/definitions/connection_info"
-        }
-    },
-    "required": [
-        "gameID",
-        "game_password",
-        "connection_info"
-    ],
-    "definitions": {
-        "connection_info": {
-            "type": "object",
-            "properties": {
-                "game_password": {
-                    "id": "/properties/game_password",
-                    "description": "",
-                    "type": "string"
-                },
-                "ip": {
-                    "id": "/properties/ip",
-                    "description": "IP address of gameserver",
-                    "type": "string"
-                },
-                "port": {
-                    "id": "/properties/port",
-                    "description": "Port of gameserver",
-                    "type": "integer"
-                }
-            },
-            "required": [
-                "accountID",
-                "ip",
-                "port"
-            ]
-        }
-    }
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:types/queue_transition",
+	"title": "QueueTransition",
+	"description": "Instructs the client to move from the queue into 'playing game' state",
+	"x-sender": [
+		"matchmaker"
+	],
+	"x-receiver": [
+		"client"
+	],
+	"type": "object",
+	"properties": {
+		"gameID": {
+			"id": "/properties/gameID",
+			"description": "Unique identifier of the created game",
+			"$ref": "kettle:definitions/game"
+		},
+		"accountID": {
+			"id": "/properties/accountID",
+			"description": "Identification of the player",
+			"$ref": "kettle:definitions/game_account"
+		},
+		"connection_info": {
+			"id": "/properties/connection_info",
+			"description": "Specific game server connection information",
+			"$ref": "#/definitions/connection_info"
+		}
+	},
+	"required": [
+		"gameID",
+		"game_password",
+		"connection_info"
+	],
+	"definitions": {
+		"connection_info": {
+			"type": "object",
+			"properties": {
+				"game_password": {
+					"id": "/properties/game_password",
+					"description": "Password which must be used to connect to the simulator",
+					"type": "string"
+				},
+				"ip": {
+					"id": "/properties/ip",
+					"description": "IP address of simulator",
+					"type": "string"
+				},
+				"port": {
+					"id": "/properties/port",
+					"description": "Port of simulator",
+					"type": "integer"
+				}
+			},
+			"required": [
+				"accountID",
+				"ip",
+				"port"
+			]
+		}
+	}
 }

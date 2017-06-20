@@ -1,53 +1,61 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "kettle:types/game_finished",
-    "type": "object",
-    "properties": {
-        "start_datetime": {
-            "id": "/properties/start_datetime",
-            "description": "",
-            "type": "string",
-            "format": "date-time"
-        },
-        "end_datetime": {
-            "id": "/properties/end_datetime",
-            "description": "",
-            "type": "string",
-            "format": "date-time"
-        },
-        "gameID": {
-            "id": "/properties/gameID",
-            "description": "",
-            "$ref": "kettle:definitions/game"
-        },
-        "winners": {
-            "id": "/properties/winners",
-            "description": "",
-            "type": "array",
-            "items": {
-                "$ref": "kettle:definitions/game_account"
-            }
-        },
-        "losers": {
-            "id": "/properties/losers",
-            "description": "",
-            "type": "array",
-            "items": {
-                "$ref": "kettle:definitions/game_account"
-            }
-        },
-        "result": {
-            "id": "/properties/result",
-            "description": "",
-            "$ref": "kettle:enums/game_result"
-        }
-    },
-    "required": [
-        "start_datetime",
-        "end_datetime",
-        "gameID",
-        "winners",
-        "losers",
-        "result"
-    ]
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:types/game_finished",
+	"title": "GameFinished",
+	"description": "Tells the matchmaker of a specific game result",
+	"x-sender": [
+		"simulator"
+	],
+	"x-receiver": [
+		"matchmaker"
+	],
+	"type": "object",
+	"properties": {
+		"gameID": {
+			"id": "/properties/gameID",
+			"description": "Unique identifier of the game",
+			"$ref": "kettle:definitions/game"
+		},
+		"start_datetime": {
+			"id": "/properties/start_datetime",
+			"description": "Moment when the game was created",
+			"type": "string",
+			"format": "date-time"
+		},
+		"end_datetime": {
+			"id": "/properties/end_datetime",
+			"description": "Moment when the game finished",
+			"type": "string",
+			"format": "date-time"
+		},
+		"winners": {
+			"id": "/properties/winners",
+			"description": "Identifiers of each account that won this game",
+			"type": "array",
+			"items": {
+				"$ref": "kettle:definitions/game_account"
+			}
+		},
+		"losers": {
+			"id": "/properties/losers",
+			"description": "Identifiers of each account that lost this game",
+			"type": "array",
+			"items": {
+				"$ref": "kettle:definitions/game_account"
+			}
+		},
+		"result": {
+			"id": "/properties/result",
+			"description": "The end result of this game",
+			"$ref": "kettle:enums/game_result"
+		}
+	},
+	"required": [
+		"gameID",
+		"start_datetime",
+		"end_datetime",
+		"winners",
+		"losers",
+		"result"
+	]
 }

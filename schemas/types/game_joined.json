@@ -1,35 +1,45 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "kettle:types/game_joined",
-    "type": "object",
-    "properties": {
-        "spectating": {
-            "id": "/properties/spectating",
-            "description": "",
-            "type": "boolean"
-        },
-        "board": {
-            "id": "/properties/board",
-            "description": "",
-            "$ref": "kettle:definitions/board"
-        },
-        "max_secrets_per_player": {
-            "id": "/properties/max_secrets_per_player",
-            "description": "",
-            "type": "integer",
-            "minimum": 0
-        },
-        "max_friendly_minions_per_player": {
-            "id": "/properties/max_friendly_minions_per_player",
-            "description": "",
-            "type": "integer",
-            "minimum": 0
-        }
-    },
-    "required": [
-        "spectating",
-        "board",
-        "max_secrets_per_player",
-        "max_friendly_minions_per_player"
-    ]
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:types/game_joined",
+	"title": "GameJoined",
+	"description": "The player has succesfully connected to the game instance",
+	"x-sender": [
+		"simulator"
+	],
+	"x-receiver": [
+		"client"
+	],
+	"type": "object",
+	"properties": {
+		"spectating": {
+			"id": "/properties/spectating",
+			"description": "Indicates if the player is spectating this game or not",
+			"type": "boolean"
+		},
+		"board": {
+			"id": "/properties/board",
+			"description": "Identifier of the board to use",
+			"$ref": "kettle:definitions/board"
+		},
+		"max_secrets_per_player": {
+			"id": "/properties/max_secrets_per_player",
+			"description": "Maximum amount of secrets each player can have active at once",
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 10
+		},
+		"max_friendly_minions_per_player": {
+			"id": "/properties/max_friendly_minions_per_player",
+			"description": "Maximum amount of minions each player can have alive at once",
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 10
+		}
+	},
+	"required": [
+		"spectating",
+		"board",
+		"max_secrets_per_player",
+		"max_friendly_minions_per_player"
+	]
 }

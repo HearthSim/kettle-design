@@ -1,6 +1,14 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/history_stop",
+	"title": "HistoryStop",
+	"description": "Indicates the end of a sequence of game events",
+	"x-sender": [
+		"simulator"
+	],
+	"x-receiver": [
+		"client"
+	],
 	"type": "object",
 	"properties": {
 		"num_items": {

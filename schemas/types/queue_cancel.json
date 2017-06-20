@@ -1,13 +1,25 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/queue_cancel",
+	"title": "QueueCancel",
+	"description": "Cancels the queue entry of the player",
+	"x-sender": [
+		"client",
+		"matchmaker"
+	],
+	"x-receiver": [
+		"client",
+		"matchmaker"
+	],
 	"type": "object",
 	"properties": {
 		"reason": {
 			"id": "/properties/reason",
-			"description": "",
+			"description": "The cause of this message",
 			"$ref": "kettle:enums/reason"
 		}
-	}
-	// No required properties.
+	},
+	"required": [
+		"reason"
+	]
 }

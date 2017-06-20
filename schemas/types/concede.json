@@ -1,6 +1,14 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/concede",
+	"title": "Concede",
+	"description": "The player concedes, which loses him the game",
+	"x-sender": [
+		"client"
+	],
+	"x-receiver": [
+		"simulator"
+	],
 	"type": "object",
 	"properties": {},
 	"definitions": {}

@@ -1,11 +1,19 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/nack_option",
+	"title": "NackOption",
+	"description": "The simulator does not accept the selected option",
+	"x-sender": [
+		"simulator"
+	],
+	"x-receiver": [
+		"client"
+	],
 	"type": "object",
 	"properties": {
 		"optionsID": {
 			"id": "/properties/optionsID",
-			"description": "",
+			"description": "Identifier of the option set for which the chosen option is rejected",
 			"$ref": "kettle:definitions/options_id"
 		}
 	},

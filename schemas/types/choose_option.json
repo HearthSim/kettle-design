@@ -1,42 +1,47 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/choose_option",
+	"title": "ChooseOption",
+	"description": "The player has selected an option from the provided set to perform",
+	"x-sender": [
+		"client"
+	],
+	"x-receiver": [
+		"simulator"
+	],
 	"type": "object",
 	"properties": {
 		"optionsID": {
 			"id": "/properties/optionsID",
-			"description": "",
+			"description": "Identifier of the option set",
 			"$ref": "kettle:definitions/options_id"
 		},
 		"option_index": {
 			"id": "/properties/option_index",
-			"description": "",
+			"description": "Index value of the selected option",
 			"$ref": "kettle:definitions/option_index"
 		},
 		"target": {
 			"id": "/properties/target",
-			"description": "",
+			"description": "Entity which is a target of the selected option",
 			"$ref": "kettle:definitions/entity_id"
 		},
 		"sub_option_index": {
 			"id": "/properties/sub_option_index",
-			"description": "",
+			"description": "Index value of the selected sub-option. Sub-options are nested within an option object",
 			"$ref": "kettle:definitions/option_index"
 		},
 		"position": {
 			"id": "/properties/position",
-			"description": "",
+			"description": "Board position of the entity that might have been put into the PLAY zone",
 			"type": "integer",
 			"minimum": 0,
-			"maximum": 7
+			"maximum": 10
 		}
 	},
 	"required": [
 		"optionsID",
-		"option_index",
-		"target",
-		"sub_option_index",
-		"position"
+		"option_index"
 	],
 	"definitions": {}
 }

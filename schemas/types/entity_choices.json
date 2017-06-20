@@ -1,45 +1,53 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/entity_choices",
+	"title": "EntityChoices",
+	"description": "The player must choose a subset of entities within the provided set. The player can also prefer to make an empty choice",
+	"x-sender": [
+		"simulator"
+	],
+	"x-receiver": [
+		"client"
+	],
 	"type": "object",
 	"properties": {
 		"choiceID": {
 			"id": "/properties/choiceID",
-			"description": "",
+			"description": "Identifier of the choice set",
 			"$ref": "kettle:definitions/choiceID"
 		},
 		"choice_type": {
 			"id": "/properties/choice_type",
-			"description": "",
+			"description": "Kind of choice the player must make",
 			"$ref": "kettle:enums/choice_type"
 		},
 		"sourceID": {
 			"id": "/properties/sourceID",
-			"description": "",
+			"description": "Entity which has triggered this action",
 			"$ref": "kettle:definitions/entity_id"
 		},
 		"hide_chosen": {
 			"id": "/properties/hide_chosen",
-			"description": "",
+			"description": "If the chosen entities will be put into the SETASIDE zone",
 			"type": "boolean"
 		},
 		"count_min": {
 			"id": "/properties/count_min",
-			"description": "",
+			"description": "Minimum amount of entities the player must choose; 0 for MULLIGAN choicetype",
 			"type": "integer",
 			"minimum": 0,
 			"maximum": 10
 		},
 		"count_max": {
 			"id": "/properties/count_max",
-			"description": "",
+			"description": "Maximum amount of entities the player must choose; 3/4 for MULLIGAN choicetype",
 			"type": "integer",
 			"minimum": 0,
 			"maximum": 10
 		},
 		"entities": {
 			"id": "/properties/entities",
-			"description": "",
+			"description": "Set of entities, which is the superset of the player's choice set",
 			"type": "array",
 			"items": {
 				"$ref": "kettle:definitions/entity_id"

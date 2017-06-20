@@ -1,20 +1,33 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "kettle:types/payload",
-    "type": "object",
-    "properties": {
-        "type": {
-            "id": "/properties/type",
-            "description": "",
-            "$ref": "kettle:definitions/payload_type"
-        },
-        "data": {
-            "id": "/properties/data",
-            "description": "",
-            "$ref": "kettle:definitions/payload_data"
-        }
-    },
-    "required":[
-        "type", "data"
-    ]
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:types/payload",
+	"title": "Payload",
+	"x-sender": [
+		"client",
+		"matchmaker",
+		"simulator"
+	],
+	"x-receiver": [
+		"client",
+		"matchmaker",
+		"simulator"
+	],
+	"description": "Object used for transmitting data between internet facing clients, eg player <-> simulator",
+	"type": "object",
+	"properties": {
+		"type": {
+			"id": "/properties/type",
+			"description": "Defines the structure of the object that's the value of property `data`",
+			"$ref": "kettle:definitions/payload_type"
+		},
+		"data": {
+			"id": "/properties/data",
+			"description": "Contains the actual data that is being communicated",
+			"$ref": "kettle:definitions/payload_data"
+		}
+	},
+	"required": [
+		"type",
+		"data"
+	]
 }

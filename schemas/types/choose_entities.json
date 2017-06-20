@@ -1,21 +1,29 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/choose_entities",
+	"title": "ChooseEntities",
+	"description": "The player has selected one or more entities from the choice set",
+	"x-sender": [
+		"client"
+	],
+	"x-receiver": [
+		"simulator"
+	],
 	"type": "object",
 	"properties": {
 		"choiceID": {
 			"id": "/properties/choiceID",
-			"description": "",
+			"description": "Identifier of the choice set",
 			"$ref": "kettle:definitions/choice_id"
 		},
 		"choice_type": {
 			"id": "/properties/choice_type",
-			"description": "",
+			"description": "Kind of choice the player has made",
 			"$ref": "kettle:enums/choice_type"
 		},
 		"entities": {
 			"id": "/properties/entities",
-			"description": "",
+			"description": "Specific entity identifiers chosen by the player",
 			"type": "array",
 			"items": {
 				"$ref": "kettle:definitions/entity_id"

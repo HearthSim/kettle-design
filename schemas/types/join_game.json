@@ -1,21 +1,29 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "kettle:types/join_game",
+	"title": "JoinGame",
+	"description": "Access the game instance created for the client",
+	"x-sender": [
+		"client"
+	],
+	"x-receiver": [
+		"simulator"
+	],
     "type": "object",
     "properties": {
         "accountID": {
             "id": "/properties/accountID",
-            "description": "",
+            "description": "Unique account identifier, identifies the person playing",
             "$ref": "kettle:definitions/game_account"
         },
         "gameID": {
             "id": "/properties/gameID",
-            "description": "",
+            "description": "Unique game identifier",
             "$ref": "kettle:definitions/game"
         },
         "password": {
             "id": "/properties/password",
-            "description": "Password for securing game access",
+            "description": "Password to access the game",
             "type": "string"
         }
     },

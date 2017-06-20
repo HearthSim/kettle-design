@@ -1,6 +1,8 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "kettle:definitions/game_account",
+	"title": "GameAccount",
+	"description": "Unique key linking to one game account.",
     "type": "integer",
     "minimum": 1
 }

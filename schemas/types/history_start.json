@@ -1,6 +1,14 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/history_start",
+	"title": "HistoryStart",
+	"description": "Indicates the start of a sequence of game events with the purpose to replay clientside. History sequences CAN NOT be nested!",
+	"x-sender": [
+		"simulator"
+	],
+	"x-receiver": [
+		"client"
+	],
 	"type": "object",
 	"properties": {},
 	"definitions": {}
