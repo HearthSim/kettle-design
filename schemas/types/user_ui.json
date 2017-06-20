@@ -6,7 +6,7 @@
 		"target": {
 			"id": "/properties/entityID",
 			"description": "The entity which is subject of UI update",
-			"$ref": "kettle:definitions/entityID"
+			"$ref": "kettle:definitions/entity_id"
 		},
 		"emote": {
 			"id": "/properties/emote",
@@ -30,17 +30,17 @@
 				"arrow_origin": {
 					"id": "/properties/arrow_origin",
 					"description": "Used as source entity to draw an arrow from towards target",
-					"$ref": "kettle:definitions/entityID"
+					"$ref": "kettle:definitions/entity_id"
 				},
 				"held_card": {
 					"id": "/properties/held_card",
 					"description": "Card currently selected",
-					"$ref": "kettle:definitions/entityID"
+					"$ref": "kettle:definitions/entity_id"
 				},
 				"hover_card": {
 					"id": "/properties/hover_card",
 					"description": "Card currently hovered",
-					"$ref": "kettle:definitions/entityID"
+					"$ref": "kettle:definitions/entity_id"
 				}
 			}
 		}

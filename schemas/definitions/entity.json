@@ -6,7 +6,7 @@
         "entityID": {
             "id": "/properties/entityID",
             "description": "",
-            "$ref": "kettle:definitions/entityID"
+            "$ref": "kettle:definitions/entity_id"
         },
         "name": {
             "id": "/properties/name",

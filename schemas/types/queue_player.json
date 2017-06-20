@@ -47,7 +47,7 @@
                     "description": "Entities starting on the player's side of the board",
                     "type": "array",
                     "items": {
-                        "$ref": "kettle:types/entity"
+                        "$ref": "kettle:definitions/entity"
                     },
                     "maxItems": 7
                 }
