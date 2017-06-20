@@ -1,0 +1,16 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:types/options/end_turn",
+	"type": "object",
+	"properties": {
+		"option_index": {
+			"id": "/properties/option_index",
+			"description": "",
+			"$ref": "kettle:definitions/option_index"
+		}
+	},
+	"required": [
+		"option_index"
+	],
+	"definitions": {}
+}

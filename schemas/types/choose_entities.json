@@ -1,0 +1,31 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:types/choose_entities",
+	"type": "object",
+	"properties": {
+		"choiceID": {
+			"id": "/properties/choiceID",
+			"description": "",
+			"$ref": "kettle:definitions/choice_id"
+		},
+		"choice_type": {
+			"id": "/properties/choice_type",
+			"description": "",
+			"$ref": "kettle:enums/choice_type"
+		},
+		"entities": {
+			"id": "/properties/entities",
+			"description": "",
+			"type": "array",
+			"items": {
+				"$ref": "kettle:definitions/entity_id"
+			}
+		}
+	},
+	"required": [
+		"choiceID",
+		"choice_type",
+		"entities"
+	],
+	"definitions": {}
+}

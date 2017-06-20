@@ -1,0 +1,6 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:definitions/options_id",
+    "type": "integer",
+	"minimum": 1
+}

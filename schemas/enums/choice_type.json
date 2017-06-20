@@ -1,0 +1,13 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:enums/choice_type",
+    "type": "integer",
+    "enum": [
+        // TODO; https://github.com/HearthSim/kettle-design/wiki/6.-Player-Simulator-interaction#choicetype
+        0
+    ],
+    "x-enum-names": [
+        // TODO
+        "Invalid"
+    ]
+}

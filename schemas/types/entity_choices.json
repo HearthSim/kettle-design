@@ -1,0 +1,58 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:types/entity_choices",
+	"type": "object",
+	"properties": {
+		"choiceID": {
+			"id": "/properties/choiceID",
+			"description": "",
+			"$ref": "kettle:definitions/choiceID"
+		},
+		"choice_type": {
+			"id": "/properties/choice_type",
+			"description": "",
+			"$ref": "kettle:enums/choice_type"
+		},
+		"sourceID": {
+			"id": "/properties/sourceID",
+			"description": "",
+			"$ref": "kettle:definitions/entity_id"
+		},
+		"hide_chosen": {
+			"id": "/properties/hide_chosen",
+			"description": "",
+			"type": "boolean"
+		},
+		"count_min": {
+			"id": "/properties/count_min",
+			"description": "",
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 10
+		},
+		"count_max": {
+			"id": "/properties/count_max",
+			"description": "",
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 10
+		},
+		"entities": {
+			"id": "/properties/entities",
+			"description": "",
+			"type": "array",
+			"items": {
+				"$ref": "kettle:definitions/entity_id"
+			}
+		}
+	},
+	"required": [
+		"choiceID",
+		"choice_type",
+		"hide_chosen",
+		"count_min",
+		"count_max",
+		"entities"
+	],
+	"definitions": {}
+}

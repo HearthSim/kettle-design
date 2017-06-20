@@ -1,0 +1,42 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:types/choose_option",
+	"type": "object",
+	"properties": {
+		"optionsID": {
+			"id": "/properties/optionsID",
+			"description": "",
+			"$ref": "kettle:definitions/options_id"
+		},
+		"option_index": {
+			"id": "/properties/option_index",
+			"description": "",
+			"$ref": "kettle:definitions/option_index"
+		},
+		"target": {
+			"id": "/properties/target",
+			"description": "",
+			"$ref": "kettle:definitions/entity_id"
+		},
+		"sub_option_index": {
+			"id": "/properties/sub_option_index",
+			"description": "",
+			"$ref": "kettle:definitions/option_index"
+		},
+		"position": {
+			"id": "/properties/position",
+			"description": "",
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 7
+		}
+	},
+	"required": [
+		"optionsID",
+		"option_index",
+		"target",
+		"sub_option_index",
+		"position"
+	],
+	"definitions": {}
+}

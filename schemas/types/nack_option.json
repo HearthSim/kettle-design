@@ -1,0 +1,16 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:types/nack_option",
+	"type": "object",
+	"properties": {
+		"optionsID": {
+			"id": "/properties/optionsID",
+			"description": "",
+			"$ref": "kettle:definitions/options_id"
+		}
+	},
+	"required": [
+		"optionsID"
+	],
+	"definitions": {}
+}
