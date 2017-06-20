@@ -1,0 +1,24 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:types/options_start",
+	"title": "OptionsStart",
+	"description": "Indicates the start of a sequence of possible options a player can pick from. Option sequences cannot be nested!",
+	"x-sender": [
+		"simulator"
+	],
+	"x-receiver": [
+		"client"
+	],
+	"type": "object",
+	"properties": {
+		"optionsID": {
+			"id": "/properties/optionsID",
+			"description": "The identifier of the following set of options",
+			"$ref": "kettle:definitions/options_id"
+		}
+	},
+	"required": [
+		"optionsID"
+	],
+	"definitions": {}
+}

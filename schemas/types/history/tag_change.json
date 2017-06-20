@@ -1,17 +1,24 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/history/tag_change",
-	"description": "Used to override specific tag values",
+	"title": "HistoryTagChange",
+	"description": "Used to override/set specific tag values for one entity",
+	"x-sender": [
+		"simulator"
+	],
+	"x-receiver": [
+		"client"
+	],
 	"type": "object",
 	"properties": {
 		"entityID": {
 			"id": "/properties/entityID",
-			"description": "",
+			"description": "The entity which will be changed",
 			"$ref": "kettle:definitions/entity_id"
 		},
 		"tags": {
 			"id": "/properties/tags",
-			"description": "",
+			"description": "All tags that are added/changed for the selected entity",
 			"type":"array",
 			"items": {
 				"$ref": "kettle:definitions/tag"

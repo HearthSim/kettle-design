@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "kettle:types/nack_option",
+	"id": "kettle:types/errors/nack_option",
 	"title": "NackOption",
 	"description": "The simulator does not accept the selected option",
 	"x-sender": [

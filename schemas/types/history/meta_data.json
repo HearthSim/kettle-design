@@ -1,21 +1,29 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/history/meta_data",
+	"title": "HistoryMetaData",
+	"description": "This object instructs clients to perform a certain animation. Accompanies tag changes mostly",
+	"x-sender": [
+		"simulator"
+	],
+	"x-receiver": [
+		"client"
+	],
 	"type": "object",
 	"properties": {
 		"type": {
 			"id": "/properties/type",
-			"description": "",
+			"description": "Kind of animation to perform",
 			"$ref": "kettle:enums/meta_type"
 		},
 		"data": {
 			"id": "/properties/data",
-			"description": "",
+			"description": "Actual representation differs per `type` property. eg: type=healing;holds amount healed",
 			"type": "integer"
 		},
 		"related": {
 			"id": "/properties/related",
-			"description": "",
+			"description": "Contains all entities which must be animated (which are affected by eg: healing)",
 			"type": "array",
 			"items": {
 				"$ref": "kettle:definitions/entity_id"

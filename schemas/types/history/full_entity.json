@@ -1,21 +1,29 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "kettle:types/history/full_entity",
+	"id": "kettle:types/history/create_entity",
+	"title": "HistoryCreateEntity",
+	"description": "Indicates the creation of a new entity",
+	"x-sender": [
+		"simulator"
+	],
+	"x-receiver": [
+		"client"
+	],
 	"type": "object",
 	"properties": {
 		"entityID": {
 			"id": "/properties/entityID",
-			"description": "",
+			"description": "The identifier of the entity",
 			"$ref": "kettle:definitions/entity_id"
 		},
 		"name": {
 			"id": "/properties/name",
-			"description": "",
+			"description": "The name of the entity; can be empty if the specific card is unknown",
 			"$ref": "kettle:definitions/card"
 		},
 		"tags": {
 			"id": "/properties/tags",
-			"description": "",
+			"description": "Specific information linked to this entity. This is expressed as one Tag per entity property",
 			"type":"array",
 			"items": {
 				"$ref": "kettle:definitions/tag"

@@ -2,6 +2,7 @@
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/payload",
 	"title": "Payload",
+	"description": "Object used for transmitting data between internet facing clients, eg player <-> simulator",
 	"x-sender": [
 		"client",
 		"matchmaker",
@@ -12,7 +13,6 @@
 		"matchmaker",
 		"simulator"
 	],
-	"description": "Object used for transmitting data between internet facing clients, eg player <-> simulator",
 	"type": "object",
 	"properties": {
 		"type": {
@@ -24,6 +24,11 @@
 			"id": "/properties/data",
 			"description": "Contains the actual data that is being communicated",
 			"$ref": "kettle:definitions/payload_data"
+		},
+		"errors": {
+			"id": "/properties/errors",
+			"description": "Contains error objects. If both data and errors is defined; errors takes precedence!",
+			"$ref": "kettle:definitions/payload_errors"
 		}
 	},
 	"required": [

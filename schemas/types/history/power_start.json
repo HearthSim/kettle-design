@@ -1,33 +1,40 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "kettle:types/history/power_block",
-	"description": "",
+	"id": "kettle:types/history/power_start",
+	"title": "HistoryPowerStart",
+	"description": "Indicates the start of a sequence of events (tag changes) which are chained. Power sequences CAN BE nested! eg: [p1]minion played -> [p1.1]knife jugler triggers -> [p1.1.1]random minion takes damage",
+	"x-sender": [
+		"simulator"
+	],
+	"x-receiver": [
+		"client"
+	],
 	"type": "object",
 	"properties": {
 		"entityID": {
 			"id": "/properties/entityID",
-			"description": "",
+			"description": "Entity triggering this sequence of events",
 			"$ref": "kettle:definitions/entity_id"
 		},
 		"power_type": {
 			"id": "/properties/power_type",
-			"description": "",
+			"description": "Kind of effect that triggers this chain",
 			"$ref": "kettle:/enums/power_type"
 		},
 		"effect_source": {
 			"id": "/properties/effect_source",
-			"description": "Card identification. The effect is indexed on this card",
+			"description": "Card identification. The card represents an array of specific effects",
 			"$ref": "kettle:definitions/card"
 		},
 		"effect_index": {
 			"id": "/properties/effect_index",
-			"description": "",
+			"description": "The index to lookup specific effects",
 			"type": "integer",
 			"minimum": -1
 		},
 		"effect_target": {
 			"id": "/properties/effect_target",
-			"description": "",
+			"description": "Target entity for the selected effect (`power_type` property)",
 			"$ref": "kettle:definitions/entity_id"
 		}
 	},

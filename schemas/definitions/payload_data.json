@@ -3,7 +3,7 @@
     "id": "kettle:definitions/payload_data",
     "type": "object",
     "oneOf": [
-        // TODO; list here all Kettle Payload Type schemas.
+        // TODO; list here all Kettle data object schemas.
         {
             "$ref": "kettle:types/queue_cancel"
         },

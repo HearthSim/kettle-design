@@ -1,7 +1,14 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/history/create_game",
-	"description": "",
+	"title": "HistoryCreateGame",
+	"description": "Event indicating the creation of the game",
+	"x-sender": [
+		"simulator"
+	],
+	"x-receiver": [
+		"client"
+	],
 	"type": "object",
 	"properties": {
 		"game_entity": {
@@ -10,8 +17,8 @@
 			"$ref": "kettle:definitions/entity_id"
 		},
 		"player_entities": {
-			"id": "/properties/game_entity",
-			"description": "The entityID of the game, always 1",
+			"id": "/properties/player_entities",
+			"description": "Links each player (game account) with an entityID, usually 2-3",
 			"type": "array",
 			"items": {
 				"$ref": "#/definitions/player_entity"
@@ -20,7 +27,7 @@
 		},
 		"entities": {
 			"id": "/properties/entities",
-			"description": "",
+			"description": "All generated entities at game creation",
 			"type": "array",
 			"items": {
 				"$ref": "kettle:definitions/entity"
@@ -38,12 +45,12 @@
 			"properties": {
 				"entityID": {
 					"id": "/properties/entityID",
-					"description": "",
+					"description": "Identifier of the entity",
 					"$ref": "kettle:definitions/entity_id"
 				},
 				"player": {
 					"id": "/properties/player",
-					"description": "",
+					"description": "Game related information of a player",
 					"$ref": "kettle:definitions/player_game"
 				}
 			},

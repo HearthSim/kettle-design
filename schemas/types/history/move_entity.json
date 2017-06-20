@@ -1,17 +1,24 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/history/move_entity",
-	"description": "Used to move one entity into another zone",
+	"title": "HistoryMoveEntity",
+	"description": "Moves one entity into another zone",
+	"x-sender": [
+		"simulator"
+	],
+	"x-receiver": [
+		"client"
+	],
 	"type": "object",
 	"properties": {
 		"entityID": {
 			"id": "/properties/entityID",
-			"description": "",
+			"description": "The entity to move",
 			"$ref": "kettle:definitions/entity_id"
 		},
 		"zone": {
 			"id": "/properties/zone",
-			"description": "",
+			"description": "The target zone",
 			"$ref": "kettle:enums/zone"
 		}
 	},

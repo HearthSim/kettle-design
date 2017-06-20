@@ -1,21 +1,29 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/options/power",
+	"title": "OptionPower",
+	"description": "Indicates a specific action the player can perform",
+	"x-sender": [
+		"simulator"
+	],
+	"x-receiver": [
+		"client"
+	],
 	"type": "object",
 	"properties": {
 		"option_index": {
 			"id": "/properties/option_index",
-			"description": "",
+			"description": "Index value to use when the user selects this option",
 			"$ref": "kettle:definitions/option_index"
 		},
 		"main_option": {
 			"id": "/properties/main_option",
-			"description": "",
+			"description": "First/only option the player can perform",
 			"$ref": "#/definitions/sub_option"
 		},
 		"sub_options": {
 			"id": "/properties/sub_options",
-			"description": "",
+			"description": "Possible followup options to perform after `main_option` property. eg: choose-one after raven idol",
 			"type": "array",
 			"items": {
 				"$ref": "#/definitions/sub_option"
@@ -32,17 +40,17 @@
 			"properties": {
 				"sub_option_index": {
 					"id": "/properties/sub_option_index",
-					"description": "",
+					"description": "Index value to use when the user selects this sub-option. Not relevant when this option is used as `main_option`",
 					"$ref": "kettle:definitions/option_index"
 				},
 				"entityID": {
 					"id": "/properties/entityID",
-					"description": "",
+					"description": "Entity which corresponds to this sub-option. This entity MUST already exist in the SETASIDE zone",
 					"$ref": "kettle:definitions/entity_id"
 				},
 				"targets": {
 					"id": "/properties/targets",
-					"description": "",
+					"description": "Possible target for this sub-option. eg: when a silence spell is chosen and a minion must be selected",
 					"type": "array",
 					"items": {
 						"$ref": "kettle:definitions/entity_id"
