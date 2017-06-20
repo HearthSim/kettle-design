@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "kettle:definitions/entityID",
+	"id": "kettle:definitions/entity_id",
 	"type": "integer",
 	"minimum": 0
 }
