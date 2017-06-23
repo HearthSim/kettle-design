@@ -19,12 +19,12 @@
 		"power_type": {
 			"id": "/properties/power_type",
 			"description": "Kind of effect that triggers this chain",
-			"$ref": "kettle:/enums/power_type"
+			"$ref": "kettle:enums/power_type"
 		},
 		"effect_source": {
 			"id": "/properties/effect_source",
 			"description": "Card identification. The card represents an array of specific effects",
-			"$ref": "kettle:definitions/card"
+			"$ref": "kettle:definitions/card_id"
 		},
 		"effect_index": {
 			"id": "/properties/effect_index",

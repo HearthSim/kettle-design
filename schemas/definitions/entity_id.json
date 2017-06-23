@@ -1,6 +1,8 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:definitions/entity_id",
+	"title": "EntityID",
+	"description": "Identifier of an entity in the running game. This identifier is unique PER GAME",
 	"type": "integer",
 	"minimum": 0
 }

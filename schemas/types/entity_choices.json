@@ -14,7 +14,7 @@
 		"choiceID": {
 			"id": "/properties/choiceID",
 			"description": "Identifier of the choice set",
-			"$ref": "kettle:definitions/choiceID"
+			"$ref": "kettle:definitions/choice_id"
 		},
 		"choice_type": {
 			"id": "/properties/choice_type",

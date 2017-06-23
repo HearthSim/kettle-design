@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "kettle:types/options_start",
+	"id": "kettle:types/options/options_start",
 	"title": "OptionsStart",
 	"description": "Indicates the start of a sequence of possible options a player can pick from. Option sequences cannot be nested!",
 	"x-sender": [

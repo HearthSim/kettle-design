@@ -1,6 +1,8 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "kettle:definitions/options_id",
+	"title": "OptionsID",
+	"description": "Identification of a specific set of options offered to a player",
     "type": "integer",
 	"minimum": 1
 }

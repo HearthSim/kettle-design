@@ -19,7 +19,7 @@
 		"board": {
 			"id": "/properties/board",
 			"description": "Identifier of the board to use",
-			"$ref": "kettle:definitions/board"
+			"$ref": "kettle:enums/board"
 		},
 		"max_secrets_per_player": {
 			"id": "/properties/max_secrets_per_player",

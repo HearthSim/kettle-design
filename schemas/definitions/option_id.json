@@ -1,0 +1,8 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:definitions/option_id",
+	"title": "OptionID",
+	"description": "Value to identify one option out of a set of multiple options. OptionID is unique per set of options",
+    "type": "integer",
+	"minimum": 1
+}

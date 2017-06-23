@@ -1,6 +1,8 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "kettle:enums/reason",
+	"title": "ReasonEnum",
+	"description": "Enumeration of actions which led to a certain response",
     "type": "integer",
     "enum": [
         // TODO; https://github.com/HearthSim/kettle-design/wiki/8.-Generic-objects#reason

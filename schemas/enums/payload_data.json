@@ -1,0 +1,88 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:enums/payload_data",
+	"title": "PayloadDataEnum",
+	"description": "All possible Kettle objects that can be carried by THE Kettle payload object. Match this enumeration with `kettle:definitions/payload_type_string`",
+	"type": "object",
+	"oneOf": [
+		// TODO; list here all Kettle data object schemas.
+		{
+			"$ref": "kettle:types/history/create_game"
+		},
+		{
+			"$ref": "kettle:types/history/full_entity"
+		},
+		{
+			"$ref": "kettle:types/history/history_start"
+		},
+		{
+			"$ref": "kettle:types/history/history_stop"
+		},
+		{
+			"$ref": "kettle:types/history/meta_data"
+		},
+		{
+			"$ref": "kettle:types/history/power_start"
+		},
+		{
+			"$ref": "kettle:types/history/power_stop"
+		},
+		{
+			"$ref": "kettle:types/history/tag_change"
+		},
+		{
+			"$ref": "kettle:types/options/end_turn"
+		},
+		{
+			"$ref": "kettle:types/options/options_start"
+		},
+		{
+			"$ref": "kettle:types/options/options_stop"
+		},
+		{
+			"$ref": "kettle:types/options/power"
+		},
+		{
+			"$ref": "kettle:types/choose_entities"
+		},
+		{
+			"$ref": "kettle:types/choose_option"
+		},
+		{
+			"$ref": "kettle:types/concede"
+		},
+		{
+			"$ref": "kettle:types/create_game"
+		},
+		{
+			"$ref": "kettle:types/entity_choices"
+		},
+		{
+			"$ref": "kettle:types/game_created"
+		},
+		{
+			"$ref": "kettle:types/game_finished"
+		},
+		{
+			"$ref": "kettle:types/game_joined"
+		},
+		{
+			"$ref": "kettle:types/join_game"
+		},
+		{
+			"$ref": "kettle:types/queue_cancel"
+		},
+		{
+			"$ref": "kettle:types/queue_player"
+		},
+		{
+			"$ref": "kettle:types/queue_status"
+		},
+		{
+			"$ref": "kettle:types/queue_transition"
+		},
+		{
+			"$ref": "kettle:types/user_ui"
+		}
+	]
+}

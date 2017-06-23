@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "kettle:definitions/player",
+	"id": "kettle:definitions/player_entity",
 	"title": "PlayerEntity",
 	"description": "Information to link a game account to a player in an active game",
 	"type": "object",
@@ -15,30 +15,22 @@
 			"description": "The username of the player account",
 			"type": "string"
 		},
-		"heroID": {
-			"id": "/properties/hero",
-			"description": "The hero to use as portrait",
-			"$ref": "kettle:enums/hero"
+		"entityID": {
+			"id": "/properties/entityID",
+			"description": "Identifier of the entity",
+			"$ref": "kettle:definitions/entity_id"
 		},
-		"cardback": {
-			"id": "/properties/cardback",
-			"description": "The identifier of the used cardback texture",
-			"$ref": "kettle:enums/cardback"
-		},
-		"cards": {
-			"id": "/properties/cards",
-			"description": "All card identifiers used in this player's deck",
-			"type": "array",
-			"items": {
-				"$ref": "kettle:definitions/card_id"
-			},
-			"maxItems": 120
+		"playerID": {
+			"id": "/properties/playerID",
+			"description": "Rank number of the player within the current game",
+			"type": "number",
+			"minimum": 2
 		}
 	},
 	"required": [
 		"accountID",
 		"heroID",
-		"card_back",
-		"cards"
+		"entityID",
+		"playerID"
 	]
 }

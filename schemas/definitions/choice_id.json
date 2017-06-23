@@ -1,6 +1,8 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "kettle:definitions/choice_id",
+	"title": "ChoiceID",
+	"description": "Identifier of a choice set presented to a player. This identifier is unique PER GAME",
     "type": "integer",
 	"minimum": 1
 }

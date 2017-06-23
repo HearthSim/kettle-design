@@ -1,8 +1,8 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "kettle:definitions/payload_errors",
-	"title": "PayloadErrors",
-	"description": "Lists all objects which can be used within error reporting payloads",
+	"id": "kettle:enums/payload_errors",
+	"title": "PayloadErrorsEnum",
+	"description": "All possible kettle objects that indicate an error",
 	"type": "array",
 	"items": {
 		// TODO; list here all Kettle error object schemas.

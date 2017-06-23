@@ -1,0 +1,7 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:definitions/card_id",
+	"title": "CardID",
+	"description": "Unique identifier of a card from the game",
+    "type": "string"
+}

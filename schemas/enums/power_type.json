@@ -1,10 +1,11 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "kettle:enums/power_type",
+	"title": "PowerTypeEnum",
+	"description": "Enumeration of event sources. Reason why an event occurs",
     "type": "integer",
     "enum": [
         // TODO; https://github.com/HearthSim/kettle-design/wiki/7.-Game-history#powertype
-        // Care! This xml file is outdated.
         0
     ],
     "x-enum-names": [

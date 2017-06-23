@@ -1,6 +1,8 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "kettle:enums/game_scenario",
+	"title": "GameScenarioEnum",
+	"description": "Enumeration of all preset gamescenario's simulators support",
     "type": "integer",
     "enum": [
         // TODO; https://github.com/HearthSim/kettle-design/wiki/3.-Game-setup#gamescenario

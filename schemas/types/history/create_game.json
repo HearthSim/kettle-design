@@ -21,7 +21,7 @@
 			"description": "Links each player (game account) with an entityID, usually 2-3",
 			"type": "array",
 			"items": {
-				"$ref": "#/definitions/player_entity"
+				"$ref": "kettle:definitions/player_entity"
 			},
 			"minItems": 2
 		},
@@ -39,25 +39,5 @@
 		"player_entities",
 		"entities"
 	],
-	"definitions": {
-		"player_entity": {
-			"type": "object",
-			"properties": {
-				"entityID": {
-					"id": "/properties/entityID",
-					"description": "Identifier of the entity",
-					"$ref": "kettle:definitions/entity_id"
-				},
-				"player": {
-					"id": "/properties/player",
-					"description": "Game related information of a player",
-					"$ref": "kettle:definitions/player_game"
-				}
-			},
-			"required": [
-				"entityID",
-				"player"
-			]
-		}
-	}
+	"definitions": {}
 }

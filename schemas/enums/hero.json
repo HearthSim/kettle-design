@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:enums/hero",
+	"title": "HeroEnum",
+	"description": "Enumeration of available hero portraits",
+   "type": "integer",
+    "enum": [
+        // TODO;
+        0
+    ],
+    "x-enum-names": [
+        // TODO
+        "Invalid"
+    ]
+}

@@ -19,7 +19,7 @@
 		"option_index": {
 			"id": "/properties/option_index",
 			"description": "Index value of the selected option",
-			"$ref": "kettle:definitions/option_index"
+			"$ref": "kettle:definitions/option_id"
 		},
 		"target": {
 			"id": "/properties/target",
@@ -29,7 +29,7 @@
 		"sub_option_index": {
 			"id": "/properties/sub_option_index",
 			"description": "Index value of the selected sub-option. Sub-options are nested within an option object",
-			"$ref": "kettle:definitions/option_index"
+			"$ref": "kettle:definitions/option_id"
 		},
 		"position": {
 			"id": "/properties/position",

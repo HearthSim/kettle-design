@@ -14,7 +14,7 @@
 		"gameID": {
 			"id": "/properties/gameID",
 			"description": "Unique identifier of the game",
-			"$ref": "kettle:definitions/game"
+			"$ref": "kettle:definitions/game_id"
 		},
 		"start_datetime": {
 			"id": "/properties/start_datetime",

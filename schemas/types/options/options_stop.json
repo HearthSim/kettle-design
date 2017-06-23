@@ -1,8 +1,8 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "kettle:types/history_stop",
-	"title": "HistoryStop",
-	"description": "Indicates the end of a sequence of game events",
+	"id": "kettle:types/options/options_stop",
+	"title": "OptionsStop",
+	"description": "Indicates the end of a sequence of possible options a player can pick from",
 	"x-sender": [
 		"simulator"
 	],
@@ -13,7 +13,7 @@
 	"properties": {
 		"num_items": {
 			"id": "/properties/num_items",
-			"description": "Designates the amount of history objects sent between the last history_start and this object",
+			"description": "Designates the amount of option objects sent between the last options_start and this object",
 			"type":"integer",
 			"minimum": 1
 		}

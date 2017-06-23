@@ -1,6 +1,0 @@
-{
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "kettle:definitions/board",
-    "type": "integer",
-    "minimum": 0
-}

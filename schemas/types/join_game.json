@@ -19,7 +19,7 @@
         "gameID": {
             "id": "/properties/gameID",
             "description": "Unique game identifier",
-            "$ref": "kettle:definitions/game"
+            "$ref": "kettle:definitions/game_id"
         },
         "password": {
             "id": "/properties/password",

@@ -14,7 +14,7 @@
 		"gameID": {
 			"id": "/properties/gameID",
 			"description": "Unique identifier of the created game",
-			"$ref": "kettle:definitions/game"
+			"$ref": "kettle:definitions/game_id"
 		},
 		"connection_info": {
 			"id": "/properties/connection_info",

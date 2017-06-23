@@ -1,6 +1,8 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "kettle:enums/cardback",
+	"title": "CardbackEnum",
+	"description": "Enumeration of all available cardbacks a player can use to pimp his cards",
     "type": "integer",
     "enum": [
         // TODO; https://raw.githubusercontent.com/HearthSim/hsdata/7ee343d4dead8fa8854116cd0973ba7a48682f30/DBF/CARD_BACK.xml

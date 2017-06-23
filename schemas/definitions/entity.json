@@ -1,6 +1,8 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "kettle:definitions/entity",
+	"title": "Entity",
+	"description": "Defines property information for one entity",
     "type": "object",
     "properties": {
         "entityID": {
@@ -11,7 +13,7 @@
         "name": {
             "id": "/properties/name",
             "description": "",
-            "$ref": "kettle:definitions/card"
+            "$ref": "kettle:definitions/card_id"
         },
         "tags": {
             "id": "/properties/tags",

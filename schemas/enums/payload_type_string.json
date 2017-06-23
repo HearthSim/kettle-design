@@ -1,0 +1,36 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:enums/payload_type_string",
+	"title": "PayloadTypeStringEnum",
+	"description": "THE IRI STRING of all possible Kettle objects that can be carried by THE Kettle payload object",
+	"type": "string",
+	"enum": [
+		// TODO; list here all Kettle Payload Types.
+		"kettle:types/history/create_game",
+		"kettle:types/history/full_entity",
+		"kettle:types/history/history_start",
+		"kettle:types/history/history_stop",
+		"kettle:types/history/meta_data",
+		"kettle:types/history/power_start",
+		"kettle:types/history/power_stop",
+		"kettle:types/history/tag_change",
+		"kettle:types/options/end_turn",
+		"kettle:types/options/options_start",
+		"kettle:types/options/options_stop",
+		"kettle:types/options/power",
+		"kettle:types/choose_entities",
+		"kettle:types/choose_option",
+		"kettle:types/concede",
+		"kettle:types/create_game",
+		"kettle:types/entity_choices",
+		"kettle:types/game_created",
+		"kettle:types/game_finished",
+		"kettle:types/game_joined",
+		"kettle:types/join_game",
+		"kettle:types/queue_cancel",
+		"kettle:types/queue_player",
+		"kettle:types/queue_status",
+		"kettle:types/queue_transition",
+		"kettle:types/user_ui"
+	]
+}

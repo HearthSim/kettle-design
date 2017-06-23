@@ -1,11 +1,11 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "kettle:enums/zone",
-	"title": "ZoneEnum",
-	"description": "Enumeration of all zones a card can be in positioned",
+    "id": "kettle:enums/board",
+	"title": "BoardEnum",
+	"description": "Enumeration of all board designs that can be used during the game",
     "type": "integer",
     "enum": [
-        // TODO; Define zone names
+        // TODO
         0
     ],
     "x-enum-names": [

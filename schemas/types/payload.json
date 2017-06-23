@@ -18,17 +18,17 @@
 		"type": {
 			"id": "/properties/type",
 			"description": "Defines the structure of the object that's the value of property `data`",
-			"$ref": "kettle:definitions/payload_type"
+			"$ref": "kettle:enums/payload_type_string"
 		},
 		"data": {
 			"id": "/properties/data",
 			"description": "Contains the actual data that is being communicated",
-			"$ref": "kettle:definitions/payload_data"
+			"$ref": "kettle:enums/payload_data"
 		},
 		"errors": {
 			"id": "/properties/errors",
 			"description": "Contains error objects. If both data and errors is defined; errors takes precedence!",
-			"$ref": "kettle:definitions/payload_errors"
+			"$ref": "kettle:enums/payload_errors"
 		}
 	},
 	"required": [

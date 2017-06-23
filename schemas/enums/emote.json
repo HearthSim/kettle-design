@@ -1,6 +1,8 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "kettle:enums/emote",
+	"title": "EmoteEnum",
+	"description": "Enumeration of all emotions that entities can perform",
     "type": "integer",
     "enum": [
         // TODO; https://github.com/HearthSim/kettle-design/wiki/5.-Player-game-interaction#emote

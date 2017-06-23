@@ -1,6 +1,8 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "kettle:enums/meta_type",
+	"title": "MetaTypeEnum",
+	"description": "Enumeration of visual cues supported for playback",
     "type": "integer",
     "enum": [
         // TODO; https://github.com/HearthSim/kettle-design/wiki/7.-Game-history#metatype
