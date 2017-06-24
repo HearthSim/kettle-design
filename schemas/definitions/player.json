@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:definitions/player",
-	"title": "PlayerEntity",
+	"title": "Player",
 	"description": "Information to link a game account to a player in an active game",
 	"type": "object",
 	"properties": {
