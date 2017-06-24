@@ -89,5 +89,6 @@
 		{
 			"$ref": "kettle:types/user_ui"
 		}
-	]
+	],
+	"additionalProperties": false
 }
