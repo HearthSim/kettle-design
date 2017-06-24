@@ -62,5 +62,6 @@
 		"count_max",
 		"entities"
 	],
-	"definitions": {}
+	"definitions": {},
+	"additionalProperties": false
 }

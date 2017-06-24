@@ -34,5 +34,6 @@
 		"type",
 		"related"
 	],
-	"definitions": {}
+	"definitions": {},
+	"additionalProperties": false
 }

@@ -11,5 +11,6 @@
 	],
 	"type": "object",
 	"properties": {},
-	"definitions": {}
+	"definitions": {},
+	"additionalProperties": false
 }

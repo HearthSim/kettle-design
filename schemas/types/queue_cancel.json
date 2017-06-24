@@ -21,5 +21,7 @@
 	},
 	"required": [
 		"reason"
-	]
+	],
+	"definitions": {},
+	"additionalProperties": false
 }

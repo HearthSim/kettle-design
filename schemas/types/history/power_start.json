@@ -42,5 +42,6 @@
 		"entityID",
 		"power_type"
 	],
-	"definitions": {}
+	"definitions": {},
+	"additionalProperties": false
 }

@@ -28,7 +28,7 @@
 		"errors": {
 			"id": "/properties/errors",
 			"description": "Contains error objects. If both data and errors is defined; errors takes precedence!",
-			"type":"array",
+			"type": "array",
 			"items": {
 				"$ref": "kettle:types/errors/nack"
 			}
@@ -37,5 +37,7 @@
 	"required": [
 		"type",
 		"data"
-	]
+	],
+	"definitions": {},
+	"additionalProperties": false
 }

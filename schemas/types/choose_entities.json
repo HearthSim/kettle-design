@@ -35,5 +35,6 @@
 		"choice_type",
 		"entities"
 	],
-	"definitions": {}
+	"definitions": {},
+	"additionalProperties": false
 }

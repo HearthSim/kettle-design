@@ -1,32 +1,34 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "kettle:definitions/entity",
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:definitions/entity",
 	"title": "Entity",
 	"description": "Defines property information for one entity",
-    "type": "object",
-    "properties": {
-        "entityID": {
-            "id": "/properties/entityID",
-            "description": "",
-            "$ref": "kettle:definitions/entity_id"
-        },
-        "name": {
-            "id": "/properties/name",
-            "description": "",
-            "$ref": "kettle:definitions/card_id"
-        },
-        "tags": {
-            "id": "/properties/tags",
-            "description": "",
-            "type": "array",
-            "items": {
-                "$ref": "kettle:definitions/tag"
-            }
-        }
-    },
-    "required": [
-        "entityID",
-        "name",
-        "tags"
-    ]
+	"type": "object",
+	"properties": {
+		"entityID": {
+			"id": "/properties/entityID",
+			"description": "",
+			"$ref": "kettle:definitions/entity_id"
+		},
+		"name": {
+			"id": "/properties/name",
+			"description": "",
+			"$ref": "kettle:definitions/card_id"
+		},
+		"tags": {
+			"id": "/properties/tags",
+			"description": "",
+			"type": "array",
+			"items": {
+				"$ref": "kettle:definitions/tag"
+			}
+		}
+	},
+	"required": [
+		"entityID",
+		"name",
+		"tags"
+	],
+	"definitions": {},
+	"additionalProperties": false
 }

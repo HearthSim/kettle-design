@@ -43,5 +43,6 @@
 		"optionsID",
 		"option_index"
 	],
-	"definitions": {}
+	"definitions": {},
+	"additionalProperties": false
 }

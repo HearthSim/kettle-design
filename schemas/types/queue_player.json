@@ -59,8 +59,10 @@
 					},
 					"maxItems": 7
 				}
-			}
-			// No required properties.
+			},
+			"definitions": {},
+			"additionalProperties": false
 		}
-	}
+	},
+	"additionalProperties": false
 }

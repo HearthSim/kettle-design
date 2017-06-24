@@ -24,7 +24,7 @@
 		"game_state": {
 			"id": "/properties/game_state",
 			"description": "Identifier of a specific state the game starts in",
-			"type":"string"
+			"type": "string"
 		},
 		"players": {
 			"id": "/properties/players",
@@ -40,5 +40,6 @@
 		"scenario",
 		"players"
 	],
-	"definitions": {}
+	"definitions": {},
+	"additionalProperties": false
 }

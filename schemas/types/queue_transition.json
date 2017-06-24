@@ -56,7 +56,10 @@
 				"accountID",
 				"ip",
 				"port"
-			]
+			],
+			"definitions": {},
+			"additionalProperties": false
 		}
-	}
+	},
+	"additionalProperties": false
 }

@@ -61,7 +61,10 @@
 				"sub_option_index",
 				"entityID",
 				"targets"
-			]
+			],
+			"definitions": {},
+			"additionalProperties": false
 		}
-	}
+	},
+	"additionalProperties": false
 }

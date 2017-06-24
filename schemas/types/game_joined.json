@@ -41,5 +41,7 @@
 		"board",
 		"max_secrets_per_player",
 		"max_friendly_minions_per_player"
-	]
+	],
+	"definitions": {},
+	"additionalProperties": false
 }

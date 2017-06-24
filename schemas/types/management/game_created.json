@@ -71,5 +71,6 @@
 				"spectate_password"
 			]
 		}
-	}
+	},
+	"additionalProperties": false
 }

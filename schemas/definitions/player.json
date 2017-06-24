@@ -40,5 +40,7 @@
 		"heroID",
 		"card_back",
 		"cards"
-	]
+	],
+	"definitions": {},
+	"additionalProperties": false
 }

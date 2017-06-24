@@ -20,5 +20,6 @@
 	"required": [
 		"optionsID"
 	],
-	"definitions": {}
+	"definitions": {},
+	"additionalProperties": false
 }

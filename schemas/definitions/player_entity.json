@@ -32,5 +32,7 @@
 		"heroID",
 		"entityID",
 		"playerID"
-	]
+	],
+	"definitions": {},
+	"additionalProperties": false
 }

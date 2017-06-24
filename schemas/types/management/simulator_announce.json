@@ -28,5 +28,6 @@
 			"type": "string"
 		}
 	},
-	"definitions": {}
+	"definitions": {},
+	"additionalProperties": false
 }

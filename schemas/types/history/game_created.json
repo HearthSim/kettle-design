@@ -39,5 +39,6 @@
 		"player_entities",
 		"entities"
 	],
-	"definitions": {}
+	"definitions": {},
+	"additionalProperties": false
 }

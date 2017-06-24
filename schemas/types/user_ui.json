@@ -50,7 +50,10 @@
 					"description": "Card currently hovered",
 					"$ref": "kettle:definitions/entity_id"
 				}
-			}
+			},
+			"definitions": {},
+			"additionalProperties": false
 		}
-	}
+	},
+	"additionalProperties": false
 }

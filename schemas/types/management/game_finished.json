@@ -57,5 +57,7 @@
 		"winners",
 		"losers",
 		"result"
-	]
+	],
+	"definitions": {},
+	"additionalProperties": false
 }

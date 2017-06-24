@@ -24,16 +24,17 @@
 		"tags": {
 			"id": "/properties/tags",
 			"description": "Specific information linked to this entity. This is expressed as one Tag per entity property",
-			"type":"array",
+			"type": "array",
 			"items": {
 				"$ref": "kettle:definitions/tag"
 			}
 		}
 	},
-	"required":[
+	"required": [
 		"entityID",
 		"name",
 		"tags"
 	],
-	"definitions": {}
+	"definitions": {},
+	"additionalProperties": false
 }

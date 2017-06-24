@@ -19,15 +19,16 @@
 		"tags": {
 			"id": "/properties/tags",
 			"description": "All tags that are added/changed for the selected entity",
-			"type":"array",
+			"type": "array",
 			"items": {
 				"$ref": "kettle:definitions/tag"
 			}
 		}
 	},
-	"required":[
+	"required": [
 		"entityID",
 		"tags"
 	],
-	"definitions": {}
+	"definitions": {},
+	"additionalProperties": false
 }

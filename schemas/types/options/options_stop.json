@@ -14,12 +14,13 @@
 		"num_items": {
 			"id": "/properties/num_items",
 			"description": "Designates the amount of option objects sent between the last options_start and this object",
-			"type":"integer",
+			"type": "integer",
 			"minimum": 1
 		}
 	},
-	"required":[
+	"required": [
 		"num_items"
 	],
-	"definitions": {}
+	"definitions": {},
+	"additionalProperties": false
 }

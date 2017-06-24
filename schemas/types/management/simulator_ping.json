@@ -25,5 +25,6 @@
 			"maximum": 1
 		}
 	},
-	"definitions": {}
+	"definitions": {},
+	"additionalProperties": false
 }
