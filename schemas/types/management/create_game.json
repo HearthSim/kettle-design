@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "kettle:types/create_game",
+	"id": "kettle:types/management/create_game",
 	"title": "CreateGame",
 	"description": "Instructs the simulator to create a game instance with the provided data",
 	"x-sender": [

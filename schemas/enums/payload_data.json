@@ -6,10 +6,10 @@
 	"type": "object",
 	"oneOf": [
 		{
-			"$ref": "kettle:types/history/create_game"
+			"$ref": "kettle:types/history/full_entity"
 		},
 		{
-			"$ref": "kettle:types/history/full_entity"
+			"$ref": "kettle:types/history/game_created"
 		},
 		{
 			"$ref": "kettle:types/history/history_start"
@@ -28,6 +28,15 @@
 		},
 		{
 			"$ref": "kettle:types/history/tag_change"
+		},
+		{
+			"$ref": "kettle:types/management/create_game"
+		},
+		{
+			"$ref": "kettle:types/management/game_created"
+		},
+		{
+			"$ref": "kettle:types/management/game_finished"
 		},
 		{
 			"$ref": "kettle:types/management/simulator_announce"
@@ -57,16 +66,7 @@
 			"$ref": "kettle:types/concede"
 		},
 		{
-			"$ref": "kettle:types/create_game"
-		},
-		{
 			"$ref": "kettle:types/entity_choices"
-		},
-		{
-			"$ref": "kettle:types/game_created"
-		},
-		{
-			"$ref": "kettle:types/game_finished"
 		},
 		{
 			"$ref": "kettle:types/game_joined"

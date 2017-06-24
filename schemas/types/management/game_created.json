@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "kettle:types/game_created",
+	"id": "kettle:types/management/game_created",
 	"title": "GameCreated",
 	"description": "Instructs the matchmaker of a newly created game instance",
 	"x-sender": [
