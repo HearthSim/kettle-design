@@ -10,6 +10,7 @@
             "description": "Numeric representation of tag identifier",
             "type": "integer",
             "minimum": 0
+			// See https://api.hearthstonejson.com/v1/enums.json for a list of all known tags
         },
         "value": {
             "id": "/properties/value",
