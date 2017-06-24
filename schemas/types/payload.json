@@ -30,7 +30,7 @@
 			"description": "Contains error objects. If both data and errors is defined; errors takes precedence!",
 			"type":"array",
 			"items": {
-				"$ref": "kettle:enums/payload_errors"
+				"$ref": "kettle:types/errors/nack"
 			}
 		}
 	},

@@ -1,0 +1,34 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:types/errors/nack",
+	"title": "Nack",
+	"description": "The receiver does not acknowledge the received request",
+	"x-sender": [
+		"client",
+		"simulator",
+		"matchmaker"
+	],
+	"x-receiver": [
+		"client",
+		"simulator",
+		"matchmaker"
+	],
+	"type": "object",
+	"properties": {
+		"message": {
+			"id": "/properties/message",
+			"description": "Description of the exact error",
+			"type": "string"
+		},
+		"data": {
+			"id": "/properties/data",
+			"description": "Error related information",
+			"type": "string"
+		}
+	},
+	"required": [
+		"message",
+		"optionsID"
+	],
+	"definitions": {}
+}
