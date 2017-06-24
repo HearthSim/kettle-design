@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "kettle:types/choose_option",
-	"title": "ChooseOption",
+	"id": "kettle:types/options/choose_option",
+	"title": "OptionChooseOption",
 	"description": "The player has selected an option from the provided set to perform",
 	"x-sender": [
 		"client"

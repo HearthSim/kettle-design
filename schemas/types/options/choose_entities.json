@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "kettle:types/choose_entities",
-	"title": "ChooseEntities",
+	"id": "kettle:types/options/choose_entities",
+	"title": "OptionChooseEntities",
 	"description": "The player has selected one or more entities from the choice set",
 	"x-sender": [
 		"client"

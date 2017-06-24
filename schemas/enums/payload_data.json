@@ -45,7 +45,16 @@
 			"$ref": "kettle:types/management/simulator_ping"
 		},
 		{
+			"$ref": "kettle:types/options/choose_entities"
+		},
+		{
+			"$ref": "kettle:types/options/choose_option"
+		},
+		{
 			"$ref": "kettle:types/options/end_turn"
+		},
+		{
+			"$ref": "kettle:types/options/entity_choices"
 		},
 		{
 			"$ref": "kettle:types/options/options_start"
@@ -57,16 +66,7 @@
 			"$ref": "kettle:types/options/power"
 		},
 		{
-			"$ref": "kettle:types/choose_entities"
-		},
-		{
-			"$ref": "kettle:types/choose_option"
-		},
-		{
 			"$ref": "kettle:types/concede"
-		},
-		{
-			"$ref": "kettle:types/entity_choices"
 		},
 		{
 			"$ref": "kettle:types/game_joined"
