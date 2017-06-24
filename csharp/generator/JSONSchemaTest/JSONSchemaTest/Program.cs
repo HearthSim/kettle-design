@@ -28,7 +28,7 @@ namespace JSONSchemaTest
 
 			// Build the CS file for our main payload
 			var nameResolver = new CustomKettleTypeNameResolver();
-			var generatorSettings = new CSharpGeneratorSettings() { TypeNameGenerator = nameResolver };
+			var generatorSettings = new CSharpGeneratorSettings() { TypeNameGenerator = nameResolver, ClassStyle = CSharpClassStyle.Poco };
 			var generator = new CSharpGenerator(schema, generatorSettings);
 			generator.Settings.Namespace = "Kettle.Protocol";
 			var fileContents = generator.GenerateFile("Payload");
