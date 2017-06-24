@@ -3,13 +3,17 @@
     "id": "kettle:enums/power_type",
 	"title": "PowerTypeEnum",
 	"description": "Enumeration of event sources. Reason why an event occurs",
-    "type": "integer",
+	// https://github.com/HearthSim/kettle-design/wiki/7.-Game-history#powertype
+    "type": "string",
     "enum": [
-        // TODO; https://github.com/HearthSim/kettle-design/wiki/7.-Game-history#powertype
-        0
-    ],
-    "x-enum-names": [
-        // TODO
-        "Invalid"
+		"Invalid",
+		"Attack",
+		"Joust",
+		"Power",
+		"Trigger",
+		"Death",
+		"Play",
+		"Fatigue",
+		"Ritual"
     ]
 }

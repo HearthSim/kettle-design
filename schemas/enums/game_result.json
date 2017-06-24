@@ -3,13 +3,12 @@
     "id": "kettle:enums/game_result",
 	"title": "GameResultEnum",
 	"description": "Enumeration that dictates all possible outcomes of a game",
-    "type": "integer",
+	// https://github.com/HearthSim/kettle-design/wiki/3.-Game-setup#gameresult
+    "type": "string",
     "enum": [
-        // TODO; https://github.com/HearthSim/kettle-design/wiki/3.-Game-setup#gameresult
-        0
-    ],
-    "x-enum-names": [
-        // TODO
-        "Invalid"
+        "Invalid",
+		"Game_Draw",
+		"Game_Won",
+		"Game_Crash"
     ]
 }

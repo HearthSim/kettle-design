@@ -1,15 +1,29 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "kettle:enums/hero",
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:enums/hero",
 	"title": "HeroEnum",
 	"description": "Enumeration of available hero portraits",
-   "type": "integer",
-    "enum": [
-        // TODO;
-        0
-    ],
-    "x-enum-names": [
-        // TODO
-        "Invalid"
-    ]
+	"type": "string",
+	// Heroes are cards with ID `HERO_XXX`
+	// https://raw.githubusercontent.com/HearthSim/hsdata/master/CardDefs.xml
+	"enum": [
+		"Invalid",
+		"Garrosh Hellscream",
+		"Magni Bronzebeard",
+		"Thrall",
+		"Morgl the Oracle",
+		"Valeera Sanguinar",
+		"Maiev Shadowsong",
+		"Uther Lightbringer",
+		"Lady Liadrin",
+		"Rexxar",
+		"Alleria Windrunner",
+		"Malfurion Stormrage",
+		"Gul-dan",
+		"Jaina Proudmoore",
+		"Medivh",
+		"Khadgar",
+		"Anduin Wrynn",
+		"Tyrande Whisperwind"
+	]
 }

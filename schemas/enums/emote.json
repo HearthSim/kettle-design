@@ -1,15 +1,44 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "kettle:enums/emote",
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:enums/emote",
 	"title": "EmoteEnum",
 	"description": "Enumeration of all emotions that entities can perform",
-    "type": "integer",
-    "enum": [
-        // TODO; https://github.com/HearthSim/kettle-design/wiki/5.-Player-game-interaction#emote
-        0
-    ],
-    "x-enum-names": [
-        // TODO
-        "Invalid"
-    ]
+	// https://github.com/HearthSim/kettle-design/wiki/5.-Player-game-interaction#emote
+	"type": "string",
+	"enum": [
+		"Invalid",
+		"Greetings",
+		"Well_Played",
+		"Oops",
+		"Threaten",
+		"Thanks",
+		"Sorry",
+		"Concede",
+		"Start",
+		"Timer",
+		"Think_1",
+		"Think_2",
+		"Think_3",
+		"Good_Game",
+		"Low_Cards",
+		"No_Cards",
+		"Error_Need_Weapon",
+		"Error_Need_Mana",
+		"Error_Minion_Attacked",
+		"Error_I_Attacked",
+		"Error_Just_Played",
+		"Error_Hand_Full",
+		"Error_Full_Minions",
+		"Error_Stealth",
+		"Error_Play",
+		"Error_Target",
+		"Error_Taunt",
+		"Error_Generic",
+		"Picked",
+		"Death_Line",
+		"Event_Lunar_New_Year",
+		"Mirror_Start",
+		"Event_Winter_Veil",
+		"Wow"
+	]
 }

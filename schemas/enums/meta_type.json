@@ -3,13 +3,17 @@
     "id": "kettle:enums/meta_type",
 	"title": "MetaTypeEnum",
 	"description": "Enumeration of visual cues supported for playback",
-    "type": "integer",
+	// https://github.com/HearthSim/kettle-design/wiki/7.-Game-history#metatype
+	// https://api.hearthstonejson.com/v1/enums.json
+    "type": "string",
     "enum": [
-        // TODO; https://github.com/HearthSim/kettle-design/wiki/7.-Game-history#metatype
-        0
-    ],
-    "x-enum-names": [
-        // TODO
-        "Invalid"
+        "Target",
+		"Damage",
+		"Healing",
+		"Joust",
+		"Show_Big_Card",
+		"Effect",
+		"History",
+		"Override_History"
     ]
 }

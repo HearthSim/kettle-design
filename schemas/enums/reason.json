@@ -1,15 +1,15 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "kettle:enums/reason",
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:enums/reason",
 	"title": "ReasonEnum",
 	"description": "Enumeration of actions which led to a certain response",
-    "type": "integer",
-    "enum": [
-        // TODO; https://github.com/HearthSim/kettle-design/wiki/8.-Generic-objects#reason
-        0
-    ],
-    "x-enum-names": [
-        // TODO
-        "Invalid"
-    ]
+	// https://github.com/HearthSim/kettle-design/wiki/8.-Generic-objects#reason
+	"type": "string",
+	"enum": [
+		"Invalid",
+		"Shutdown",
+		"Cancel",
+		"Invalid_State",
+		"No_Error"
+	]
 }

@@ -1,15 +1,25 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "kettle:enums/board",
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:enums/board",
 	"title": "BoardEnum",
 	"description": "Enumeration of all board designs that can be used during the game",
-    "type": "integer",
-    "enum": [
-        // TODO
-        0
-    ],
-    "x-enum-names": [
-        // TODO
-        "Invalid"
-    ]
+	// https://raw.githubusercontent.com/HearthSim/hsdata/7ee343d4dead8fa8854116cd0973ba7a48682f30/DBF/BOARD.xml
+	// This file is from an outdated release!
+	"type": "string",
+	"enum": [
+		"Random",
+		"Stormwind",
+		"Orgrimmar",
+		"Pandaria",
+		"Stranglethorn",
+		"Naxxramas",
+		"Goblins_VS_Gnomes",
+		"Blackrock_Mountain",
+		"The_Grand_Tournament",
+		"The_Museum",
+		"Excavation_Site",
+		"Stormwind_Old_Gods",
+		"Karazhan",
+		"Mean_Streets_of_Gadgetzan"
+	]
 }

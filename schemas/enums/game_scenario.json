@@ -2,14 +2,14 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "kettle:enums/game_scenario",
 	"title": "GameScenarioEnum",
-	"description": "Enumeration of all preset gamescenario's simulators support",
-    "type": "integer",
+	"description": "Enumeration of all match restrictions",
+    "type": "string",
     "enum": [
-        // TODO; https://github.com/HearthSim/kettle-design/wiki/3.-Game-setup#gamescenario
-        0
-    ],
-    "x-enum-names": [
-        // TODO
-        "Invalid"
+        "Invalid",
+		"Match_Wild",
+		"Match_Standard",
+		"Match_Arena",
+		"Ranked_Wild",
+		"Ranked_Standard"
     ]
 }

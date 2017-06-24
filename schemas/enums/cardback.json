@@ -1,16 +1,13 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "kettle:enums/cardback",
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:enums/cardback",
 	"title": "CardbackEnum",
 	"description": "Enumeration of all available cardbacks a player can use to pimp his cards",
-    "type": "integer",
-    "enum": [
-        // TODO; https://raw.githubusercontent.com/HearthSim/hsdata/7ee343d4dead8fa8854116cd0973ba7a48682f30/DBF/CARD_BACK.xml
-        // Care! This xml file is outdated.
-        0
-    ],
-    "x-enum-names": [
-        // TODO
-        "Invalid"
-    ]
+	// https://raw.githubusercontent.com/HearthSim/hsdata/09b2aef403d7c726bf3e840eef303883f20e8337/DBF/CARD_BACK.xml
+	// This file is outdated!
+	"type": "string",
+	"enum": [
+		// Let's keep only the default cardback atm
+		"Default"
+	]
 }

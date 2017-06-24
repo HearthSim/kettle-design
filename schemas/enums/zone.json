@@ -1,15 +1,19 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "kettle:enums/zone",
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:enums/zone",
 	"title": "ZoneEnum",
 	"description": "Enumeration of all zones a card can be in positioned",
-    "type": "integer",
-    "enum": [
-        // TODO; Define zone names
-        0
-    ],
-    "x-enum-names": [
-        // TODO
-        "Invalid"
-    ]
+	// https://api.hearthstonejson.com/v1/enums.json
+	"type": "string",
+	"enum": [
+		"INVALID",
+		"DISCARD",
+		"PLAY",
+		"DECK",
+		"HAND",
+		"GRAVEYARD",
+		"REMOVEDFROMGAME",
+		"SETASIDE",
+		"SECRET"
+	]
 }
