@@ -5,7 +5,6 @@
 	"description": "THE IRI STRING of all possible Kettle objects that can be carried by THE Kettle payload object",
 	"type": "string",
 	"enum": [
-		// TODO; list here all Kettle Payload Types.
 		"kettle:types/history/create_game",
 		"kettle:types/history/full_entity",
 		"kettle:types/history/history_start",
@@ -14,6 +13,8 @@
 		"kettle:types/history/power_start",
 		"kettle:types/history/power_stop",
 		"kettle:types/history/tag_change",
+		"kettle:types/management/simulator_announce",
+		"kettle:types/management/simulator_ping",
 		"kettle:types/options/end_turn",
 		"kettle:types/options/options_start",
 		"kettle:types/options/options_stop",

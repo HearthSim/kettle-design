@@ -5,7 +5,6 @@
 	"description": "All possible Kettle objects that can be carried by THE Kettle payload object. Match this enumeration with `kettle:definitions/payload_type_string`",
 	"type": "object",
 	"oneOf": [
-		// TODO; list here all Kettle data object schemas.
 		{
 			"$ref": "kettle:types/history/create_game"
 		},
@@ -29,6 +28,12 @@
 		},
 		{
 			"$ref": "kettle:types/history/tag_change"
+		},
+		{
+			"$ref": "kettle:types/management/simulator_announce"
+		},
+		{
+			"$ref": "kettle:types/management/simulator_ping"
 		},
 		{
 			"$ref": "kettle:types/options/end_turn"

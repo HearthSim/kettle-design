@@ -1,0 +1,29 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:types/management/simulator_ping",
+	"title": "SimulatorPing",
+	"description": "Ping message used as keep-alive",
+	"x-sender": [
+		"simulator"
+	],
+	"x-receiver": [
+		"matchmaker"
+	],
+	"type": "object",
+	"properties": {
+		"active_games": {
+			"id": "/properties/active_games",
+			"description": "The amount of games currently running on this simulator",
+			"type": "integer",
+			"minimum": 0
+		},
+		"load": {
+			"id": "/properties/load",
+			"description": "Indication of the work this simulator is performing, relative to maximum load",
+			"type": "number",
+			"minimum": 0,
+			"maximum": 1
+		}
+	},
+	"definitions": {}
+}

@@ -1,0 +1,32 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:types/management/simulator_anounce",
+	"title": "SimulatorAnnounce",
+	"description": "Handshake of simulator with matchmaker to anounce simulator specification",
+	"x-sender": [
+		"simulator"
+	],
+	"x-receiver": [
+		"matchmaker"
+	],
+	"type": "object",
+	"properties": {
+		"max_instances": {
+			"id": "/properties/max_instances",
+			"description": "Declares the maximum amount of simulataneous game instances this simulator can run",
+			"type": "integer",
+			"minimum": 1
+		},
+		"provider": {
+			"id": "/properties/provider",
+			"description": "Contains identification of the person/group running the simulator",
+			"type": "string"
+		},
+		"identification": {
+			"id": "/properties/identification",
+			"description": "String to identify exact version and modules this server provides",
+			"type": "string"
+		}
+	},
+	"definitions": {}
+}
