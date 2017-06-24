@@ -32,6 +32,7 @@
 	],
 	"definitions": {
 		"connection_info": {
+			"title": "GameCreated_connectionInfo",
 			"type": "object",
 			"properties": {
 				"accountID": {
