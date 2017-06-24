@@ -23,7 +23,7 @@
 		"playerID": {
 			"id": "/properties/playerID",
 			"description": "Rank number of the player within the current game",
-			"type": "number",
+			"type": "integer",
 			"minimum": 2
 		}
 	},
