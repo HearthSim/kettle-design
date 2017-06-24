@@ -6,7 +6,7 @@
 	"type": "object",
 	"oneOf": [
 		{
-			"$ref": "kettle:types/history/full_entity"
+			"$ref": "kettle:types/history/create_entity"
 		},
 		{
 			"$ref": "kettle:types/history/game_created"
