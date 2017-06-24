@@ -1,15 +1,11 @@
 ﻿using NJsonSchema;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace JSONSchemaTest
+namespace KettleCSharpGenerator
 {
-    class CustomKettleRefResolver : JsonReferenceResolver
+	class CustomKettleRefResolver : JsonReferenceResolver
     {
         private readonly string _kettleRootSchemaPath;
         private readonly Dictionary<string, Task<JsonSchema4>> _loadedSchemas;

@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSONSchemaTest", "JSONSchemaTest\JSONSchemaTest.csproj", "{94FB5D2B-FE06-4D36-81DD-015124AE1279}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KettleCSharpGenerator", "KettleCSharpGenerator\KettleCSharpGenerator.csproj", "{94FB5D2B-FE06-4D36-81DD-015124AE1279}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

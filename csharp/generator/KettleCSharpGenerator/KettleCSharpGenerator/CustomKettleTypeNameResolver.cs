@@ -1,13 +1,10 @@
 ﻿using NJsonSchema;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace JSONSchemaTest
+namespace KettleCSharpGenerator
 {
-    class CustomKettleTypeNameResolver : DefaultTypeNameGenerator
+	class CustomKettleTypeNameResolver : DefaultTypeNameGenerator
     {
         public override string Generate(JsonSchema4 schema, string typeNameHint, IEnumerable<string> reservedTypeNames)
         {
