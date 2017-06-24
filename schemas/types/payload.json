@@ -28,7 +28,10 @@
 		"errors": {
 			"id": "/properties/errors",
 			"description": "Contains error objects. If both data and errors is defined; errors takes precedence!",
-			"$ref": "kettle:enums/payload_errors"
+			"type":"array",
+			"items": {
+				"$ref": "kettle:enums/payload_errors"
+			}
 		}
 	},
 	"required": [

@@ -3,13 +3,11 @@
 	"id": "kettle:enums/payload_errors",
 	"title": "PayloadErrorsEnum",
 	"description": "All possible kettle objects that indicate an error",
-	"type": "array",
-	"items": {
-		// TODO; list here all Kettle error object schemas.
-		"oneOf": [
-			{
-				"$ref": "kettle:types/errors/nack_option"
-			}
-		]
-	}
+	"type": "object",
+	"oneOf": [
+		{
+			"$ref": "kettle:types/errors/nack_option"
+		}
+	],
+	"additionalProperties": true
 }
