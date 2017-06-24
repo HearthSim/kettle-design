@@ -1,0 +1,14 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:enums/game_scenario_type",
+	"title": "GameScenarioTypeEnum",
+	"description": "Enumeration (subset) of all scenarios each simulator supports. Simulators are allowed to extend this enumeration",
+	"type": "string",
+	"enum": [
+		"Invalid",
+		"Matchmade",
+		"VS_Idle_AI",
+		"VS_Easy_AI",
+		"VS_Hard_AI"
+	]
+}

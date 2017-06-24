@@ -13,8 +13,18 @@
 	"properties": {
 		"scenario": {
 			"id": "/properties/scenario",
-			"description": "The simulator must setup a specific scenario",
+			"description": "General rules for the game to create",
 			"$ref": "kettle:enums/game_scenario"
+		},
+		"scenario_type": {
+			"id": "/properties/scenario_type",
+			"description": "Defines the matchup",
+			"$ref": "kettle:enums/game_scenario_type"
+		},
+		"game_state": {
+			"id": "/properties/game_state",
+			"description": "Identifier of a specific state the game starts in",
+			"type":"string"
 		},
 		"players": {
 			"id": "/properties/players",
