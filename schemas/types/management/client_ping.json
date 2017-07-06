@@ -1,0 +1,18 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:types/management/client_ping",
+    "title": "ClientPing",
+    "description": "Ping message used as keep-alive",
+    "x-sender": [
+        "client"
+    ],
+    "x-receiver": [
+        "simulator",
+        "matchmaker"
+    ],
+    "type": "object",
+    "properties": {},
+    // No required properties
+    "definitions": {},
+    "additionalProperties": false
+}

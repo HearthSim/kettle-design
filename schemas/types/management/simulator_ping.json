@@ -25,6 +25,7 @@
 			"maximum": 1
 		}
 	},
+	// No required properties
 	"definitions": {},
 	"additionalProperties": false
 }

@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:types/events/bucket_created",
+    "title": "BucketCreated",
+    "description": "A specific bucket has been created",
+    "x-sender": [
+        "matchmaker"
+    ],
+    "x-receiver": [
+        "client"
+    ],
+    "type": "object",
+    "properties": {
+        "bucketID": {
+            "id": "/properties/bucket_id",
+            "description": "Identification of the specific bucket",
+            "$ref": "kettle:definitions/bucket_id"
+        },
+        "details": {
+            "id": "/properties/details",
+            "description": "Game details about the lobby",
+            "$ref": "kettle:definitions/bucket_details"
+        }
+    },
+    "required": [
+        "bucket",
+        "details"
+    ],
+    "definitions": {},
+    "additionalProperties": false
+}

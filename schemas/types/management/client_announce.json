@@ -1,0 +1,32 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:types/management/client_announce",
+    "title": "ClientAnnounce",
+    "description": "Handshake of client with other types of instances",
+    "x-sender": [
+        "client"
+    ],
+    "x-receiver": [
+        "simulator",
+        "matchmaker"
+    ],
+    "type": "object",
+    "properties": {
+        "provider": {
+            "id": "/properties/provider",
+            "description": "Contains identification of the person/group running the client",
+            "type": "string"
+        },
+        "identification": {
+            "id": "/properties/identification",
+            "description": "String to identify exact version and modules used by the client",
+            "type": "string"
+        }
+    },
+    "required": [
+        "provider",
+        "identification"
+    ],
+    "definitions": {},
+    "additionalProperties": false
+}

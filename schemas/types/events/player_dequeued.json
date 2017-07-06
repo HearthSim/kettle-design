@@ -1,0 +1,25 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:types/events/player_dequeued",
+    "title": "PlayerDequeued",
+    "description": "A player has been removed from the queue",
+    "x-sender": [
+        "matchmaker"
+    ],
+    "x-receiver": [
+        "client"
+    ],
+    "type": "object",
+    "properties": {
+        "accountID": {
+            "id": "/properties/accountID",
+            "description": "Identifier of a specific game account",
+            "$ref": "kettle:definitions/game_account"
+        }
+    },
+    "required": [
+        "accountID"
+    ],
+    "definitions": {},
+    "additionalProperties": false
+}

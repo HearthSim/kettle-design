@@ -1,0 +1,35 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:types/create_game",
+	"title": "CreateGame",
+	"description": "Instructs the simulator to create a game instance with the provided data",
+	"x-sender": [
+		"matchmaker"
+	],
+	"x-receiver": [
+		"simulator"
+	],
+	"type": "object",
+	"properties": {
+		"bucket": {
+			"id": "/properties/bucket",
+			"description": "Information about the initial game state which must be created",
+			"$ref": "kettle:definitions/bucket"
+		},
+		"players": {
+			"id": "/properties/players",
+			"description": "Initial player state information",
+			"type": "array",
+			"items": {
+				"$ref": "kettle:definitions/player"
+			},
+			"minItems": 1
+		}
+	},
+	"required": [
+		"bucket",
+		"players"
+	],
+	"definitions": {},
+	"additionalProperties": false
+}

@@ -11,6 +11,16 @@
 	],
 	"type": "object",
 	"properties": {
+		"purpose": {
+			"id": "/properties/purpose",
+			"description": "Declares the intention of the code behind of the simulator",
+			"$ref": "kettle:enums/simulator_purpose"
+		},
+		"supported": {
+			"id": "/properties/supported",
+			"description": "Object which declares all supported settings for the simulator",
+			"$ref": "#/definitions/supported"
+		},
 		"max_instances": {
 			"id": "/properties/max_instances",
 			"description": "Declares the maximum amount of simulataneous game instances this simulator can run",
@@ -19,15 +29,60 @@
 		},
 		"provider": {
 			"id": "/properties/provider",
-			"description": "Contains identification of the person/group running the simulator",
+			"description": "Contains identification of the person/group running/owning the simulator",
 			"type": "string"
 		},
 		"identification": {
 			"id": "/properties/identification",
-			"description": "String to identify exact version and modules this server provides",
-			"type": "string"
+			"description": "String to identify exact version and modules used by the simulator",
+			"$ref": "kettle:definitions/simulator_id"
 		}
 	},
-	"definitions": {},
+	"required": [
+		"purpose",
+		"supported",
+		"max_instances",
+		"provider",
+		"identification"
+	],
+	"definitions": {
+		"supported": {
+			"type": "object",
+			"properties": {
+				"scenario": {
+					"id": "/properties/scenario",
+					"description": "Set of scenario identifiers supported by the simulator",
+					"type": "array",
+					"items": {
+						"$ref": "kettle:enums/game_scenario"
+					},
+					"minItems": 1
+				},
+				"ai": {
+					"id": "/properties/ai",
+					"description": "Set of AI identifiers supported by the simulator",
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1
+				},
+				"gameID": {
+					"id": "/properties/gameID",
+					"description": "Set of Game identifiers supported by the simulator",
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1
+				}
+			},
+			"required": [
+				"scenario",
+				"ai",
+				"gameID"
+			]
+		}
+	},
 	"additionalProperties": false
 }

@@ -1,16 +1,23 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "kettle:types/game_joined",
+	"id": "kettle:types/events/game_joined",
 	"title": "GameJoined",
 	"description": "The player has succesfully connected to the game instance",
 	"x-sender": [
-		"simulator"
+		"simulator",
+		"matchmaker"
 	],
 	"x-receiver": [
+		"matchmaker",
 		"client"
 	],
 	"type": "object",
 	"properties": {
+		"accountID": {
+			"id": "/properties/accountID",
+			"description": "Account identifier of one of the participating players",
+			"$ref": "kettle:definitions/game_account"
+		},
 		"spectating": {
 			"id": "/properties/spectating",
 			"description": "Indicates if the player is spectating this game or not",
@@ -21,6 +28,7 @@
 			"description": "Identifier of the board to use",
 			"$ref": "kettle:enums/board"
 		},
+		// ⌄⌄⌄ Properties defined by the simulator ⌄⌄⌄
 		"max_secrets_per_player": {
 			"id": "/properties/max_secrets_per_player",
 			"description": "Maximum amount of secrets each player can have active at once",
@@ -37,6 +45,7 @@
 		}
 	},
 	"required": [
+		"accountID",
 		"spectating",
 		"board",
 		"max_secrets_per_player",

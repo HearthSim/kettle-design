@@ -1,13 +1,15 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "kettle:types/management/game_finished",
+	"id": "kettle:types/events/game_finished",
 	"title": "GameFinished",
 	"description": "Tells the matchmaker of a specific game result",
 	"x-sender": [
-		"simulator"
+		"simulator",
+		"matchmaker"
 	],
 	"x-receiver": [
-		"matchmaker"
+		"matchmaker",
+		"client"
 	],
 	"type": "object",
 	"properties": {

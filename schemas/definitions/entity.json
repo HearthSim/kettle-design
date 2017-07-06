@@ -7,17 +7,17 @@
 	"properties": {
 		"entityID": {
 			"id": "/properties/entityID",
-			"description": "",
+			"description": "Unique identifier of this entity",
 			"$ref": "kettle:definitions/entity_id"
 		},
 		"name": {
 			"id": "/properties/name",
-			"description": "",
+			"description": "Name of the entity. Empty string if the entity is unknown",
 			"$ref": "kettle:definitions/card_id"
 		},
 		"tags": {
 			"id": "/properties/tags",
-			"description": "",
+			"description": "Properties attributed to this entity. Basically everything is a key-value property",
 			"type": "array",
 			"items": {
 				"$ref": "kettle:definitions/tag"

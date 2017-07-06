@@ -1,13 +1,15 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "kettle:types/management/game_created",
+	"id": "kettle:types/events/game_created",
 	"title": "GameCreated",
 	"description": "Instructs the matchmaker of a newly created game instance",
 	"x-sender": [
-		"simulator"
+		"simulator",
+		"matchmaker"
 	],
 	"x-receiver": [
-		"matchmaker"
+		"matchmaker",
+		"client"
 	],
 	"type": "object",
 	"properties": {
@@ -54,12 +56,12 @@
 				},
 				"password": {
 					"id": "/properties/password",
-					"description": "The password this selected player must use to connect to this game",
+					"description": "The password this selected player must use to connect to this game. NOT related to bucket password",
 					"type": "string"
 				},
 				"spectate_password": {
 					"id": "/properties/spectate_password",
-					"description": "The password to use for spectating this game with this player's information visible",
+					"description": "The password to use for spectating this game with this player's information visible. NOT related to bucket password",
 					"type": "string"
 				}
 			},

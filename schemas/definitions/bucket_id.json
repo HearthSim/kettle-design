@@ -1,0 +1,7 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:definitions/bucket_id",
+	"title": "BucketID",
+	"description": "Unique identifier of bucket, which is a game lobby",
+    "type": "string"
+}

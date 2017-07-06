@@ -1,0 +1,71 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:types/create_bucket",
+    "title": "CreateBucket",
+    "description": "Create a new lobby for players to queue into",
+    "x-sender": [
+        "client"
+    ],
+    "x-receiver": [
+        "matchmaker"
+    ],
+    "type": "object",
+    "properties": {
+        "password": {
+            "id": "/properties/password",
+            "description": "Password for the specific bucket",
+            "type": "string"
+        },
+        "board": {
+			"id": "/properties/board",
+			"description": "Identifier of the board to use",
+			"$ref": "kettle:enums/board"
+		},
+        "start_mana": {
+            "id": "/properties/start_mana",
+            "description": "Available mana for the player at the start of the game",
+            "type": "integer",
+            "maximum": 10,
+            "minimum": 0
+        },
+        "start_hand_size": {
+            "id": "/properties/start_hand_size",
+            "description": "The amount of cards a player has in hand at the start of the game",
+            "type": "integer",
+            "maximum": 10,
+            "minimum": 0
+        },
+        "start_entities": {
+            "id": "/properties/start_entities",
+            "description": "Entities starting on the player's side of the board",
+            "type": "array",
+            "items": {
+                "$ref": "kettle:definitions/entity"
+            },
+            "maxItems": 16
+        },
+        "max_secrets_per_player": {
+			"id": "/properties/max_secrets_per_player",
+			"description": "Maximum amount of secrets each player can have active at once. Can be ignored by simulator",
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 10
+		},
+		"max_friendly_minions_per_player": {
+			"id": "/properties/max_friendly_minions_per_player",
+			"description": "Maximum amount of minions each player can have alive at once. Can be ignored by simulator",
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 10
+		}
+    },
+    "definitions": {},
+    "additionalProperties": false,
+    "required": [
+        "password",
+        "board",
+        "start_mana",
+        "start_hand_size",
+        "start_entities"
+    ]
+}

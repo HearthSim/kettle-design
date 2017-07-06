@@ -1,0 +1,59 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:definitions/bucket_details",
+    "title": "BucketDetails",
+    "description": "Object transporting game related settings for the specified bucket",
+    "type": "object",
+    "properties": {
+        "scenario": {
+            "id": "/properties/scenario",
+            "description": "Scenario identifier, as supported by any simulator",
+            "$ref": "kettle:enums/game_scenario"
+        },
+        "ai": {
+            "id": "/properties/ai",
+            "description": "AI identifiers, as supported by any simulator",
+            "type": "string"
+        },
+        "gameID": {
+            "id": "/properties/gameID",
+            "description": "Game identifiers, as supported by any simulator",
+            "type": "string"
+        },
+        "board": {
+            "id": "/properties/board",
+            "description": "Identifier of the board to use",
+            "$ref": "kettle:enums/board"
+        },
+        "start_mana": {
+            "id": "/properties/start_mana",
+            "description": "Available mana for the player at the start of the game",
+            "type": "integer",
+            "maximum": 10,
+            "minimum": 0
+        },
+        "start_hand_size": {
+            "id": "/properties/start_hand_size",
+            "description": "The amount of cards a player has in hand at the start of the game",
+            "type": "integer",
+            "maximum": 10,
+            "minimum": 0
+        },
+        "start_entities": {
+            "id": "/properties/start_entities",
+            "description": "Entities starting on the player's side of the board",
+            "type": "array",
+            "items": {
+                "$ref": "kettle:definitions/entity"
+            },
+            "maxItems": 16
+        }
+    },
+    // A sensible default is used when a property is omitted.
+    "required": [
+        "scenario",
+        "ai",
+        "gameID"
+    ],
+    "additionalProperties": false
+}

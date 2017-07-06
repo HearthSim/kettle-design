@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:types/events/player_queued",
+    "title": "PlayerQueued",
+    "description": "A player has been queued into a bucket",
+    "x-sender": [
+        "matchmaker"
+    ],
+    "x-receiver": [
+        "client"
+    ],
+    "type": "object",
+    "properties": {
+        "bucketID": {
+            "id": "/properties/bucket_id",
+            "description": "Identification of the specific bucket",
+            "$ref": "kettle:definitions/bucket_id"
+        },
+        "accountID": {
+            "id": "/properties/accountID",
+            "description": "Identifier of a specific game account",
+            "$ref": "kettle:definitions/game_account"
+        }
+    },
+    "required": [
+        "bucketID",
+        "accountID"
+    ],
+    "definitions": {},
+    "additionalProperties": false
+}

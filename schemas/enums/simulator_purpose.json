@@ -1,0 +1,13 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:enums/simulator_purpose",
+	"title": "SimulatorPurpose",
+	"description": "Enumeration of activities a simulator instance can handle",
+	"type": "string",
+	"enum": [
+		"Invalid",
+		"Simulator",
+        "AI",
+        "Both"
+	]
+}

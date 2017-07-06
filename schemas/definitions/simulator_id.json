@@ -1,0 +1,7 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "kettle:definitions/simulator_id",
+	"title": "SimulatorID",
+	"description": "Unique identifier of a simulator",
+    "type": "string"
+}

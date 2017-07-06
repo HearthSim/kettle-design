@@ -6,6 +6,27 @@
 	"type": "object",
 	"oneOf": [
 		{
+			"$ref": "kettle:types/events/bucket_created"
+		},
+		{
+			"$ref": "kettle:types/events/bucket_removed"
+		},
+		{
+			"$ref": "kettle:types/events/game_created"
+		},
+		{
+			"$ref": "kettle:types/events/game_finished"
+		},
+		{
+			"$ref": "kettle:types/events/game_joined"
+		},
+		{
+			"$ref": "kettle:types/events/player_dequeued"
+		},
+		{
+			"$ref": "kettle:types/events/player_queued"
+		},
+		{
 			"$ref": "kettle:types/history/create_entity"
 		},
 		{
@@ -30,13 +51,10 @@
 			"$ref": "kettle:types/history/tag_change"
 		},
 		{
-			"$ref": "kettle:types/management/create_game"
+			"$ref": "kettle:types/management/client_announce"
 		},
 		{
-			"$ref": "kettle:types/management/game_created"
-		},
-		{
-			"$ref": "kettle:types/management/game_finished"
+			"$ref": "kettle:types/management/client_ping"
 		},
 		{
 			"$ref": "kettle:types/management/simulator_announce"
@@ -49,6 +67,9 @@
 		},
 		{
 			"$ref": "kettle:types/options/choose_option"
+		},
+		{
+			"$ref": "kettle:types/options/concede"
 		},
 		{
 			"$ref": "kettle:types/options/end_turn"
@@ -66,10 +87,10 @@
 			"$ref": "kettle:types/options/power"
 		},
 		{
-			"$ref": "kettle:types/concede"
+			"$ref": "kettle:types/create_bucket"
 		},
 		{
-			"$ref": "kettle:types/game_joined"
+			"$ref": "kettle:types/create_game"
 		},
 		{
 			"$ref": "kettle:types/join_game"
