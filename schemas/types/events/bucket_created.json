@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "kettle:types/events/bucket_created",
-    "title": "BucketCreated",
+    "title": "EventBucketCreated",
     "description": "A specific bucket has been created",
     "x-sender": [
         "matchmaker"

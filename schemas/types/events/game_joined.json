@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/events/game_joined",
-	"title": "GameJoined",
+	"title": "EventGameJoined",
 	"description": "The player has succesfully connected to the game instance",
 	"x-sender": [
 		"simulator",
