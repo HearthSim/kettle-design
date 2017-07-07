@@ -13,6 +13,11 @@
 	],
 	"type": "object",
 	"properties": {
+		"gameID": {
+			"id": "/properties/gameID",
+			"description": "Unique identifier of the game",
+			"$ref": "kettle:definitions/game_id"
+		},
 		"accountID": {
 			"id": "/properties/accountID",
 			"description": "Account identifier of one of the participating players",
@@ -45,6 +50,7 @@
 		}
 	},
 	"required": [
+		"gameID",
 		"accountID",
 		"spectating",
 		"board",
