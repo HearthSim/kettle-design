@@ -4,9 +4,11 @@
 	"title": "UserUI",
 	"description": "Contains UI information executed by the player",
 	"x-sender": [
-		"client"
+		"client",
+		"simulator"
 	],
 	"x-receiver": [
+		"client",
 		"simulator"
 	],
 	"type": "object",

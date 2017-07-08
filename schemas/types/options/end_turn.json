@@ -4,10 +4,10 @@
 	"title": "OptionEndTurn",
 	"description": "Indicates that the player can end his turn",
 	"x-sender": [
-		"simulator"
+		"client"
 	],
 	"x-receiver": [
-		"client"
+		"simulator"
 	],
 	"type": "object",
 	"properties": {
