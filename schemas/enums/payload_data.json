@@ -57,10 +57,16 @@
 			"$ref": "kettle:types/management/client_ping"
 		},
 		{
+			"$ref": "kettle:types/management/master_ping"
+		},
+		{
 			"$ref": "kettle:types/management/simulator_announce"
 		},
 		{
 			"$ref": "kettle:types/management/simulator_ping"
+		},
+		{
+			"$ref": "kettle:types/management/slave_ping"
 		},
 		{
 			"$ref": "kettle:types/options/choose_entities"

@@ -1,0 +1,17 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:types/management/master_ping",
+	"title": "MasterPing",
+	"description": "Ping message used as keep-alive",
+	"x-sender": [
+		"IPC"
+	],
+	"x-receiver": [
+		"IPC"
+	],
+	"type": "object",
+	"properties": {},
+	// No required properties
+	"definitions": {},
+	"additionalProperties": false
+}
