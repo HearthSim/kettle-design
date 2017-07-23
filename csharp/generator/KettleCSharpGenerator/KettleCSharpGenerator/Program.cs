@@ -15,7 +15,7 @@ namespace KettleCSharpGenerator
 			Console.WriteLine();
 			Console.WriteLine("Usage: [exe] [kettle schemas root folder] [path to write generated file to]");
 			Console.WriteLine();
-			Console.WriteLine("Example: KettleCSharpGenerator 'C:\\kettle\\' 'C:\\kettle-code\\csharp\\protocol.cs");
+			Console.WriteLine("Example: KettleCSharpGenerator \"C:\\kettle\\\" \"C:\\kettle-code\\csharp\\protocol.cs\"");
 		}
 
 		static void Main(string[] args)
@@ -60,6 +60,7 @@ namespace KettleCSharpGenerator
 
 			Process(payloadSchemaPath, kettleRoot, protocolOut);
 			Console.WriteLine("OK");
+			return;
 		}
 
 		static void Process(string schemaPath, string referenceDir, string outPath)
