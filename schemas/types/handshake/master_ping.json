@@ -1,16 +1,17 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "kettle:types/options/concede",
-	"title": "OptionDoConcede",
-	"description": "The player concedes, which makes him lose the games",
+	"id": "kettle:types/handshake/master_ping",
+	"title": "MasterPing",
+	"description": "Ping message used as keep-alive",
 	"x-sender": [
-		"client"
+		"IPC"
 	],
 	"x-receiver": [
-		"simulator"
+		"IPC"
 	],
 	"type": "object",
 	"properties": {},
+	// No required properties
 	"definitions": {},
 	"additionalProperties": false
 }

@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "kettle:types/join_game",
+	"id": "kettle:types/lobby/join_game",
 	"title": "JoinGame",
 	"description": "Access the game instance created for the client",
 	"x-sender": [

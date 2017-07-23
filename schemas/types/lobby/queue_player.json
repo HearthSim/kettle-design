@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "kettle:types/queue_player",
+	"id": "kettle:types/lobby/queue_player",
 	"title": "QueuePlayer",
 	"description": "Instructs the matchmaker to queue the provided player until a simulator is available",
 	"x-sender": [
@@ -51,6 +51,7 @@
 					"description": "Password for the specific bucket",
 					"type": "string"
 				}
+				// Reference without all specific details.
 			},
 			"definitions": {},
 			"additionalProperties": false,

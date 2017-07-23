@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "kettle:types/queue_transition",
+	"id": "kettle:types/lobby/queue_transition",
 	"title": "QueueTransition",
 	"description": "Instructs the client to move from the queue into 'playing game' state",
 	"x-sender": [
@@ -24,42 +24,14 @@
 		"connection_info": {
 			"id": "/properties/connection_info",
 			"description": "Specific game server connection information",
-			"$ref": "#/definitions/connection_info"
+			"$ref": "kettle:definitions/game_connection_info"
 		}
 	},
 	"required": [
 		"gameID",
-		"game_password",
+		"accountID",
 		"connection_info"
 	],
-	"definitions": {
-		"connection_info": {
-			"type": "object",
-			"properties": {
-				"game_password": {
-					"id": "/properties/game_password",
-					"description": "Password which must be used to connect to the simulator",
-					"type": "string"
-				},
-				"ip": {
-					"id": "/properties/ip",
-					"description": "IP address of simulator",
-					"type": "string"
-				},
-				"port": {
-					"id": "/properties/port",
-					"description": "Port of simulator",
-					"type": "integer"
-				}
-			},
-			"required": [
-				"accountID",
-				"ip",
-				"port"
-			],
-			"definitions": {},
-			"additionalProperties": false
-		}
-	},
+	"definitions": {},
 	"additionalProperties": false
 }

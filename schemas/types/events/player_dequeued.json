@@ -2,12 +2,15 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "kettle:types/events/player_dequeued",
     "title": "EventPlayerDequeued",
-    "description": "A player has been removed from the queue",
+    "description": "Notifies the receiver a player has been removed from the queue",
     "x-sender": [
-        "matchmaker"
+        "matchmaker",
+		"IPC"
     ],
     "x-receiver": [
-        "client"
+		"management",
+        "client",
+		"IPC"
     ],
     "type": "object",
     "properties": {

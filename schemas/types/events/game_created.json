@@ -2,14 +2,16 @@
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/events/game_created",
 	"title": "EventGameCreated",
-	"description": "Instructs the matchmaker of a newly created game instance",
+	"description": "Notifies the receiver of a newly created game instance",
 	"x-sender": [
 		"simulator",
-		"matchmaker"
+		"matchmaker",
+		"IPC"
 	],
 	"x-receiver": [
+		"management",
 		"matchmaker",
-		"client"
+		"IPC"
 	],
 	"type": "object",
 	"properties": {
@@ -23,7 +25,7 @@
 			"description": "Information for clients to directly connect to this game",
 			"type": "array",
 			"items": {
-				"$ref": "#/definitions/connection_info"
+				"$ref": "kettle:definitions/game_connection_info"
 			},
 			"minItems": 1
 		}
@@ -32,47 +34,6 @@
 		"gameID",
 		"connection_info"
 	],
-	"definitions": {
-		"connection_info": {
-			"title": "GameCreated_connectionInfo",
-			"type": "object",
-			"properties": {
-				"accountID": {
-					"id": "/properties/accountID",
-					"description": "Account identifier of one of the participating players",
-					"$ref": "kettle:definitions/game_account"
-				},
-				"ip": {
-					"id": "/properties/ip",
-					"description": "The IP adress of the public facing network interface of the simulator",
-					"type": "string",
-					"format": "ipv4"
-				},
-				"port": {
-					"id": "/properties/port",
-					"description": "The port number of the public facing network interface of the simulator",
-					"type": "integer",
-					"minimum": 0
-				},
-				"password": {
-					"id": "/properties/password",
-					"description": "The password this selected player must use to connect to this game. NOT related to bucket password",
-					"type": "string"
-				},
-				"spectate_password": {
-					"id": "/properties/spectate_password",
-					"description": "The password to use for spectating this game with this player's information visible. NOT related to bucket password",
-					"type": "string"
-				}
-			},
-			"required": [
-				"accountID",
-				"ip",
-				"port",
-				"password",
-				"spectate_password"
-			]
-		}
-	},
+	"definitions": {},
 	"additionalProperties": false
 }

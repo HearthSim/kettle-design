@@ -27,6 +27,36 @@
 			"$ref": "kettle:types/events/player_queued"
 		},
 		{
+			"$ref": "kettle:types/handshake/client_announce"
+		},
+		{
+			"$ref": "kettle:types/handshake/client_ping"
+		},
+		{
+			"$ref": "kettle:types/handshake/master_announce"
+		},
+		{
+			"$ref": "kettle:types/handshake/master_ping"
+		},
+		{
+			"$ref": "kettle:types/handshake/matchmaker_announce"
+		},
+		{
+			"$ref": "kettle:types/handshake/matchmaker_ping"
+		},
+		{
+			"$ref": "kettle:types/handshake/simulator_announce"
+		},
+		{
+			"$ref": "kettle:types/handshake/simulator_ping"
+		},
+		{
+			"$ref": "kettle:types/handshake/slave_announce"
+		},
+		{
+			"$ref": "kettle:types/handshake/slave_ping"
+		},
+		{
 			"$ref": "kettle:types/history/create_entity"
 		},
 		{
@@ -51,22 +81,25 @@
 			"$ref": "kettle:types/history/tag_change"
 		},
 		{
-			"$ref": "kettle:types/management/client_announce"
+			"$ref": "kettle:types/lobby/create_bucket"
 		},
 		{
-			"$ref": "kettle:types/management/client_ping"
+			"$ref": "kettle:types/lobby/create_game"
 		},
 		{
-			"$ref": "kettle:types/management/master_ping"
+			"$ref": "kettle:types/lobby/join_game"
 		},
 		{
-			"$ref": "kettle:types/management/simulator_announce"
+			"$ref": "kettle:types/lobby/queue_cancel"
 		},
 		{
-			"$ref": "kettle:types/management/simulator_ping"
+			"$ref": "kettle:types/lobby/queue_player"
 		},
 		{
-			"$ref": "kettle:types/management/slave_ping"
+			"$ref": "kettle:types/lobby/queue_status"
+		},
+		{
+			"$ref": "kettle:types/lobby/queue_transition"
 		},
 		{
 			"$ref": "kettle:types/options/choose_entities"
@@ -91,27 +124,6 @@
 		},
 		{
 			"$ref": "kettle:types/options/power"
-		},
-		{
-			"$ref": "kettle:types/create_bucket"
-		},
-		{
-			"$ref": "kettle:types/create_game"
-		},
-		{
-			"$ref": "kettle:types/join_game"
-		},
-		{
-			"$ref": "kettle:types/queue_cancel"
-		},
-		{
-			"$ref": "kettle:types/queue_player"
-		},
-		{
-			"$ref": "kettle:types/queue_status"
-		},
-		{
-			"$ref": "kettle:types/queue_transition"
 		},
 		{
 			"$ref": "kettle:types/user_ui"

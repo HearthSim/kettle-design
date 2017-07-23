@@ -2,12 +2,15 @@
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "kettle:types/events/player_queued",
     "title": "EventPlayerQueued",
-    "description": "A player has been queued into a bucket",
+    "description": "Notifies the receiver a player has been queued into a bucket",
     "x-sender": [
-        "matchmaker"
+        "matchmaker",
+		"IPC"
     ],
     "x-receiver": [
-        "client"
+		"management",
+        "client",
+		"IPC"
     ],
     "type": "object",
     "properties": {

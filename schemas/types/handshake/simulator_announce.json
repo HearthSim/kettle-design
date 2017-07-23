@@ -1,13 +1,14 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "kettle:types/management/simulator_anounce",
+	"id": "kettle:types/handshake/simulator_anounce",
 	"title": "SimulatorAnnounce",
 	"description": "Handshake of simulator with matchmaker to anounce simulator specification",
 	"x-sender": [
 		"simulator"
 	],
 	"x-receiver": [
-		"matchmaker"
+		"matchmaker",
+		"client"
 	],
 	"type": "object",
 	"properties": {

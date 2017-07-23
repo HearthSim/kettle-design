@@ -1,13 +1,14 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "kettle:types/management/simulator_ping",
+	"id": "kettle:types/handshake/simulator_ping",
 	"title": "SimulatorPing",
 	"description": "Ping message used as keep-alive",
 	"x-sender": [
 		"simulator"
 	],
 	"x-receiver": [
-		"matchmaker"
+		"matchmaker",
+		"client"
 	],
 	"type": "object",
 	"properties": {

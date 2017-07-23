@@ -2,7 +2,7 @@
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/options/end_turn",
 	"title": "OptionEndTurn",
-	"description": "Indicates that the player can end his turn",
+	"description": "The player has the option to end his turn",
 	"x-sender": [
 		"client"
 	],

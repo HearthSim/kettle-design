@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "kettle:types/management/client_announce",
+    "id": "kettle:types/handshake/client_announce",
     "title": "ClientAnnounce",
     "description": "Handshake of client with other types of instances",
     "x-sender": [

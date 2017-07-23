@@ -4,10 +4,13 @@
     "title": "EventBucketRemoved",
     "description": "Object which represents a lobby of people who queue into each other",
     "x-sender": [
-        "matchmaker"
+		"matchmaker",
+		"IPC"
     ],
     "x-receiver": [
-        "client"
+		"management",
+        "client",
+		"IPC"
     ],
     "type": "object",
     "properties": {

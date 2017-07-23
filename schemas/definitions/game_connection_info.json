@@ -1,0 +1,43 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:definitions/game_connection_info",
+	"title": "GameConnectionInfo",
+	"description": "Information about how a player can connect to a game instance",
+	"type": "object",
+	"properties": {
+		"accountID": {
+			"id": "/properties/accountID",
+			"description": "Account identifier of one of the participating players",
+			"$ref": "kettle:definitions/game_account"
+		},
+		"ip": {
+			"id": "/properties/ip",
+			"description": "The IP adress of the public facing network interface of the simulator",
+			"type": "string",
+			"format": "ipv4"
+		},
+		"port": {
+			"id": "/properties/port",
+			"description": "The port number of the public facing network interface of the simulator, probably not in ephemeral range",
+			"type": "integer",
+			"minimum": 1025
+		},
+		"password": {
+			"id": "/properties/password",
+			"description": "The password this selected player must use to connect to this game. NOT related to bucket password",
+			"type": "string"
+		},
+		"spectate_password": {
+			"id": "/properties/spectate_password",
+			"description": "The password to use for spectating this game with this player's information visible. NOT related to bucket password",
+			"type": "string"
+		}
+	},
+	"required": [
+		"accountID",
+		"ip",
+		"port",
+		"password",
+		"spectate_password"
+	]
+}

@@ -1,8 +1,8 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "kettle:types/management/master_ping",
-	"title": "MasterPing",
-	"description": "Ping message used as keep-alive",
+	"id": "kettle:types/handshake/slave_announce",
+	"title": "SlaveAnnounce",
+	"description": "Handshake of Slave with master instance",
 	"x-sender": [
 		"IPC"
 	],
@@ -11,7 +11,6 @@
 	],
 	"type": "object",
 	"properties": {},
-	// No required properties
 	"definitions": {},
 	"additionalProperties": false
 }

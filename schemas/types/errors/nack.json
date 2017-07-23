@@ -6,12 +6,14 @@
 	"x-sender": [
 		"client",
 		"simulator",
-		"matchmaker"
+		"matchmaker",
+		"IPC"
 	],
 	"x-receiver": [
 		"client",
 		"simulator",
-		"matchmaker"
+		"matchmaker",
+		"IPC"
 	],
 	"type": "object",
 	"properties": {
@@ -22,13 +24,13 @@
 		},
 		"data": {
 			"id": "/properties/data",
-			"description": "Error related information",
+			"description": "Error related information. Object information and other details need to be stringified and stored here.",
 			"type": "string"
 		}
 	},
 	"required": [
 		"message",
-		"optionsID"
+		"data"
 	],
 	"definitions": {}
 }

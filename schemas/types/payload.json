@@ -11,7 +11,9 @@
 	"x-receiver": [
 		"client",
 		"matchmaker",
-		"simulator"
+		"simulator",
+		// Fire-and-forget kind of message, over TCP of course!
+		"management"
 	],
 	"type": "object",
 	"properties": {

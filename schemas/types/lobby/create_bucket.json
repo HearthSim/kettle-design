@@ -1,15 +1,18 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "id": "kettle:definitions/bucket",
-    "title": "Bucket",
-    "description": "Object which represents a lobby of people who queue into each other",
+    "id": "kettle:types/lobby/create_bucket",
+    "title": "CreateBucket",
+    "description": "Create a new lobby for players to queue into",
+    "x-sender": [
+		"client",
+		"IPC"
+    ],
+    "x-receiver": [
+		"matchmaker",
+		"IPC"
+    ],
     "type": "object",
     "properties": {
-        "bucketID": {
-            "id": "/properties/bucket_id",
-            "description": "Identification of the specific bucket",
-            "$ref": "kettle:definitions/bucket_id"
-		},
         "password": {
             "id": "/properties/password",
             "description": "Password for the specific bucket",
@@ -17,15 +20,14 @@
         },
         "details": {
             "id": "/properties/details",
-            "description": "All information manually provided for game queue-ing",
+            "description": "All specific bucket details",
             "$ref": "kettle:definitions/bucket_details"
         }
     },
     "definitions": {},
     "additionalProperties": false,
     "required": [
-        "bucketID",
         "password",
-        "details"
+		"details"
     ]
 }

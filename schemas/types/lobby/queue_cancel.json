@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
-	"id": "kettle:types/queue_cancel",
+	"id": "kettle:types/lobby/queue_cancel",
 	"title": "QueueCancel",
 	"description": "Cancels the queue entry of the player",
 	"x-sender": [
