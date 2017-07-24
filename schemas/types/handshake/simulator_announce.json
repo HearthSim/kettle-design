@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/handshake/simulator_anounce",
-	"title": "SimulatorAnnounce",
+	"title": "KettleSimulatorAnnounce",
 	"description": "Handshake of simulator with matchmaker to anounce simulator specification",
 	"x-sender": [
 		"simulator"

@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "kettle:types/handshake/matchmaker_ping",
-    "title": "MatchmakerPing",
+    "title": "KettleMatchmakerPing",
     "description": "Ping message used as keep-alive",
     "x-sender": [
         "matchmaker"

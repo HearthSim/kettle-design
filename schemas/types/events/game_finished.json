@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/events/game_finished",
-	"title": "EventGameFinished",
+	"title": "KettleEventGameFinished",
 	"description": "Notifies the receiver of the end result of a game instance",
 	"x-sender": [
 		"simulator",

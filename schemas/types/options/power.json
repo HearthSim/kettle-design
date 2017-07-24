@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/options/power",
-	"title": "OptionPower",
+	"title": "KettleOptionPower",
 	"description": "Indicates a specific action the player can perform",
 	"x-sender": [
 		"simulator"

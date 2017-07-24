@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/errors/nack",
-	"title": "Nack",
+	"title": "KettleNack",
 	"description": "The receiver does not acknowledge the received request",
 	"x-sender": [
 		"client",

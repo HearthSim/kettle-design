@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "kettle:types/handshake/client_ping",
-    "title": "ClientPing",
+    "title": "KettleClientPing",
     "description": "Ping message used as keep-alive",
     "x-sender": [
         "client"

@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/lobby/queue_transition",
-	"title": "QueueTransition",
+	"title": "KettleQueueTransition",
 	"description": "Instructs the client to move from the queue into 'playing game' state",
 	"x-sender": [
 		"matchmaker"

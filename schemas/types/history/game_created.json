@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/history/game_created",
-	"title": "HistoryGameCreated",
+	"title": "KettleHistoryGameCreated",
 	"description": "Event indicating the creation of the game",
 	"x-sender": [
 		"simulator"

@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/lobby/queue_status",
-	"title": "QueueStatus",
+	"title": "KettleQueueStatus",
 	"description": "Keep-alive message notifying the client of his position in queue",
 	"x-sender": [
 		"matchmaker"

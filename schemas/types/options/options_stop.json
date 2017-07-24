@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/options/options_stop",
-	"title": "OptionsStop",
+	"title": "KettleOptionStop",
 	"description": "Indicates the end of a sequence of possible options a player can pick from",
 	"x-sender": [
 		"simulator"

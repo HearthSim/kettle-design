@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "kettle:types/lobby/create_bucket",
-    "title": "CreateBucket",
+    "title": "KettleCreateBucket",
     "description": "Create a new lobby for players to queue into",
     "x-sender": [
 		"client",

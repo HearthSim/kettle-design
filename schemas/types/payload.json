@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/payload",
-	"title": "Payload",
+	"title": "KettlePayload",
 	"description": "Object used for transmitting data between internet facing clients, eg player <-> simulator",
 	"x-sender": [
 		"client",

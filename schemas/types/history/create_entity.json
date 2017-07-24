@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/history/create_entity",
-	"title": "HistoryCreateEntity",
+	"title": "KettleHistoryCreateEntity",
 	"description": "Indicates the creation of a new entity",
 	"x-sender": [
 		"simulator"

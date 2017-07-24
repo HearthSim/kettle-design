@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/options/entity_choices",
-	"title": "OptionEntityChoices",
+	"title": "KettleOptionEntityChoices",
 	"description": "The player must choose a subset of entities within the provided set. The player can also prefer to make an empty choice",
 	"x-sender": [
 		"simulator"

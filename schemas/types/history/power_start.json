@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/history/power_start",
-	"title": "HistoryPowerStart",
+	"title": "KettleHistoryPowerStart",
 	"description": "Indicates the start of a sequence of events (tag changes) which are chained. Power sequences CAN BE nested! eg: [p1]minion played -> [p1.1]knife jugler triggers -> [p1.1.1]random minion takes damage",
 	"x-sender": [
 		"simulator"

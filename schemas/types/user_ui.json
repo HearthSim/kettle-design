@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/user_ui",
-	"title": "UserUI",
+	"title": "KettleUserUI",
 	"description": "Contains UI information executed by the player",
 	"x-sender": [
 		"client",

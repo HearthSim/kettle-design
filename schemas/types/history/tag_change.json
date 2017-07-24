@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/history/tag_change",
-	"title": "HistoryTagChange",
+	"title": "KettleHistoryTagChange",
 	"description": "Used to override/set specific tag values for one entity",
 	"x-sender": [
 		"simulator"

@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/handshake/slave_announce",
-	"title": "SlaveAnnounce",
+	"title": "KettleSlaveAnnounce",
 	"description": "Handshake of Slave with master instance",
 	"x-sender": [
 		"IPC"

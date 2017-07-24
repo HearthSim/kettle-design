@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "kettle:types/handshake/matchmaker_announce",
-    "title": "MatchmakerAnnounce",
+    "title": "KettleMatchmakerAnnounce",
     "description": "Handshake of Matchmaker with other types of instances",
     "x-sender": [
         "matchmaker"

@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/events/game_created",
-	"title": "EventGameCreated",
+	"title": "KettleEventGameCreated",
 	"description": "Notifies the receiver of a newly created game instance",
 	"x-sender": [
 		"simulator",

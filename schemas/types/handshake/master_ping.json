@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/handshake/master_ping",
-	"title": "MasterPing",
+	"title": "KettleMasterPing",
 	"description": "Ping message used as keep-alive",
 	"x-sender": [
 		"IPC"

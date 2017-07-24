@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "kettle:types/events/player_dequeued",
-    "title": "EventPlayerDequeued",
+    "title": "KettleEventPlayerDequeued",
     "description": "Notifies the receiver a player has been removed from the queue",
     "x-sender": [
         "matchmaker",

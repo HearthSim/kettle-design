@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/lobby/queue_player",
-	"title": "QueuePlayer",
+	"title": "KettleQueuePlayer",
 	"description": "Instructs the matchmaker to queue the provided player until a simulator is available",
 	"x-sender": [
 		"client"

@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/history/meta_data",
-	"title": "HistoryMetaData",
+	"title": "KettleHistoryMetaData",
 	"description": "This object instructs clients to perform a certain animation. Accompanies tag changes mostly",
 	"x-sender": [
 		"simulator"

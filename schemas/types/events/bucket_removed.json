@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "id": "kettle:types/events/bucket_removed",
-    "title": "EventBucketRemoved",
+    "title": "KettleEventBucketRemoved",
     "description": "Object which represents a lobby of people who queue into each other",
     "x-sender": [
 		"matchmaker",

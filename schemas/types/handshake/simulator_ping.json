@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/handshake/simulator_ping",
-	"title": "SimulatorPing",
+	"title": "KettleSimulatorPing",
 	"description": "Ping message used as keep-alive",
 	"x-sender": [
 		"simulator"

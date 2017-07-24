@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/options/concede",
-	"title": "OptionDoConcede",
+	"title": "KettleDoConcede",
 	"description": "The player concedes, which makes him lose the games",
 	"x-sender": [
 		"client"

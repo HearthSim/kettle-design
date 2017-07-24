@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"id": "kettle:types/lobby/create_game",
-	"title": "CreateGame",
+	"title": "KettleCreateGame",
 	"description": "Instructs the receiver to create a game instance with the provided data",
 	"x-sender": [
 		"matchmaker",
