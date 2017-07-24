@@ -4,10 +4,12 @@
 	"title": "CreateGame",
 	"description": "Instructs the receiver to create a game instance with the provided data",
 	"x-sender": [
-		"matchmaker"
+		"matchmaker",
+		"IPC"
 	],
 	"x-receiver": [
-		"simulator"
+		"simulator",
+		"IPC"
 	],
 	"type": "object",
 	"properties": {
