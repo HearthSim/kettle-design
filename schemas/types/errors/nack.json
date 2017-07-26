@@ -17,6 +17,11 @@
 	],
 	"type": "object",
 	"properties": {
+		"reason": {
+			"id": "/properties/reason",
+			"description": "Single word resume of the reason of failure",
+			"$ref": "kettle:enums/reason"
+		},
 		"message": {
 			"id": "/properties/message",
 			"description": "Description of the exact error",
@@ -24,13 +29,13 @@
 		},
 		"data": {
 			"id": "/properties/data",
-			"description": "Error related information. Object information and other details need to be stringified and stored here.",
+			"description": "Error related information. Objects or other details need to be stringified and stored here.",
 			"type": "string"
 		}
 	},
 	"required": [
-		"message",
-		"data"
+		"reason",
+		"message"
 	],
 	"definitions": {}
 }
