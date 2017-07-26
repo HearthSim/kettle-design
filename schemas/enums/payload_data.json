@@ -45,6 +45,9 @@
 			"$ref": "kettle:types/handshake/matchmaker_ping"
 		},
 		{
+			"$ref": "kettle:types/handshake/shutdown"
+		},
+		{
 			"$ref": "kettle:types/handshake/simulator_announce"
 		},
 		{

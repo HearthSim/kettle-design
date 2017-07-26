@@ -1,0 +1,36 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"id": "kettle:types/handshake/shutdown",
+	"title": "KettleShutdown",
+	"description": "Indicates the sender has received a shutdown request. This payload is propagated to related services.",
+	"x-sender": [
+		"client",
+		"matchmaker",
+		"simulator",
+		"IPC"
+	],
+	"x-receiver": [
+		"client",
+		"matchmaker",
+		"simulator",
+		"IPC"
+	],
+	"type": "object",
+	"properties": {
+		"reason": {
+			"id": "/properties/reason",
+			"description": "Why this message was sent",
+			"$ref": "kettle:enums/reason"
+		},
+		"should_kill": {
+			"id": "/properties/should_kill",
+			"description": "False; the receiver is allowed to properly handle ongoing connections. True; The receiver should kill it's process. Implementers can decide if they regard this option or not.",
+			"type": "boolean"
+		}
+	},
+	"required": [
+		"reason"
+	],
+	"definitions": {},
+	"additionalProperties": false
+}
