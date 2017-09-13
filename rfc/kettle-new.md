@@ -16,7 +16,7 @@ V. Able to support a subset of the protocol or the full protocol
 
 VI. Extensible enough to be used to communicate between stove and simulators, using extensions
 
-VII. As close to the original HS protocol as possible (use real game enums etc)
+VII. As close to the original HS protocol as possible (use real game enums, from hearthstonejson.com, etc)
 
 ### Example
 
@@ -26,11 +26,11 @@ General structure of a **Kettle Packet**: [Kettle Header][Kettle Payload]
 
 |Kettle Payload (STR representation): [Payload]
 
-	example, Kettle Core Request `State` object, with size 0kb
-	E0-1A-00-00
+	example, Kettle Core Request `Block data` object, with size 0kb
+	E0-0A-00-00
 	{}
 
-	example, Kettle Core Response `State` object, with size 50kb
+	example, Kettle Core Response `Block data` object, with size 50kb
 	E0-16-14-00
 	{}
 
@@ -40,11 +40,11 @@ General structure of a **Kettle Packet**: [Kettle Header][Kettle Payload]
 
 The idea is to implement a simple RPC system.
 
-1. The sender invokes remote methods by transmitting a request packet (Request flag is SET) for a specific packet type.
+1. The sender invokes remote methods by transmitting a request packet (Response flag is UNSET) for a specific packet type.
 2. The receiver processes the request and responds accordingly.
 3. The sender receives the response packet and performs operations on the payload data.
 
-One endpoint processes each request in the order it was sent. There is no guarantee that multiple requests with the same Packet type result in the same ordered responses.
+Endpoint processes each request in the order it was sent, but there is no guarantee that multiple requests with the same Packet type result in the same ordered responses.
 
 Endpoints are allowed to put restrictions on the subset of available Packet types and the requests per minute it handles.
 
@@ -56,7 +56,7 @@ Endpoints are allowed to put restrictions on the subset of available Packet type
 
 - All values above E0 are reserved for core protocol usage.
 
-Extension implementers can reserve blocks which each hold 16 unique adresses. These addresses are implemented within the [Message Type](#message_type)
+Extension implementers can reserve blocks which each hold 16 unique adresses. These addresses are implemented within the Message Type.
 The range of blocks which can be allocated go from 00 up until DF (inclusive).
 This provides the ability to allocate a maximum of 224 different extensions. Less if multiple blocks are allocated for one extension.
 
@@ -77,55 +77,59 @@ E0~FF | Kettle Core Team | Blocks are in use for the core protocol
 
 Bit X | Name | Description
 :----: | --- | ---
-0	| Request flag | Makes the distinction between request/response packets.
+0	| Response flag | Makes the distinction between request/response packets.
 1	| Valid flag | Makes the distinction between valid/invalid requests (only applicable within response packets).
-2	| Partial flag | Makes the distinction between partial/complete packets.
+2	| Complete flag | Makes the distinction between partial/complete packets.
 3	| *Reserved* |
 
 The payload types and flags are strongly linked, always process both together like a tuple!
+The value of a flag is 0 when it's UNSET, 1 when SET.
 
-### Request flag
+### Response flag
 
 **The flag is 0 for requests, 1 for responses.**
 
 Each packet type is an indication for at least one explicit payload structure and one (or less) implicit payload structure: the empty payload.
 Explicit structures are defined for performing a request **OR** a response for their corresponding packet type.
-Implicit payload structures are usefull when performing a request, since most of the time there is no data which needs to be provided (like a HTTP GET request).
+Implicit payload structures are useful when performing a request, since most of the time there is no data which needs to be provided (like a HTTP GET request).
+
+It's considered an error when the empty payload is expected by the received and the Kettle Header holds a payload size greater than 0.
 
 > In rare cases it's possible that the same payload structure can be useful for both request and response packet types.
 
 ### Valid flag
 
 **The flag is 0 for a valid request, 1 for an invalid request.**
-> This flag only matters when the Request flag is UNSET!
+> This flag only matters when the Response flag is SET!
 
-Endpoints indicate if the received request was malformed by returning a packet with this flag set. The endpoint is not obligated to send back why and can leave the [Size](#size_high_low) of the packet at 0.
+Endpoints indicate if the received request was malformed by returning a response packet with this flag set.
+The endpoint is not obligated to send back why a request was invalid, but the general suggestion is to always do this, and can leave the Payload Size of the packet at 0 bytes.
 
 **IF** a size is set, the default error payload structure for the reserved block is used to decode the payload.
 
-### Partial flag
+### Complete flag
 
 **The flag is 0 indicating a partial packet, 1 for a complete packet.**
 
 The core protocol is not responsible for splitting up payloads to fit the maximum amount of bytes. It does however support an indication to the implementer that a Kettle packet is only partially sent.
-The endpoint can be sure a Kettle packet is completely received when this flag is SET.
+The endpoint can be sure all data for a Kettle Packet is transmitted when this flag is SET.
 
-The payload **MUST ALWAYS BE** a valid UTF-8 JSON encoded object. The implementor itself is responsible for correctly splitting up it's payload contents if splitting is performed!
+The payload **MUST ALWAYS BE** a valid UTF-8 JSON encoded object. The implementor itself is responsible for correctly splitting up it's payload contents!
 
 ## Size [High + Low]
 
 - Identifies how many **bytes** are used to encode the payload.
 
 The size part of the Kettle header can hold a value up to 65536 (exclusive) bytes, which is a value around the maximum MTU for systems following the IPv4 and v6 protocols.
-Since the header has (always) and encoded size of 4 bytes, we allow the payload to have a maximum size of 65536-4 bytes. The maximum payload size becomes 65532 bytes or FF-FC.
+Since the header has (always) an encoded size of 4 bytes, we allow the payload to have a maximum size of (65536-4) bytes per packet. The maximum payload size becomes 65532, or FF-FC, bytes.
 
-> The payload is allowed to have a size of 0 bytes! This means the next Kettle Packet will follow right after the Kettle Header.
+> The payload is allowed to have a size of 0 bytes! This means the next Kettle Packet will follow right after the current Kettle Header.
 
 ## Payload
 
 The payload holds the actual data being transmitted to endpoints. The payload must be an UTF-8 representation of a valid JSON object.
 
-The structure of the payload is indicated by the [Packet Identifier](#packet_identifier). Each block owner must provide schema's for each payload structure it encodes into block addresses.
+The structure of the payload is indicated by the Packet Identifier. Each block owner must provide schema's for each payload structure it encodes into block addresses.
 
 > Even though the packet examples in this document have a prettified representation, the newline characters should not be sent between endpoints!
 
@@ -144,7 +148,7 @@ E2 | Game State requests | Used for exchanging information of a specific game. e
 #### Error payload
 
 The following is an example of the default error payload under the reserved blocks for Kettle Core.
-The error payload does not have an explicit Packet Type, because the structure is implicit when the invalid flag is set.
+The error payload does not have an explicit Packet Type, because the structure is implicitly used when the invalid flag is set.
 
 ```
 E5-FA-00-6B
@@ -174,24 +178,24 @@ Type ID | Used for
 
 #### Game State information
 
-Type ID | Used for
-:---: | ---
-0 | Pull game history
-1 | Pull game updates
-2 | Stream game updates
+Type ID | Used for | Notes
+:---: | --- | ---
+0 | Pull game history | A complete state from the beginning of the last started turn is returned.
+1 | Pull game updates | *stateless is a bit of an issue here*, State changes starting from the chosen turn up until the 'live' state are returned.
+2 | Stream game updates | Instructs the server to keep sending live state updates.
 3 | Post game history
 
 ##### Pull Game history
 
 C -> S
 ```
-// Pull game history, Flags: request+valid+(complete), size: 0
+// Pull game history, Flags: (request)+valid+complete, size: 0
 E2-02-00-00
 ```
 
 S -> C
 ```
-// Pull game history, Flags: (response)+valid+partial, size: 65532
+// Pull game history, Flags: response+valid+(partial), size: 65532
 E2-08-FF-FC
 {
 	// A clock value is necessary for the receivers to be able to properly sync
@@ -220,10 +224,10 @@ E2-08-FF-FC
 	]
 }
 
-// Pull game history, Flags: (response)+valid+(complete), size: 5
+// Pull game history, Flags: response+valid+complete, size: 5
 E2-0A-00-05
 {
-	"for_turn": 4, // Same clock value for all response parts of E2-0
+	"for_turn": 4, // Same clock value for all response parts of E2-0 request
 	"game_state: [
 		"full_entity": {
 			"id": 160,
@@ -239,17 +243,17 @@ E2-0A-00-05
 }
 ```
 
-##### Pull tag updates
+##### Pull game updates
 
 C -> S
 ```
-// Pull game updates, Flags: request+valid+(complete), size: 0
+// Pull game updates, Flags: (request)+valid+complete, size: 0
 E2-12-00-00
 ```
 
 S -> C
 ```
-// Pull game updates, Flags: (response)+valid+(complete), size: 65532
+// Pull game updates, Flags: response+valid+complete, size: 65532
 E2-1A-00-00
 {
 	// See above for explanation about for_turn.
@@ -317,13 +321,13 @@ Special type which can be used accross web sockets. The receiver of this request
 
 C -> S
 ```
-// Stream game updates, Flags: request+valid+(complete), size: 0 bytes
+// Stream game updates, Flags: (request)+valid+complete, size: 0 bytes
 E2-22-00-00
 ```
 
 S -> C
 ```
-// Stream game updates, Flags: (response)+valid+partial, size: 160 bytes
+// Stream game updates, Flags: response+valid+(partial), size: 160 bytes
 E2-28-00-70
 {
 	// The timing of this update is positioned at turn 5.
@@ -370,14 +374,14 @@ E2-28-00-70
 	]
 }
 
-// Stream game updates, Flags: (response)+valid+partial, size: 80 bytes
+// Stream game updates, Flags: response+valid+complete, size: 80 bytes
 E2-28-00-50
 {
 	// The timing of this update is positioned at turn 5.
 	"turn": 5,
 	// block_id is a monotone clock for each new top level power block.
 	// nested blocks are NOT counted
-	"block_id": 21, // -> Top level block was
+	"block_id": 21, // -> Top level block idx incremented.
 	"history": [
 		{
 			{ // Power_Start 1
