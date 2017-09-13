@@ -200,24 +200,41 @@ E2-08-FF-FC
 {
 	// A clock value is necessary for the receivers to be able to properly sync
 	// full game updates and partial updates.
-	// 'for_turn' is a monotone clock, in this case, which starts at 1 and increments every time
+	// 'for_turn' is a monotone clock, in this case, which starts at 0 and increments every time
 	// a player ends his turn.
-	"for_turn": 4, // This is the state at the BEGINNING of turn 4!
-	"game_state": [
-		"full_entity": { // This is the game entity
-			"id": 1,
+	// [REQ]
+	"for_turn": 0, // This is the state at the BEGINNING of the game!
+
+	// [REQ] Contains a complete dump of all the entities in the game, including the game itself.
+	"game_state": [ // Array of Full Entity structures!
+		{
+			[REQ] Entity ID of the described entity
+			"id": 1, // This is the game entity
+
 			// keys dbf_id and card_id are both optional and can be ommitted.
 			// The entity is considered 'hidden' if both keys are omitted or have their default
 			// value (0 and empty string respectively)
 			// dbf_id gets precedence above card_id!
-			"dbf_id": 0, // Unknown DBF ID
+			// [OPT]
+			"dbf_id": 0, // Unknown DBF ID -> The game itself has no CARD.
+			// [OPT]
 			"card_id": "", // Unknown CARD ID
-			"tags": [],
+
+			[REQ]
+			"tags": [
+					{"key": 49, "value": 1}, // Zone: Play
+					{"key": 202, "value": 1} // CardType: Game
+					]
 		},
-		"full_entity": { // This is controller 1 entity
+
+		{ // This is controller 1 entity
+			// [REQ]
 			"id": 2,
+			// [OPT]
 			"dbf_id": 0,
+			// [OPT]
 			"card_id": "",
+			// [REQ]
 			"tags": [],
 		},
 		...
@@ -227,11 +244,17 @@ E2-08-FF-FC
 // Pull game history, Flags: response+valid+complete, size: 5
 E2-0A-00-05
 {
-	"for_turn": 4, // Same clock value for all response parts of E2-0 request
-	"game_state: [
-		"full_entity": {
+	// [REQ]
+	"for_turn": 0, // Same clock value for all response parts of E2-0 request
+
+	// [REQ]
+	"game_state: [ // Array of Full Entity structures!
+		{
+			// [REQ]
 			"id": 160,
+			// [OPT]
 			"dbf_id": 1155424,
+			// [REQ]
 			"tags": [ // All tag keys are derived from HearthStoneJSON.com
 				{
 					"key": 47, // Tag 'Atk'
@@ -256,24 +279,117 @@ S -> C
 // Pull game updates, Flags: response+valid+complete, size: 65532
 E2-1A-00-00
 {
-	// See above for explanation about for_turn.
-	"for_turn": 4,
-	// Possible upper limit?, maybe not necessary.
+	// [REQ] See above for explanation about for_turn.
+	"for_turn": 0,
+	// [OPT] Possible upper limit?, maybe not necessary.
 	"until_turn": 7,
+
+	// [REQ] Holds game history data in a structure which resembles the HS Power format.
 	"history": [
-		{ // Power_Start 1
-			"type": "power_start",
-			"data": {
-				"power_type": "Play", // Enum value taken from HearthStoneJSON.com
-				"source_entity": 51, // Entity which is 'Played'
-				"target_entity": 0, // There is no play target
+		{
+			// [REQ] Indicates which kind of history object is encoded into `data`
+			"type": "power", // Can be power, block, or meta
+
+			// `Index` value interpretation changes according to `type`.
+			// power => PowerType enum
+			// block => BlockType enum
+			// meta => MetaDataType enum
+			// [REQ] int value for corresponding enums
+			"index": 4, // PowerType::Tag_Change
+
+			// [REQ] Holds structured data
+			"data": { // Power type structure
+
+				// [REQ] The entity ID who's data is described.
+				"id": 1, // Game entity
+
+				// keys dbf_id and card_id are both optional and can be ommitted.
+				// Entities are considered 'shown' when their `dbf_id` or `card_id` is known.
+				// dbf_id gets precedence above card_id!
+				// [OPT]
+				"dbf_id": 0,
+				// [OPT]
+				"card_id": "",
+
+				// [REQ] Collection of tags which are updated.
+				"tags": [
+					{
+						// [REQ] Integer value for corresponding GameTag value.
+						"key": 204, // GameTag::State
+						// [REQ] (Updated) value mapped to the GameTag key.
+						"value": 2 // State::Running
+					}
+				]
 			}
 		},
 		{
-			"type": "tag_change",
+			// [REQ]
+			"type": "power",
+			// [REQ]
+			"index": 4, // PowerType::Tag_Change
+
+			// [REQ]
+			"data": {
+				// [REQ]
+				"id": 2, // Player 1
+
+				// [OPT]
+				"dbf_id": 0,
+				// [OPT]
+				"card_id": "",
+
+				// [REQ]
+				"tags": [
+					{
+						// [REQ]
+						"key": 17, // GameTag::PlayState
+						// [REQ]
+						"value": 1 // PlayState::Playing
+					}
+				]
+			}
+		},
+
+		/* START OF NEW TOP LEVEL BLOCK */
+		{
+			// [REQ]
+			"type": "block",
+			// [REQ]
+			"index": 5, // BlockType::trigger
+
+			// [REQ]
+			"data": { // Block type structure
+
+				// Blocks can be nested! To accomodate this we prepend and append each block collection
+				// with a block object specifically formed block object.
+				// The first has `start` set to true, the last has `start` set to false -> indicating the
+				// end of the collection.
+				// `source_entity` and `target_entity` are ignored when `start` is set to false.
+
+				// [REQ] Indicates if this object indicates the start of a block.
+				"start": true, // Indicates the trigger block opened
+
+				// [REQ] Entity ID which is causing the tag changes contained within this block.
+				"source_entity": 51,
+
+				// [REQ] Entity ID which is the target of the tag changes contained within this block.
+				"target_entity": 0,
+			}
+		},
+		{
+			// [REQ]
+			"type": "power",
+			// [REQ]
+			"index": 4, // PowerType::Tag_Change
+			// [REQ]
 			"data": {
 				"id": 51,
+
+				// [OPT]
 				"dbf_id": 521441, // Reveal entity
+				// [OPT]
+				"card_id": "",
+
 				"tags": [
 					{
 						"key": 49, // GameTag::Zone
@@ -283,35 +399,81 @@ E2-1A-00-00
 			}
 		},
 
-			// Power blocks CAN be nested!
-			{ // Power_Start 1.1
-				"type": "power_start",
-				"data": {
-					"power_type": "Ritual",
-					"source_entity": 51,
-					"target_entity": 81, // Proxy C'Thun is target of ritual
+				/* START OF NEW NESTED BLOCK */
+				// Power blocks CAN be nested!
+				// This block is nested within the parent trigger block
+				{
+					// [REQ]
+					"type": "block",
+					// [REQ]
+					"index": 9, // BlockType::Ritual
+
+					// [REQ]
+					"data": {
+						// [REQ] Indicates if this object indicates the start of a block.
+						"start": true, // Indicates the trigger block opened
+
+						// [REQ] Entity ID which is causing the tag changes contained within this block.
+						"source_entity": 51,
+
+						// [REQ] Entity ID which is the target of the tag changes contained within this block.
+						"target_entity": 81, // Proxy C'Thun is target of ritual
+					}
 				}
-			},
-			{
-				"type": "tag_change",
-				"data": {
-					"id": 81, // Proxy C'Thun
-					"tags": [
-						{"key": 47, "value": 20 }, // Buff attack
-						{"key": 45, "value": 20 } // Buff health
-					]
+
+				{
+					// [REQ]
+					"type": "power",
+					// [REQ]
+					"index": 4, // PowerType::Tag_Change
+					// [REQ]
+					"data": {
+						"id": 81, // Proxy C'Thun
+						"tags": [
+							{"key": 47, "value": 20 }, // Buff attack
+							{"key": 45, "value": 20 } // Buff health
+						]
+					}
 				}
-			}
-			{ // Power_End 1.1
-				"type": "power_end",
-				"data": {}
-			}
+
+				{ // End of ritual block
+					// [REQ]
+					"type": "block",
+					// [REQ]
+					"index": 9, // BlockType::Ritual
+					// [REQ]
+					"data": {
+						// [REQ]
+						"start": false,
+
+						// `source_entity` and `target_entity` aren't processed, so the values default to zero.
+						// [REQ]
+						"source_entity": 0,
+						// [REQ]
+						"target_entity": 0,
+					}
+				}
+				/* END OF NESTED BLOCK */
 
 
-		{ // Power_End 1
-			"type": "power_end",
-			"data": {}
+		{ // End of trigger block
+			// [REQ]
+			"type": "block",
+			// [REQ]
+			"index": 5, // BlockType::trigger
+			// [REQ]
+			"data": {
+				// [REQ]
+				"start": false,
+
+				// `source_entity` and `target_entity` aren't processed, so the values default to zero.
+				// [REQ]
+				"source_entity": 0,
+				// [REQ]
+				"target_entity": 0,
+			}
 		}
+		/* END OF TOP LEVEL BLOCK */
 	]
 }
 ```
@@ -336,41 +498,109 @@ E2-28-00-70
 	// nested blocks are NOT counted
 	"block_id": 20,
 	"history": [
+		/* START OF NEW TOP LEVEL BLOCK */
 		{
-			{ // Power_Start 1
-			"type": "power_start",
+			"type": "block",
+			"index": 7, // BlockType::Play
 			"data": {
-				"power_type": "Play", // Enum value taken from HearthStoneJSON.com
+				"start": true,
 				"source_entity": 16, // Entity which is 'Played'
 				"target_entity": 50, // There is no play target
 			}
 		},
-		{
-			"type": "meta_data",
-			"data": {
-				"type": "healing",
-				"data": 5, // Heal 5
-				"targets": [50], // Target entity 50
-			}
-		}
-		{
-			"type": "tag_change",
-			"data": {
-				"id": 50,
-				"tags": [
-					{
-						"key": 44, // GameTag::Damage
-						"value": 0 // Entity got healed, which gives it an actual health up to it's total health.
+				/* START OF NEW INNER BLOCK */
+				{
+					"type": "block",
+					"index": 3, // BlockType::Power
+					"data": {
+						"start": true,
+						"source_entity": 16, // Entity which is 'Played'
+						"target_entity": 50, // There is no play target
 					}
-				]
-			}
-		},
+				}
+				{
+					"type": "meta",
+					"index": 0, // MetaDataType::Meta_Target
+					"data": { // MetaData structure
+						// [REQ] Parameter of this meta data object; in case of MetaDataType::Meta_Healing this would
+						// hold the amount to be healed (PRE_HEAL)
+						"data": 0,
+						// [REQ] List of entity ID's which undergo the effect
+						"info": [50]
+					}
+				},
+				{
+					"type": "power",
+					"index": 4, // PowerType::Tag_Change
+					"data": {
+						"id": 50,
+						"tags": [
+							{
+								"key": 425, // GameTag::Prehealing
+								"value": 2 // Entity got healed, which gives it an actual health up to it's total health.
+							}
+						]
+					}
+				},
+				{
+					"type": "power",
+					"index": 4, // PowerType::Tag_Change
+					"data": {
+						"id": 50,
+						"tags": [
+							{
+								"key": 425, // GameTag::Prehealing
+								"value": 0 // Entity got healed, which gives it an actual health up to it's total health.
+							}
+						]
+					}
+				},
+				{
+					"type": "meta",
+					"index": 2, // MetaDataType::Meta_Healing
+					"data": { // MetaData structure
+						// [REQ]
+						"data": 2, // Amount of healing
+						// [REQ]
+						"info": [50]
+					}
+				},
+				{
+					"type": "power",
+					"index": 4, // PowerType::Tag_Change
+					"data": {
+						"id": 50,
+						"tags": [
+							{
+								"key": 44, // GameTag::Damage
+								"value": 0 // Entity got healed, which makes it become 'undamaged'.
+							}
+						]
+					}
+				},
 
-		{ // Power_End 1
-			"type": "power_end",
-			"data": {}
+				{ // End of Power Block
+					"type": "block",
+					"index": 3, // BlockType::Power
+					"data": {
+						"start": false,
+						"source_entity": 0,
+						"target_entity": 0,
+					}
+				}
+				/* END OF INNER BLOCK */
+
+		{ // End of Play Block
+			"type": "block",
+			"index": 7, // BlockType::Play
+			"data": {
+				"start": false,
+				"source_entity": 0,
+				"target_entity": 0,
+			}
 		}
-		}
+
+		/* END OF TOP LEVEL BLOCK */
 	]
 }
 
@@ -383,25 +613,34 @@ E2-28-00-50
 	// nested blocks are NOT counted
 	"block_id": 21, // -> Top level block idx incremented.
 	"history": [
+		/* START OF TOP LEVEL BLOCK */
 		{
-			{ // Power_Start 1
-			"type": "power_start",
+			"type": "block",
+			"index": 1, // BlockType::Attack
 			"data": {
-				"power_type": "Play", // Enum value taken from HearthStoneJSON.com
-				"source_entity": 81, // Entity which is 'Played'
-				"target_entity": 0, // There is no play target
+				"start": true,
+				"source_entity": 81, // Proposed attacker
+				"target_entity": 131, // Proposed defender
 			}
 		},
 
 		//////////////////////////////////
-		// Power block without effect.. //
+		// Bunch of tag changes			//
+		// Meta data for damage			//
+		// More tag changes				//
 		//////////////////////////////////
 
-		{ // Power_End 1
-			"type": "power_end",
-			"data": {}
+		{ // End of Play Block
+			"type": "block",
+			"index": 7, // BlockType::Play
+			"data": {
+				"start": false,
+				"source_entity": 0,
+				"target_entity": 0,
+			}
 		}
-		}
+
+		/* END OF TOP LEVEL BLOCK */
 	]
 }
 ```
