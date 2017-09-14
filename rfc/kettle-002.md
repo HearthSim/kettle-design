@@ -34,15 +34,15 @@ E2 | Game State requests | Used for exchanging information of a specific game. e
 Block ID | Address | Used for | Req | Resp
 :---: | :---: | :--- | :---: | :---:
 E0	| 0 | Pull brief information of blocks supported by the server. | N | Y
-		| 1 | Pull comprehensive data of specific blocks. | Y | Y
+.		| 1 | Pull comprehensive data of specific blocks. | Y | Y
 E1	| 0 | Pull game metadata. | N | Y
-		| 1 | ~~Pull full? player data~~ |  |
-		| 2 | Pull deck data of player 1. | N | Y
-		| 3 | Pull deck data of player 2. | N | Y
+.		| 1 | ~~Pull full? player data~~ | . | .
+.		| 2 | Pull deck data of player 1. | N | Y
+.		| 3 | Pull deck data of player 2. | N | Y
 E2	| 0 | Pull game state. | N | Y
-		| 1 | Pull game state update. | N | Y
-		| 2 | Stream game state updates. | N | Y
-		| 3 | ~~Post game history.~~ | Y | N
+.		| 1 | Pull game state update. | N | Y
+.		| 2 | Stream game state updates. | N | Y
+.		| 3 | ~~Post game history.~~ | Y | N
 
 
 # E00
