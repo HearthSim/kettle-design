@@ -78,7 +78,7 @@ E0~FF | Kettle Core Team | Blocks are in use for the core protocol
 Bit X | Name | Description
 :----: | --- | ---
 0	| Response flag | Makes the distinction between request/response packets.
-1	| Valid flag | Makes the distinction between valid/invalid requests (only applicable within response packets).
+1	| Invalid flag | Makes the distinction between valid/invalid requests (only applicable within response packets).
 2	| Complete flag | Makes the distinction between partial/complete packets.
 3	| *Reserved* |
 
@@ -97,7 +97,7 @@ It's considered an error when the empty payload is expected by the received and 
 
 > In rare cases it's possible that the same payload structure can be useful for both request and response packet types.
 
-### Valid flag
+### Invalid flag
 
 **The flag is 0 for a valid request, 1 for an invalid request.**
 > This flag only matters when the Response flag is SET!
@@ -189,13 +189,13 @@ Type ID | Used for | Notes
 
 C -> S
 ```
-// Pull game history, Flags: (request)+valid+complete, size: 0
+// Pull game history, Flags: (request)+(valid)+complete, size: 0
 E2-02-00-00
 ```
 
 S -> C
 ```
-// Pull game history, Flags: response+valid+(partial), size: 65532
+// Pull game history, Flags: response+(valid)+(partial), size: 65532
 E2-08-FF-FC
 {
 	// A clock value is necessary for the receivers to be able to properly sync
@@ -241,7 +241,7 @@ E2-08-FF-FC
 	]
 }
 
-// Pull game history, Flags: response+valid+complete, size: 5
+// Pull game history, Flags: response+(valid)+complete, size: 5
 E2-0A-00-05
 {
 	// [REQ]
@@ -270,13 +270,13 @@ E2-0A-00-05
 
 C -> S
 ```
-// Pull game updates, Flags: (request)+valid+complete, size: 0
+// Pull game updates, Flags: (request)+(valid)+complete, size: 0
 E2-12-00-00
 ```
 
 S -> C
 ```
-// Pull game updates, Flags: response+valid+complete, size: 65532
+// Pull game updates, Flags: response+(valid)+complete, size: 65532
 E2-1A-00-00
 {
 	// [REQ] See above for explanation about for_turn.
@@ -483,13 +483,13 @@ Special type which can be used accross web sockets. The receiver of this request
 
 C -> S
 ```
-// Stream game updates, Flags: (request)+valid+complete, size: 0 bytes
+// Stream game updates, Flags: (request)+(valid)+complete, size: 0 bytes
 E2-22-00-00
 ```
 
 S -> C
 ```
-// Stream game updates, Flags: response+valid+(partial), size: 160 bytes
+// Stream game updates, Flags: response+(valid)+(partial), size: 160 bytes
 E2-28-00-70
 {
 	// The timing of this update is positioned at turn 5.
@@ -604,7 +604,7 @@ E2-28-00-70
 	]
 }
 
-// Stream game updates, Flags: response+valid+complete, size: 80 bytes
+// Stream game updates, Flags: response+(valid)+complete, size: 80 bytes
 E2-28-00-50
 {
 	// The timing of this update is positioned at turn 5.
