@@ -4,34 +4,33 @@
 
 ## Philosophies
 
-I. Tiny amount of data transferred
+I. Tiny amount of data transferred.
 
-II. Stateless
+II. Stateless. [note-1](#notes)
 
-III. JSON, easy to decode, easy to encode; no protobuf dependency
+III. JSON, easy to decode, easy to encode; no protobuf dependency.
 
-IV. Able to send game state deltas or full snapshots
+IV. Able to send game state deltas or full snapshots.
 
-V. Able to support a subset of the protocol or the full protocol
+V. Able to support a subset of the protocol or the full protocol.
 
-VI. Extensible enough to be used to communicate between stove and simulators, using extensions
+VI. Extensible enough to be used to communicate between stove and simulators, using extensions.
 
-VII. As close to the original HS protocol as possible
+VII. As close to the original HS protocol as possible.
 
-VIII. Hard linked to hearthstoneJSON.com data
+VIII. Hard linked to hearthstoneJSON.com data.
 
-### To be discussed
+IX. Usable within webbrowsers.
 
-1. Accessible through browsers (implies WebSockets).
+X. Context is provided out of band. [note-2](#notes)
 
-2. Context is provided out of band.
-eg: the user has to use a certain path (hsreplay.com/live_games/[GAME_ID]). The listening server communicates Kettle only in the context of the GAME_ID, which is NOT SELECTED and a constant value within the protocol structure.
+XI. Security is provided out of band. [note-2](#notes)
 
-3. Security is handled out of band. See previous example, but utilise a token to authorize access to the resource.
+### Notes
 
-4. Visibility of card data.
-	- Should the protocol send all known state (which could include card ID's which are hidden from the current player) when both players upload their live plays?
-	- Should the client open 2 streams per game ID, one for each player's 'view' of the visible entities?
+1. The core protocol should minimize transmitting parameters within Kettle Request packets. Parameters guiding the contents of Kettle Requests/Responses should be provided out of band or in an extension. See point X and/or note-2.
+
+2. The purpose of the core protocol is to transmit game state. However there are situations where context must be incoded inside the protocol to avoid complicating communication with additionall layers of transport. In that case define an extension block to accomodate your needs.
 
 ### Example
 
@@ -41,13 +40,13 @@ General structure of a **Kettle Packet**: [Kettle Header][Kettle Payload]
 
 |Kettle Payload (STR representation): [Payload]
 
-	example, Kettle Core Request `Block data` object, with size 0kb
-	E0-0A-00-00
-	{}
+  example, Kettle Core Request `Block data` object, with size 0kb
+  E0-0A-00-00
+  {}
 
-	example, Kettle Core Response `Block data` object, with size 50kb
-	E0-16-14-00
-	{}
+  example, Kettle Core Response `Block data` object, with size 50kb
+  E0-16-14-00
+  {}
 
 > More examples can be found at the bottom of this document.
 
@@ -151,172 +150,3 @@ The structure of the payload is indicated by the Packet Identifier. Each block o
 ## PAYLOADS
 
 Payloads will be defined in seperate documents. For the core payload structures, see kettle-002.md.
-
-[TODO; move this into kettle-002.md]
-##### Stream Game history
-
-Special type which can be used accross web sockets. The receiver of this request keeps pushing partial response objects when they are available.
-
-C -> S
-```
-// Stream game updates, Flags: (request)+(valid)+complete, size: 0 bytes
-E2-22-00-00
-```
-
-S -> C
-```
-// Stream game updates, Flags: response+(valid)+(partial), size: 160 bytes
-E2-28-00-70
-{
-	// The timing of this update is positioned at turn 5.
-	"turn": 5,
-	// block_id is a monotone clock for each new top level power block.
-	// nested blocks are NOT counted
-	"block_id": 20,
-	"history": [
-		/* START OF NEW TOP LEVEL BLOCK */
-		{
-			"type": "block",
-			"index": 7, // BlockType::Play
-			"data": {
-				"start": true,
-				"source_entity": 16, // Entity which is 'Played'
-				"target_entity": 50, // There is no play target
-			}
-		},
-				/* START OF NEW INNER BLOCK */
-				{
-					"type": "block",
-					"index": 3, // BlockType::Power
-					"data": {
-						"start": true,
-						"source_entity": 16, // Entity which is 'Played'
-						"target_entity": 50, // There is no play target
-					}
-				}
-				{
-					"type": "meta",
-					"index": 0, // MetaDataType::Meta_Target
-					"data": { // MetaData structure
-						// [REQ] Parameter of this meta data object; in case of MetaDataType::Meta_Healing this would
-						// hold the amount to be healed (PRE_HEAL)
-						"data": 0,
-						// [REQ] List of entity ID's which undergo the effect
-						"info": [50]
-					}
-				},
-				{
-					"type": "power",
-					"index": 4, // PowerType::Tag_Change
-					"data": {
-						"id": 50,
-						"tags": [
-							{
-								"key": 425, // GameTag::Prehealing
-								"value": 2 // Entity got healed, which gives it an actual health up to it's total health.
-							}
-						]
-					}
-				},
-				{
-					"type": "power",
-					"index": 4, // PowerType::Tag_Change
-					"data": {
-						"id": 50,
-						"tags": [
-							{
-								"key": 425, // GameTag::Prehealing
-								"value": 0 // Entity got healed, which gives it an actual health up to it's total health.
-							}
-						]
-					}
-				},
-				{
-					"type": "meta",
-					"index": 2, // MetaDataType::Meta_Healing
-					"data": { // MetaData structure
-						// [REQ]
-						"data": 2, // Amount of healing
-						// [REQ]
-						"info": [50]
-					}
-				},
-				{
-					"type": "power",
-					"index": 4, // PowerType::Tag_Change
-					"data": {
-						"id": 50,
-						"tags": [
-							{
-								"key": 44, // GameTag::Damage
-								"value": 0 // Entity got healed, which makes it become 'undamaged'.
-							}
-						]
-					}
-				},
-
-				{ // End of Power Block
-					"type": "block",
-					"index": 3, // BlockType::Power
-					"data": {
-						"start": false,
-						"source_entity": 0,
-						"target_entity": 0,
-					}
-				}
-				/* END OF INNER BLOCK */
-
-		{ // End of Play Block
-			"type": "block",
-			"index": 7, // BlockType::Play
-			"data": {
-				"start": false,
-				"source_entity": 0,
-				"target_entity": 0,
-			}
-		}
-
-		/* END OF TOP LEVEL BLOCK */
-	]
-}
-
-// Stream game updates, Flags: response+(valid)+complete, size: 80 bytes
-E2-28-00-50
-{
-	// The timing of this update is positioned at turn 5.
-	"turn": 5,
-	// block_id is a monotone clock for each new top level power block.
-	// nested blocks are NOT counted
-	"block_id": 21, // -> Top level block idx incremented.
-	"history": [
-		/* START OF TOP LEVEL BLOCK */
-		{
-			"type": "block",
-			"index": 1, // BlockType::Attack
-			"data": {
-				"start": true,
-				"source_entity": 81, // Proposed attacker
-				"target_entity": 131, // Proposed defender
-			}
-		},
-
-		//////////////////////////////////
-		// Bunch of tag changes			//
-		// Meta data for damage			//
-		// More tag changes				//
-		//////////////////////////////////
-
-		{ // End of Play Block
-			"type": "block",
-			"index": 7, // BlockType::Play
-			"data": {
-				"start": false,
-				"source_entity": 0,
-				"target_entity": 0,
-			}
-		}
-
-		/* END OF TOP LEVEL BLOCK */
-	]
-}
-```
