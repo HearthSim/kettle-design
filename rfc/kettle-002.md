@@ -36,13 +36,14 @@ Block ID | Address | Used for | Req | Resp
 E0	| 0 | Pull brief information of blocks supported by the server. | N | Y
 .		| 1 | Pull comprehensive data of specific blocks. | Y | Y
 E1	| 0 | Pull game metadata. | N | Y
-.		| 1 | ~~Pull full? player data~~ | . | .
+.		| 1 | ~~Pull full player data~~ | . | .
 .		| 2 | Pull deck data of player 1. | N | Y
 .		| 3 | Pull deck data of player 2. | N | Y
+.   | 4 | Push deck data for current player. | Y | N
 E2	| 0 | Pull full game state for latest turn. | N | Y
 .		| 1 | ~~Pull game state update starting from latest turn~~ | N | Y
-.		| 2 | Stream game state updates. | N | Y
-.		| 3 | ~~Post game history.~~ | Y | N
+.		| 2 | (Pull) Stream game state updates. | N | Y
+.		| 3 | (Push) Stream game state updates. | Y | N
 
 
 # E0-0
@@ -163,6 +164,8 @@ Optional information and/or internet links can be defined by extension blocks.
 
 # E1-1
 
+# E1-2
+
 > No request structure
 
 ## Response
@@ -181,9 +184,29 @@ Optional information and/or internet links can be defined by extension blocks.
 }
 ```
 
-# E1-2
-
 # E1-3
+
+Identical to E1-2.
+
+# E1-4
+
+> No request structure
+
+## Response
+
+```
+{
+  // [REQ]
+  "cards": [
+    {
+      // [OPT]
+      "dbf_id": u32,
+      // [OPT]
+      "card_id": string,
+    }
+  ]
+}
+```
 
 # E2-0
 
@@ -377,6 +400,12 @@ Right before the server stops sending response packets for this packet type, the
 ```
 
 # E2-3
+
+> No request structure
+
+## Response
+
+Identical structure of E2-2's response.
 
 
 

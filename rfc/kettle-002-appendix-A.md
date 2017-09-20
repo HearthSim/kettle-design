@@ -10,7 +10,7 @@ The protocol expects the transport layer to provide ordered delivery of sent Ket
 The protocol data can be directly transmitted on top of any TCP-like transport layer. Wrapping in HTTP and WebSockets might be best.
 
 ```
-// REQUEST blocks and addresses supported by the server.
+// [C->S] REQUEST blocks and addresses supported by the server.
 E0-02-00-00 {}
 
 // RESPOND with supported blocks.
@@ -31,14 +31,14 @@ E0-0A-XX-XX
   ]
 }
 
-// REQUEST more information on specific block.
+// [C->S] REQUEST more information on specific block.
 E0-12-XX-XX
 {
   "range_start": E0,
   "range_end": E1,
 }
 
-// RESPOND with specific block information.
+// [S->C] RESPOND with specific block information.
 E0-18-XX-XX
 {
   "block_id": E0,
@@ -99,16 +99,13 @@ E0-1A-XX-XX
 }
 ```
 
-## Push game state to server
-
-
 ## Retrieve game state from server
 
 ```
-// REQUEST meta game information.
+// [C->S] REQUEST meta game information.
 E1-02-00-00 {}
 
-// RESPOND with meta game information.
+// [S->C] RESPOND with meta game information.
 E1-0A-XX-XX
 {
   "game_format": 2, // FormatType::FT_STANDARD
@@ -125,11 +122,11 @@ E1-0A-XX-XX
   ]
 }
 
-// REQUEST player decks.
+// [C->S] REQUEST player decks.
 E1-22-00-00 {}
 E1-32-00-00 {}
 
-// RESPOND with player decks.
+// [S->C] RESPOND with player decks.
 E1-2A-XX-XX
 {
   "cards": [
@@ -156,10 +153,10 @@ E1-3A-XX-XX
   ]
 }
 
-// REQUEST latest complete game state.
+// [C->S] REQUEST latest complete game state.
 E2-02-00-00 {}
 
-// RESPOND latest complete game state.
+// [S->C] RESPOND latest complete game state.
 // First packet for the response.
 E2-08-XX-XX
 {
@@ -203,10 +200,10 @@ E2-0A-XX-XX
   ]
 }
 
-// REQUEST game state update stream.
+// [C->S] REQUEST game state update stream.
 E2-22-00-00 {}
 
-// RESPOND game state update to requested range.
+// [S->C] RESPOND stream game state updates.
 E2-28-XX-XX
 {
   "from_turn": 5,
@@ -314,10 +311,10 @@ E2-28-XX-XX
     /* END OF TOP LEVEL BLOCK */
   ]
 }
-
-// Stream game updates, Flags: response+(valid)+complete, size: 80 bytes
+[REPEATED SEQUENCE]
+// [S->C] This is the last game update, the flag Complete is SET!
 E2-2A-XX-XX
-{ // This is the latest update for the current game.
+{
   "turn": 5,
   "block_id": 21, // -> Top level block idx incremented.
   "history": [
@@ -357,3 +354,15 @@ E2-2A-XX-XX
 }
 
 ```
+
+## Push game state to server
+
+The structures are actually built in a way they can be used in the context of 'client to server'
+**AND** the other way around. For the latter case the server initiates the request.
+
+Examples for pushing data can be constructed by reversing the Requester and Responder for each
+operation:
+
+1. Server requests full game state from the beginning of the game.
+  1 Client responds with known state.
+2. Server requests
