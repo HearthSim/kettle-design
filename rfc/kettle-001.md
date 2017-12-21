@@ -29,8 +29,9 @@ XI. Security is provided out of band. [note-1](#notes)
 ### Notes
 
 1. The `Kettle Core Protocol` must not rely on state encoded within `Kettle Requests`. Usage of parameters should also be
-minimized.
-Example: If state information must be polled for game A, 'A' is provided out of band and will not be included in `Kettle Packets`. The intention is to let underlying protocols handle this eg; the PATH parameter contains 'A' when HTTP is a
+minimized.  
+Example: If state information must be polled for game A, 'A' is provided out of band and will not be included in `Kettle Packets`.
+The intention is to let underlying protocols handle this eg; the PATH parameter contains 'A' when HTTP is a
 carrier-protocol for Kettle. This keeps request/response structures simple.
 
 2. Extension implementers are not bound to [note-1](#notes) because use cases vary and Kettle can also be used as
@@ -51,7 +52,7 @@ protocol directly on top of bare transport protocols.
 
 * Kettle Request
 
-  A `Kettle Packet` which is sent from endpoint X to endpoint Y, with the 'response flag' unset.
+  A `Kettle Packet` which is sent from endpoint X to endpoint Y, with the 'response flag' unset.  
   X activates Y to process the packet contents and sends a `Kettle Response` afterwards, if applicable.
 
 * Kettle Extension
@@ -60,12 +61,12 @@ protocol directly on top of bare transport protocols.
 
 * Kettle Core Protocol **!== Kettle Protocol**
 
-  A `Kettle Extension` developed and maintained by the Kettle developer team.
+  A `Kettle Extension` developed and maintained by the Kettle developer team.  
   It defines contexts regarding minimal player information, deck information and game state.
 
 ## Description
 
-The idea is to provide an RPC system, inbetween sender X and receiver Y.
+The idea is to provide an RPC system, inbetween sender X and receiver Y.  
 Only transport and encoding is part of the `Kettle Protocol`. Relevant data for application developers can be found at
 kettle-002.md.
 
@@ -86,12 +87,12 @@ respective `Kettle Response` could have a different index than expected.
 
 General structure of a **Kettle Packet**: [`Kettle Header`][`Kettle Payload`]
 
-- **Kettle Header**: [`Kettle Producer`][Packet Size]
-  Examples of this object will be displayed in HEX-format.
+- **Kettle Header**: [`Kettle Producer`][Packet Size]  
+  Examples of this object will be displayed in HEX-format.  
   The total size of `Kettle Header` is exactly __4 bytes__.
 
 - **Kettle Payload**: [Packet Payload]
-  Examples of this object will be displayed in STRING-format.
+  Examples of this object will be displayed in STRING-format.  
   The total size of `Kettle Payload` is not defined by this document. Refer to the `Kettle Header` of the same
   `Kettle Packet` to find out the exact size.
 
@@ -103,37 +104,38 @@ General structure of a **Kettle Packet**: [`Kettle Header`][`Kettle Payload`]
   E0-16-C8-00
   {}
 
-> More examples can be found at the bottom of this document.
-
 ## Kettle producer
 
 This part of the `Kettle Packet` describes which functionality acts as context for the `Kettle Payload`.
 A `Kettle Producer` consists of two parts: [Allocated Block][Allocated Method][Packet Flags].
-It's total size is exactly __2 bytes__.
+Its' total size is exactly __2 bytes__.
 
 > The purpose of a `Kettle Endpoint` becomes implicitly obvious through the Allocated Blocks it exposes.
 
 ### Allocated Block
 
 The range of blocks which can be allocated go from 00 up until EF (inclusive). This takes up __1 byte__.
-A maximum of XXX different extensions can be allocated, since the `Kettle Core Protocol` reserves blocks F0~FF. A `Kettle Extension` can be allowed to reserve more than one block. This decision is up to the `Kettle Core Team`.
+A maximum of XXX different extensions can be allocated, since the `Kettle Core Protocol` reserves blocks F0~FF. 
+A `Kettle Extension` can be allowed to reserve more than one block. This decision is up to the `Kettle Core Team`.
 
 Allocated block must have a default error payload structure, which is returned upon processing an invalid `Kettle Packet`.
 Owners of multiple blocks, spanning a contiguous range, are also allowed to choose 1 error payload structure for the entire
 block range.
 
-> Owners can also choose to use the default error payload structure, defined on the `Kettle Core Protocol`, if no custom structure is necessary.
+> Owners can also choose to use the default error payload structure, defined on the `Kettle Core Protocol`, 
+  if no custom structure is necessary.
 
 ### Allocated Method
 
-Each Allocated Block holds 16 unique adresses. These addresses can be linked to a method. This takes up __4 bits__.
+Each Allocated Block holds 16 unique adresses. These addresses can be linked to a method. This takes up __4 bits__.  
 A method references certain functionality and is linked to at most one `Kettle Request Payload` and `Kettle
 Response Payload` structure.
 
 * An 'Empty Payload' is assumed when there is a missing explicit reference between methods and payload
-structure. This object has size __0__.
+  structure. This object has size __0__.
 
-* It's considered an **error** when a `Kettle Packet` holds a non-empty `Kettle Payload` when no payload structure is referenced for the mention method and request/response combination!
+* It's considered an **error** when a `Kettle Packet` holds a non-empty `Kettle Payload` when no payload structure is 
+  referenced for the mention method and request/response combination!
 
 * It's considered an **error** when the Empty Payload is expected and the Kettle Header holds a payload size greater than 0.
 
@@ -142,10 +144,10 @@ is allowed.
 
 ### Packet flags
 
-Encodes properties of the `Kettle Packet` it's transmitted within. This takes up __4 bits__.
+Encodes properties of the `Kettle Packet` it's transmitted within. This takes up __4 bits__.  
 See below for an explanation on each flag.
 
-The Allocated Method and Packet Flags are strongly linked, always process both together like a tuple!
+The Allocated Method and Packet Flags are strongly linked, always process both together like a tuple!  
 The value of a flag is 0 when it's __UNSET__, 1 when __SET__.
 
 ##### Structure
@@ -161,7 +163,8 @@ Bit X | Name | Description
 
 **The flag is 0 for requests, 1 for responses.**
 
-The 'Empty Payload' is useful for performing a `Kettle Request`, since most of the time there is no data which needs to be provided (like a HTTP GET request).
+The 'Empty Payload' is useful for performing a `Kettle Request`, since most of the time there is no data which needs to be 
+provided (like a HTTP GET request).
 
 #### Invalid flag
 
@@ -188,25 +191,29 @@ The payload **MUST ALWAYS BE** a valid UTF-8 JSON encoded object. The implemento
 
 Identifies how many **bytes** are used to encode the payload. This takes up __2 bytes__.
 
-The size part of the `Kettle Header` can hold a value up to 65536 (exclusive) bytes, which is a value around the maximum MTU for systems following the IPv4 and v6 protocols.
-Since the `Kettle Header` always has an encoded size of 4 bytes, we allow the payload to have a __maximum size__ of (65536-4) bytes per packet. The maximum payload size becomes **65532**, or **FF-FC**, bytes.
+The size part of the `Kettle Header` can hold a value up to 65536 (exclusive) bytes, which is a value around the maximum MTU for systems
+following the IPv4 and v6 protocols.
+Since the `Kettle Header` always has an encoded size of 4 bytes, we allow the payload to have a __maximum size__ of (65536-4) bytes per packet.  
+The maximum payload size becomes **65532**, or **FF-FC**, bytes.
 
-> The Packet Size is allowed to be 0! This means there will **NOT** follow a `Kettle Payload` and the next `Kettle Packet` will follow right after the current `Kettle Header`.
+> The Packet Size is allowed to be 0! This means there will **NOT** follow a `Kettle Payload` and the next `Kettle Packet` will follow 
+right after the current `Kettle Header`.
 
 ## Packet Payload
 
-The Packet Payload holds the actual data being transmitted between `Kettle Endpoints`.
+The Packet Payload holds the actual data being transmitted between `Kettle Endpoints`.  
 The payload **MUST** be an __UTF-8 representation__ of a valid JSON object.
 
-The structure of the payload is indicated by the `Kettle Producer`. Each Allocated Block owner must provide JSON schema's for each payload structure it encodes into Allocated Methods.
+The structure of the payload is indicated by the `Kettle Producer`. Each Allocated Block owner must provide JSON schema's for each payload structure 
+it encodes into Allocated Methods.
 
 > The payload examples in this and following RFC's are prettified, the newline characters should **NOT** be sent between endpoints to save one space!
 
 ## PAYLOADS
 
-Payloads will be defined in other RFC documents.
+Payloads will be defined in other RFC documents.  
 Everybody is free to open a Pull-Request to allocate Blocks for themselves. An RFC Document is desired when
-creating the PR, look at kettle-002.md for an example format.
+creating the PR, look at kettle-002.md for an example format.  
 **ONLY WHEN** the PR is merged you'll officially own the requested blocks and nobody alse can claim them.
 
 For any questions please file an issue or come meet us at Discord (see top of this document)!
