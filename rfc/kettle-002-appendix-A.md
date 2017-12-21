@@ -9,88 +9,88 @@ Actual size of the payloads is not given and is substituted by XX-XX when the pa
 The protocol expects the transport layer to provide ordered delivery of sent Kettle packets.
 The protocol data can be directly transmitted on top of any TCP-like transport layer. Wrapping in HTTP and WebSockets might be best.
 
-```
+```javascript
 // [C->S] REQUEST blocks and addresses supported by the server.
-E0-02-00-00 {}
+F0-02-00-00 {}
 
 // RESPOND with supported blocks.
-E0-0A-XX-XX
+F0-0A-XX-XX
 {
   "server_id": "HSReplay frontend 15",
   "identification": "v0.0.1-ALPHA",
   "blocks": [
     {
-      "range_start": E0,
+      "range_start": F0,
       "range_end": FF,
       "owner": "Kettle Core",
-      "error_struct_ref": E0,
+      "error_struct_ref": F0,
       "addresses": [
-          E0-00, E0-10, E1-00, E1-10, E1-20, E1-30, E2-00, E2-10, E2-20, ..
+          F0-00, F0-01, F1-00, F1-01, F1-02, F1-03, F2-00, F2-01, F2-02, ..
       ]
     }
   ]
 }
 
 // [C->S] REQUEST more information on specific block.
-E0-12-XX-XX
+F0-12-XX-XX
 {
-  "range_start": E0,
-  "range_end": E1,
+  "range_start": F0,
+  "range_end": F1,
 }
 
 // [S->C] RESPOND with specific block information.
-E0-18-XX-XX
+F0-18-XX-XX
 {
-  "block_id": E0,
+  "block_id": F0,
   "owner": "Kettle Core",
   "version": "v0.0.1-ALPHA",
   "description": "Used for polling supported blocks and operations",
-  "error_struct_ref": E0,
+  "error_struct_ref": F0,
   "rfc_href": "http://github.com/kettle-design/tree/dfsdffsd5554/rfc/kettle-002.md",
   "addresses": [
     {
-      "address_id": E0-00,
+      "address_id": F0-00,
       "description": "Used for pulling brief block data and supported addresses",
       "request_struct": false,
       "response_struct": true,
     },
     {
-      "address_id": E0-10,
+      "address_id": F0-10,
       "description": "Used for pulling comprehensive block data and supported addresses",
       "request_struct": true,
       "response_struct": true,
     },
   ]
 }
-E0-1A-XX-XX
+F0-1A-XX-XX
 {
-  "block_id": E1,
+  "block_id": F1,
   "owner": "Kettle Core",
   "version": "v0.0.1-ALPHA",
   "description": "Used for polling supported blocks and operations",
-  "error_struct_ref": E0,
+  "error_struct_ref": F0,
   "rfc_href": "http://github.com/kettle-design/tree/dfsdffsd5554/rfc/kettle-002.md",
   "addresses": [
     {
-      "address_id": E1-00,
+      "address_id": F1-00,
       "description": "Used for pulling meta game data",
       "request_struct": false,
       "response_struct": true,
     },
     {
-      "address_id": E1-10,
+      "address_id": F1-10,
       "description": "Used for pulling game account data",
       "request_struct": false,
       "response_struct": true,
     },
     {
-      "address_id": E1-20,
+      "address_id": F1-20,
       "description": "Used for pulling deck data of player with id 1",
       "request_struct": false,
       "response_struct": true,
     },
     {
-      "address_id": E1-30,
+      "address_id": F1-30,
       "description": "Used for pulling deck data of player with id 2",
       "request_struct": false,
       "response_struct": true,
@@ -101,12 +101,12 @@ E0-1A-XX-XX
 
 ## Retrieve game state from server
 
-```
+```javascript
 // [C->S] REQUEST meta game information.
-E1-02-00-00 {}
+F1-02-00-00 {}
 
 // [S->C] RESPOND with meta game information.
-E1-0A-XX-XX
+F1-0A-XX-XX
 {
   "game_format": 2, // FormatType::FT_STANDARD
   "game_type": 7, "GameType::GT_RANKED
@@ -123,11 +123,11 @@ E1-0A-XX-XX
 }
 
 // [C->S] REQUEST player decks.
-E1-22-00-00 {}
-E1-32-00-00 {}
+F1-22-00-00 {}
+F1-32-00-00 {}
 
 // [S->C] RESPOND with player decks.
-E1-2A-XX-XX
+F1-2A-XX-XX
 {
   "cards": [
     {"dbf_id": 1552141 },
@@ -140,7 +140,7 @@ E1-2A-XX-XX
   ]
 }
 
-E1-3A-XX-XX
+F1-3A-XX-XX
 {
   "cards": [
     {"dbf_id": 1552141 },
@@ -154,11 +154,11 @@ E1-3A-XX-XX
 }
 
 // [C->S] REQUEST latest complete game state.
-E2-02-00-00 {}
+F2-02-00-00 {}
 
 // [S->C] RESPOND latest complete game state.
 // First packet for the response.
-E2-08-XX-XX
+F2-08-XX-XX
 {
   "for_turn": 4,
   "game_state": [
@@ -170,7 +170,7 @@ E2-08-XX-XX
         {"key": 202, "value": 1}, // GameTag::CARDTYPE = CardType::GAME
       ]
     },
-    [REPEATED SEQUENCE]
+    /* [REPEATED SEQUENCE] */
 
     {
       "entity_id": 50,
@@ -182,11 +182,11 @@ E2-08-XX-XX
       "card_id": "EXH_414h",
       "tags": []
     },
-    [REPEATED SEQUENCE]
+    /* [REPEATED SEQUENCE] */
   ]
 }
 // second packet for the response.
-E2-0A-XX-XX
+F2-0A-XX-XX
 {
   "for_turn": 4,
   "game_state": [
@@ -195,16 +195,16 @@ E2-0A-XX-XX
       "dbf_id": 1155424,
       "tags": [{"key": 47, "value": 5}] // GameTag::ATK = 5
     },
-    [REPEATED SEQUENCE]
+    /* [REPEATED SEQUENCE] */
 
   ]
 }
 
 // [C->S] REQUEST game state update stream.
-E2-22-00-00 {}
+F2-22-00-00 {}
 
 // [S->C] RESPOND stream game state updates.
-E2-28-XX-XX
+F2-28-XX-XX
 {
   "from_turn": 5,
   "from_block_id": 20,
@@ -311,9 +311,11 @@ E2-28-XX-XX
     /* END OF TOP LEVEL BLOCK */
   ]
 }
-[REPEATED SEQUENCE]
+
+/* [REPEATED SEQUENCE] */
+
 // [S->C] This is the last game update, the flag Complete is SET!
-E2-2A-XX-XX
+F2-2A-XX-XX
 {
   "turn": 5,
   "block_id": 21, // -> Top level block idx incremented.

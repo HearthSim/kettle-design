@@ -6,18 +6,18 @@
 
 Block ID | Owner | Usage description
 :---: | :--- | :---
-E0~FF | Kettle Core Team | Blocks are in use for the core protocol
+F0~FF | Kettle Core Team | Blocks are in use for the `Kettle Core Protocol`
 
 ## Error structure
 
-The error structure is defined on block **E0**, which becomes a valid error structure reference.
+The error structure is defined on block **F0**, which becomes a valid error structure reference.
 
-```
+```javascript
 {
   // [REQ] User friendly error message.
-  "message": "I don't know this packet type `15` for block `E5`",
+  "message": "I don't know this packet type `15` for block `F5`",
   // [OPT] Implementation related context.
-  "context": "Packet identifier: E5-F2-00-15"
+  "context": "Producer: F5-F2"
 }
 ```
 
@@ -25,34 +25,34 @@ The error structure is defined on block **E0**, which becomes a valid error stru
 
 Block ID | Used for | Notes
 :---: | :--- | :---
-E0 | Endpoint information exchange | Used for polling supported blocks and operations.
-E1 | Meta Game Information | Used for exchanging information about specific games. eg: Player accounts, mode, ranks, decks.
-E2 | Game State requests | Used for exchanging information of a specific game. eg: Game history/Tag changes.
+F0 | Endpoint information exchange | Used for polling supported blocks and operations.
+F1 | Meta Game Information | Used for exchanging information about specific games. eg: Player accounts, mode, ranks, decks.
+F2 | Game State requests | Used for exchanging information of a specific game. eg: Game history/Tag changes.
 
 ## Block addresses
 
 Block ID | Address | Used for | Req | Resp
 :---: | :---: | :--- | :---: | :---:
-E0	| 0 | Pull brief information of blocks supported by the server. | N | Y
+F0	| 0 | Pull brief information of blocks supported by the server. | N | Y
 .		| 1 | Pull comprehensive data of specific blocks. | Y | Y
-E1	| 0 | Pull game metadata. | N | Y
-.		| 1 | ~~Pull full player data~~ | . | .
+F1	| 0 | Pull game metadata. | N | Y
+.		| 1 | ~~Pull full player data~~ | - | -
 .		| 2 | Pull deck data of player 1. | N | Y
 .		| 3 | Pull deck data of player 2. | N | Y
-.   | 4 | Push deck data for current player. | Y | N
-E2	| 0 | Pull full game state for latest turn. | N | Y
-.		| 1 | ~~Pull game state update starting from latest turn~~ | N | Y
-.		| 2 | (Pull) Stream game state updates. | N | Y
-.		| 3 | (Push) Stream game state updates. | Y | N
+.   | 4 | Push deck data for authenticated player. | Y | N
+F2	| 0 | Pull full game state for latest turn. | N | Y
+.		| 1 | ~~Pull game state update starting from latest turn~~ | - | -
+.		| 2 | Stream game state updates from latest turn [Server -> Client]. | N | Y
+.		| 3 | Stream game state updates from latest turn [Player -> Server]. | Y | N
 
 
-# E0-0
+# F0-0
 
 > No request structure
 
 ## Response
 
-```
+```javascript
 {
   // [REQ] Identification of the server instance.
   "server_id": string,
@@ -65,28 +65,28 @@ E2	| 0 | Pull full game state for latest turn. | N | Y
       // For single blocks the `range_start` and `range_end` contain the same values.
 
       // [REQ] Start of object range
-      "range_start": E0,
+      "range_start": F0,
       // [REQ] End of object range
       "range_end": FF,
       // [REQ]
       "owner": "Kettle Core",
       // [REQ] Value of the block which holds the error structure to be for decoding invalid Kettle
       // Packets.
-      "error_struct_ref": E0,
+      "error_struct_ref": F0,
       // [REQ] All supported addresses for the given block.
       "addresses": [
-          E0-00, E0-10, E1-00, E1-10, E1-20, E1-30, E2-00, E2-10, E2-20, ..
+          F0-00, F0-01, F1-00, F1-01, F1-02, F1-03, F2-00, F2-01, F2-02, ..
       ]
     }
   ]
 }
 ```
 
-# E0-1
+# F0-1
 
 ## Request
 
-```
+```javascript
 {
   // [REQ] Start of the block range to fetch specific information for.
   "range_start": u32,
@@ -101,7 +101,7 @@ Information is sent for one block per Kettle Packet. When a block is not support
 
 > There are at most as many Kettle Packets sent as the length of the requested range.
 
-```
+```javascript
 {
   // [REQ] Identification of the block, for which information is sent.
   "block_id": u32,
@@ -132,7 +132,7 @@ Information is sent for one block per Kettle Packet. When a block is not support
 }
 ```
 
-# E1-0
+# F1-0
 
 > No request structure
 
@@ -141,7 +141,7 @@ Information is sent for one block per Kettle Packet. When a block is not support
 By default the player information can define a rank value and the amount of arena wins.
 Optional information and/or internet links can be defined by extension blocks.
 
-```
+```javascript
 {
   // [REQ]
   "game_format": FormatType::,
@@ -162,15 +162,15 @@ Optional information and/or internet links can be defined by extension blocks.
 }
 ```
 
-# E1-1
+# F1-1
 
-# E1-2
+# F1-2
 
 > No request structure
 
 ## Response
 
-```
+```javascript
 {
   // [REQ]
   "cards": [
@@ -184,17 +184,17 @@ Optional information and/or internet links can be defined by extension blocks.
 }
 ```
 
-# E1-3
+# F1-3
 
-Identical to E1-2.
+Identical to F1-2.
 
-# E1-4
+# F1-4
 
 > No request structure
 
 ## Response
 
-```
+```javascript
 {
   // [REQ]
   "cards": [
@@ -208,13 +208,13 @@ Identical to E1-2.
 }
 ```
 
-# E2-0
+# F2-0
 
 > No request structure
 
 ## Response
 
-```
+```javascript
 {
   // A clock value is necessary for the receivers to be able to properly sync full game updates and partial updates.
   // 'for_turn' is a monotone clock, in this case, which starts at 0 (pre-game) and increments every time a player starts his turn.
@@ -225,7 +225,7 @@ Identical to E1-2.
   // [REQ] Contains a complete dump of all the entities in the game, including the game itself.
   "game_state": [ // Array of Full Entity structures!
     {
-      [REQ] Entity ID of the described entity
+      // [REQ] Entity ID of the described entity
       "id": u32, // 1-indexed
 
       // keys dbf_id and card_id are both optional and can be ommitted.
@@ -236,26 +236,26 @@ Identical to E1-2.
       // [OPT]
       "card_id": string,
 
-      [REQ]
+      // [REQ]
       "tags": [
           {"key": GameTag::, "value": u32},
-          [REPEATED SEQUENCE]
+          // [REPEATED SEQUENCE]
           ]
     },
-    [REPEATED SEQUENCE]
+    // [REPEATED SEQUENCE]
   ]
 }
 ```
 
-# E2-1
+# F2-1
 
-This packet will always contain updates for exactly 1 turn.
+This payload will always contain updates for exactly 1 turn.
 
 > No request structure
 
 ## Response
 
-```
+```javascript
 {
   // [REQ] This packet will provide updates which can be applied to the
   // full state at the beginning of the turn number.
@@ -373,16 +373,16 @@ This packet will always contain updates for exactly 1 turn.
 }
 ```
 
-# E2-2
+# F2-2
 
 > No request structure
 
 ## Response
 
-The responder WILL KEEP sending kettle response packets with the Complete flag UNSET.
-Right before the server stops sending response packets for this packet type, the last packet will have the Complete flag SET.
+The responder WILL KEEP sending kettle response packets with the Complete flag UNSET.  
+When the responder stops sending response packets for this packet type, the last packet will have the Complete flag SET.  
 
-```
+```javascript
 {
   // [REQ] The turn from where the updates start.
   "from_turn": u32,
@@ -399,19 +399,18 @@ Right before the server stops sending response packets for this packet type, the
 }
 ```
 
-# E2-3
+# F2-3
 
 > No request structure
 
 ## Response
 
-Identical structure of E2-2's response.
-
+Identical structure of F2-2's response.
 
 
 # Notes
 
-1. Both card_id and dbf_id are valid keys on entity details. Both keys are optional, but when both provided the dbf_id takes precedence.
+1. Both card_id and dbf_id are valid keys on entity details. Both keys are optional, but when both are provided the dbf_id takes precedence.
 
 2. `PowerType::`, `MetaDataType::`, `GameTag::`, `FormatType::`, `GameType::` are integer types (u32), which range is limited to the
-values contained by the enumerations, with corresponding name, defined by hearthstonejson.com
+values contained by the enumerations, with corresponding name, defined by http://hearthstonejson.com
