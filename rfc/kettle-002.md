@@ -239,10 +239,10 @@ Identical to F1-2.
       // [REQ]
       "tags": [
           {"key": GameTag::, "value": u32},
-          // [REPEATED SEQUENCE]
+          /* [REPEATED SEQUENCE] */
           ]
     },
-    // [REPEATED SEQUENCE]
+    /* [REPEATED SEQUENCE] */
   ]
 }
 ```

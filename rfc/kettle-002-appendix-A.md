@@ -109,7 +109,7 @@ F1-02-00-00 {}
 F1-0A-XX-XX
 {
   "game_format": 2, // FormatType::FT_STANDARD
-  "game_type": 7, "GameType::GT_RANKED
+  "game_type": 7, // GameType::GT_RANKED
   "players": [
     {
       "name": "Joffrey",
